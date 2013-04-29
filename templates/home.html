@@ -1,0 +1,14 @@
+{% extends "main.html" %}
+
+{% block titre %}Nim’s web.log \o/{% endblock %}
+{% block soustitre %}Nim’s web.log \o/{% endblock %}
+
+{% block content %}
+<h1>Nim’s web.log</h1>
+<p>/!\Site en construction…/!\</p>
+<p>Vous venez peut être pour : </p>
+<ul>
+    <li><a href="{% url 'cine:home' %}">CineNim</a></li>
+    <li><a href="{% url 'when:home' %}">D&amp;D: When ?</a></li>
+</ul>
+{% endblock %}

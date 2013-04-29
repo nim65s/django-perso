@@ -42,7 +42,11 @@
                 {% else %}
                     <form method="post" action="{% url 'login' %}" class="form-inline navbar-form pull-right">
                         {% csrf_token %}
-                        {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+                        {% if next %}
+                            <input type="hidden" name="next" value="{{ next }}" />
+                        {% else %}
+                            <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                        {% endif %}
                         <input type="text" name="username" class="input-small" placeholder="Login" autofocus required>
                         <input type="password" name="password" class="input-small" placeholder="Password" required>
                         <button type="submit" class="btn">log.in</button>
