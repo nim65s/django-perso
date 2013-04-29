@@ -4,3 +4,6 @@
 [submodule "cine"]
 	path = cine
 	url = git@bitbucket.org:nim65s/cine.git
+[submodule "weblog"]
+	path = weblog
+	url = git@bitbucket.org:nim65s/weblog.git
