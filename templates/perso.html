@@ -4,6 +4,7 @@
 {% block soustitre %}Nim’s web.log \o/{% endblock %}
 
 {% block nav %}
+    <li><a href="{% url 'weblog:home' %}">web.log</a></li>
     <li><a href="{% url 'cine:home' %}">Cinenim</a></li>
     <li><a href="{% url 'when:home' %}">When</a></li>
 {% endblock %}

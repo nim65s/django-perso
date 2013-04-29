@@ -14,6 +14,7 @@ urlpatterns = patterns('',
         url(r'^accounts/logout', logout_view, name='logout'),
         url(r'^accounts/profil', profil, name='profil'),
 
+        url(r'^weblog/', include('weblog.urls', namespace="weblog")),
         url(r'^when/', include('when.urls', namespace="when")),
         url(r'^cine/', include('cine.urls', namespace="cine")),
 
