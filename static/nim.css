@@ -162,7 +162,7 @@ input, textarea, select {
 .debug      { background-color: #006dcc; }
 
 .info, .success, .warning, .error, .debug {
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
 }
 

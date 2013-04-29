@@ -1,7 +1,10 @@
 #-*- coding: utf-8 -*-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+
+from perso.models import *
 
 
 def login_view(request):

@@ -27,6 +27,7 @@
                         {% block nav %}{% endblock %}
                         <li><a href="{% url 'about' %}">À Propos…</a></li>
                         <li><a href="{% url 'logout' %}">Logout</a></li>
+                        <li><a href="{% url 'profil' %}">Mon Profil</a></li>
                         {% if user.is_superuser %}
                             <li><a href="/admin">Admin</a></li>
                         {% endif %}
