@@ -1,10 +1,10 @@
-{% extends "cine/cine.html" %}
+{% extends "perso.html" %}
 
 {% block content %}
 <h1>Mon profil</h1>
 <div class="container-fluid">
     <div class="row-fluid">
-        <p><a href="logout">Se déconnecter</a></p>
+        <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
     </div>
     <div class="row-fluid">
         <div class="span7">
@@ -19,12 +19,7 @@
         <div class="span5">
             <form method="post" action="profil">
                 {% csrf_token %}
-                <label for="oldpw">Ancien mot de passe</label>
-                <input type="password" id="oldpw" name="oldpw" />
-                <label for="newpw">Nouveau mot de passe</label>
-                <input type="password" id="newpw" name="newpw" />
-                <label for="verpw">Vérification du nouveau mot de passe</label>
-                <input type="password" id="verpw" name="verpw" />
+                {{ pwform.as_p }}
                 <button type="submit" class="btn">Modifier</button>
             </form>
         </div>

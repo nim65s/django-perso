@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
+from django.contrib.auth.forms import PasswordChangeForm
 
 from perso.models import *
 
@@ -56,9 +57,9 @@ def profil(request):
                 else:
                     messages.error(request, u"NAMÉHO, c’est pas ton profil ça !")
         else:
-            if request.user.check_password(request.POST['oldpw']):
-                if request.POST['newpw'] == request.POST['verpw']:
-                    request.user.set_password(request.POST['newpw'])
+            if request.user.check_password(request.POST['old_password']):
+                if request.POST['new_password1'] == request.POST['new_password2']:
+                    request.user.set_password(request.POST['new_password1'])
                     request.user.save()
                     messages.success(request, u"Mot de passe mis à jour")
                 else:
@@ -66,6 +67,7 @@ def profil(request):
             else:
                 messages.error(request, u"Mauvais «Ancien mot de passe»")
     c['form'] = form
+    c['pwform'] = PasswordChangeForm(request.user)
     return render(request, 'profil.html', c)
 
 
