@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'when',
+    'cine',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -157,3 +158,11 @@ LOGGING = {
         },
     }
 }
+
+DEFAULT_FROM_EMAIL = 'notifications@cine.saurel.me'  # TODO
+DEFAULT_CHARSET = 'utf-8'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
