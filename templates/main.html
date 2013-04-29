@@ -1,0 +1,63 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <!--<title>D&amp;D: When ?</title>-->
+        <title>{% block titre %}{% endblock %}</title>
+        <link rel="icon" type="image/png" href="{% static "favicon.png" %}" />
+        <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
+        <link href="{% static "nim.css" %}" rel="stylesheet" media="screen">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <style>
+            #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+            #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+            #sortable li span { position: absolute; margin-left: -1.3em; }
+        </style>
+    </head>
+    <body>
+        <header class="navbar">
+            <div class="navbar-inner">
+                <!--<a class="brand" href="/">D&amp;D: When ?</a>-->
+                <a class="brand" href="/">{% block soustitre %}{%endblock %}</a>
+                {% if user.is_authenticated %}
+                <nav role="navigation">
+                    <ul class="nav">
+                        {% block nav %}{% endblock %}
+                        <li><a href="{% url 'about' %}">À Propos…</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% if user.is_superuser %}
+                            <li><a href="/admin">Admin</a></li>
+                        {% endif %}
+                    </ul>
+
+                    </nav>
+                    <!--<form class="navbar-search pull-right form-search">
+                        <div class="input-append">
+                            <input type="text" class="search-query input-medium" placeholder="Search">
+                            <button class="btn" type="submit"><i class="icon-search"></i></button>
+                        </div>
+                    </form>-->
+                {% else %}
+                    <form method="post" action="{% url 'login' %}" class="form-inline navbar-form pull-right">
+                        {% csrf_token %}
+                        <input type="text" name="username" class="input-small" placeholder="Login" autofocus required>
+                        <input type="password" name="password" class="input-small" placeholder="Password" required>
+                        <button type="submit" class="btn">log.in</button>
+                    </form>
+                {% endif %}
+            </div>
+        </header>
+        {% for message in messages %}
+            <p class="messages"><span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span></p>
+        {% endfor %}
+        {% block content %}
+        {% endblock %}
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        {% block scripts_jquery %}
+        {% endblock %}
+    </body>
+</html>
