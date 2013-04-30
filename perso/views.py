@@ -10,6 +10,7 @@ from perso.models import *
 
 def login_view(request):
     if request.method == 'GET':
+        messages.error(request, 'Vous n’êtes pas loggé')
         c = {}
         if 'next' in request.GET:
             c['next'] = request.GET['next']
