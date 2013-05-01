@@ -13,7 +13,7 @@
     <body>
         <header class="navbar">
             <div class="navbar-inner">
-                <a class="brand" href="/">{% block soustitre %}{%endblock %}</a>
+                <a class="brand" href="{% url 'home' %}">{% block soustitre %}{%endblock %}</a>
                 {% if user.is_authenticated %}
                 <nav role="navigation">
                     <ul class="nav">
