@@ -70,10 +70,3 @@ def profil(request):
     c['form'] = form
     c['pwform'] = PasswordChangeForm(request.user)
     return render(request, 'profil.html', c)
-
-
-def about(request):
-    return redirect('/')  # TODO
-
-def home(request):
-    return render(request, 'home.html', {})
