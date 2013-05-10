@@ -18,6 +18,7 @@ urlpatterns = patterns('',
         url(r'^weblog/', include('weblog.urls', namespace="weblog")),
         url(r'^when/', include('when.urls', namespace="when")),
         url(r'^cine/', include('cine.urls', namespace="cine")),
+        url(r'^comptes/', include('comptes.urls', namespace="comptes")),
 
         url(r'^admin/', include(admin.site.urls)),
 )

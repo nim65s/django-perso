@@ -7,3 +7,6 @@
 [submodule "weblog"]
 	path = weblog
 	url = git@bitbucket.org:nim65s/weblog.git
+[submodule "comptes"]
+	path = comptes
+	url = ssh://git@bitbucket.org/nim65s/comptes.git
