@@ -177,3 +177,20 @@ input, textarea, select {
 #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
 #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
 #sortable li span { position: absolute; margin-left: -1.3em; }
+
+table { width: 100%; }
+
+.tr1 { background-color: #DCDCDC; }
+.tr2 { background-color: #D6D6D6; }
+
+td, th {
+    /*border: solid black 1px;*/
+    padding-right: 10px;
+}
+
+.right, .euro { text-align: right; }
+.euro:after {
+    content: ' €';
+}
+
+
