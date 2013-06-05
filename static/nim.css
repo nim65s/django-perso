@@ -1,7 +1,7 @@
 h1 {
     text-align: center;
     font-family: "DejaVu Sans Mono";
-    font-size: 1.5em;
+    /*font-size: 1.5em;*/
     border-bottom: 1px silver dashed;
 }
 
@@ -75,9 +75,9 @@ article h2 {
     min-height: 1.35em;
 }
 
-h2 {
+/*h2 {
     font-size: 1.3em;
-}
+}*/
 
 .article-content {
     margin-left: 255px;
