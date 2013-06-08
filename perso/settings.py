@@ -22,6 +22,9 @@ DATABASES = {
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['perso.saurel.me', 'saurel.me', 'cine.saurel.me', 'yuppa.saurel.me']
+EMAIL_HOST = 'yuppa.totheweb.fr'
+SERVER_EMAIL = 'root@yuppa.totheweb.fr'
+SEND_BROKEN_LINK_EMAILS = True
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -163,7 +166,7 @@ LOGGING = {
     }
 }
 
-DEFAULT_FROM_EMAIL = 'notifications@cine.saurel.me'  # TODO
+DEFAULT_FROM_EMAIL = 'notifications@yuppa.totheweb.fr'  # TODO
 DEFAULT_CHARSET = 'utf-8'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
