@@ -180,6 +180,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.messages.context_processors.messages",
     )
 
+SEND_MAILS = False
+
 try:
     from local_settings import *
 except ImportError:
