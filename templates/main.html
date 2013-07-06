@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load dajaxice_templatetags %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -57,7 +58,11 @@
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
         <script src="{% static "js/bootstrap.min.js" %}"></script>
+        {% dajaxice_js_import %}
+        <script src="{% static "/static/dajax/jquery.dajax.core.js" %}"></script>
         {% block scripts_jquery %}
+        {% endblock %}
+        {% block dajax %}
         {% endblock %}
     </body>
 </html>
