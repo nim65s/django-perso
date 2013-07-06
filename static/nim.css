@@ -193,4 +193,5 @@ td, th {
     content: ' €';
 }
 
-
+.vert { color: green; }
+.rouge { color: red; }
