@@ -1,12 +1,12 @@
 [submodule "when"]
 	path = when
-	url = git@bitbucket.org:nim65s/when.git
+	url = git@github.com:nim65s/django-when.git
 [submodule "cine"]
 	path = cine
-	url = git@bitbucket.org:nim65s/cine.git
+	url = git@github.com:nim65s/django-cine.git
 [submodule "weblog"]
 	path = weblog
-	url = git@bitbucket.org:nim65s/weblog.git
+	url = git@github.com:nim65s/django-weblog.git
 [submodule "comptes"]
 	path = comptes
-	url = ssh://git@bitbucket.org/nim65s/comptes.git
+	url = git@github.com/nim65s/django-DD-comptes.git
