@@ -123,7 +123,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'when',
     'cine',
-    'weblog',
     'comptes',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
