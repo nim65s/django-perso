@@ -9,4 +9,4 @@
 	url = git@github.com:nim65s/django-weblog.git
 [submodule "comptes"]
 	path = comptes
-	url = git@github.com/nim65s/django-comptes.git
+	url = git@github.com:nim65s/django-comptes.git
