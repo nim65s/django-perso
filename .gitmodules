@@ -1,6 +1,6 @@
 [submodule "when"]
 	path = when
-	url = git@github.com:nim65s/django-when.git
+	url = git@github.com:nim65s/django-DD-when.git
 [submodule "cine"]
 	path = cine
 	url = git@github.com:nim65s/django-cine.git
@@ -9,4 +9,4 @@
 	url = git@github.com:nim65s/django-weblog.git
 [submodule "comptes"]
 	path = comptes
-	url = git@github.com/nim65s/django-DD-comptes.git
+	url = git@github.com/nim65s/django-comptes.git
