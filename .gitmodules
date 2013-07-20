@@ -4,9 +4,6 @@
 [submodule "cine"]
 	path = cine
 	url = git@github.com:nim65s/django-cine.git
-[submodule "weblog"]
-	path = weblog
-	url = git@github.com:nim65s/django-weblog.git
 [submodule "comptes"]
 	path = comptes
 	url = git@github.com:nim65s/django-comptes.git

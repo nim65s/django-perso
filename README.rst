@@ -14,5 +14,4 @@ Par contre, un certain nombre d’applications plus ou moins utiles vont pouvoir
 
 * http://bit.saurel.me/cine
 * http://bit.saurel.me/comptes
-* http://bit.saurel.me/weblog
 * http://bit.saurel.me/when
