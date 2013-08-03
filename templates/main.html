@@ -7,10 +7,9 @@
         <meta charset="utf-8" />
         <title>{% block titre %}{% endblock %}</title>
         <link rel="icon" type="image/png" href="{% static "favicon.png" %}" />
-        {% with_data "css-data" as stylesheets %}
-        {% for stylesheet in stylesheets %}
+        {% with_data "css-data" as stylesheets %}{% for stylesheet in stylesheets %}
             <link href="{% static stylesheet %}" rel="stylesheet" media="screen" />
-        {% endfor %}
+        {% endfor %}{% end_with_data %}
         {% add_data "css-data" "css/bootstrap.min.css" %}
         {% add_data "css-data" "nim.css" %}
         {% render_block "css" %}

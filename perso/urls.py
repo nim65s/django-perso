@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.defaults import *
-from django.conf.urls.i18n import i18_patterns
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.views.generic import TemplateView
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
@@ -11,7 +11,7 @@ from perso.views import *
 admin.autodiscover()
 dajaxice_autodiscover()
 
-urlpatterns = i18_patterns('',
+urlpatterns = i18n_patterns('',
         url(r'^admin/', include(admin.site.urls)),
         url(r'^blog', include('cms.urls')),
 )

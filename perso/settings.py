@@ -3,7 +3,7 @@
 import os
 from os.path import abspath, dirname, join
 gettext = lambda s: s
-PROJECT_PATH = abspath(dirname(__file__))
+PROJECT_PATH = abspath(dirname(dirname(__file__)))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -137,6 +137,7 @@ INSTALLED_APPS = (
     'when',
     'cine',
     'comptes',
+    'blog',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -153,7 +154,6 @@ INSTALLED_APPS = (
     'cms.plugins.picture',
     'cms.plugins.text',
     'cms.plugins.twitter',
-    'reversion',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
@@ -204,7 +204,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "context_processors.google_analytics",
+    "perso.context_processors.google_analytics",
     "cms.context_processors.media",
     "sekizai.context_processors.sekizai",
 )
