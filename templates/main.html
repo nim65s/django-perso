@@ -1,17 +1,22 @@
 {% load staticfiles %}
 {% load dajaxice_templatetags %}
+{% load cms_tags sekizai_tags %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <title>{% block titre %}{% endblock %}</title>
         <link rel="icon" type="image/png" href="{% static "favicon.png" %}" />
-        <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" media="screen">
-        <link href="{% static "nim.css" %}" rel="stylesheet" media="screen">
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        {% with_data "css-data" as stylesheets %}
+        {% for stylesheet in stylesheets %}
+            <link href="{% static stylesheet %}" rel="stylesheet" media="screen" />
+        {% endfor %}
+        {% add_data "css-data" "css/bootstrap.min.css" %}
+        {% add_data "css-data" "nim.css" %}
+        {% render_block "css" %}
     </head>
     <body>
+        {% cms_toolbar %}
         <header class="navbar">
             <div class="navbar-inner">
                 <a class="brand" href="{% url 'home' %}">{% block soustitre %}{%endblock %}</a>
@@ -60,10 +65,8 @@
         <script src="{% static "js/bootstrap.min.js" %}"></script>
         {% dajaxice_js_import %}
         <script src="{% static "/static/dajax/jquery.dajax.core.js" %}"></script>
-        {% block scripts_jquery %}
-        {% endblock %}
-        {% block dajax %}
-        {% endblock %}
+        {% render_block "js" %}
+        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         {{ google_analytics }}
     </body>
 </html>
