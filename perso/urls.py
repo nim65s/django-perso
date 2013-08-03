@@ -1,12 +1,11 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
-from django.conf.urls.defaults import *
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.views.generic import TemplateView
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
-from perso.views import *
+from perso.views import login_view, logout_view, profil
 
 admin.autodiscover()
 dajaxice_autodiscover()
