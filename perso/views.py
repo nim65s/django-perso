@@ -1,9 +1,11 @@
 #-*- coding: utf-8 -*-
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
 from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import redirect, render
+from django.template.loader import render_to_string
 
 from perso.models import *
 
@@ -70,3 +72,8 @@ def profil(request):
     c['form'] = form
     c['pwform'] = PasswordChangeForm(request.user)
     return render(request, 'profil.html', c)
+
+def google_analytics(request):
+    if settings.DEBUG:
+        return { 'google_analytics': "" }
+    return { 'google_analytics': render_to_string("google_analytics.html", { 'ga_key': settings.GOOGLE_ANALYTICS_KEY}) }
