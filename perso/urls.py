@@ -12,7 +12,7 @@ dajaxice_autodiscover()
 
 urlpatterns = i18n_patterns('',
         url(r'^admin/', include(admin.site.urls)),
-        url(r'^blog', include('cms.urls')),
+        url(r'^blog', include('cms.urls', namespace="blog")),
 )
 
 urlpatterns = patterns('',

@@ -98,9 +98,6 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-)
-
-MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -109,10 +106,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.doc.XViewMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'cms.middleware.page.CurrentPageMiddleware',
-    'cms.middleware.user.CurrentUserMiddleware',
-    'cms.middleware.toolbar.ToolbarMiddleware',
-    'cms.middleware.language.LanguageCookieMiddleware',
 )
 
 ROOT_URLCONF = 'perso.urls'
@@ -138,22 +131,11 @@ INSTALLED_APPS = (
     'cine',
     'comptes',
     'blog',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
     'dajaxice',
     'dajax',
-    'cms',
-    'mptt',
-    'menus',
     'south',
     'sekizai',
-    'cms.plugins.file',
-    'cms.plugins.link',
-    'cms.plugins.picture',
-    'cms.plugins.text',
-    'cms.plugins.twitter',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
@@ -205,18 +187,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "perso.context_processors.google_analytics",
-    "cms.context_processors.media",
     "sekizai.context_processors.sekizai",
 )
-
-CMS_TEMPLATES = (
-    ("blog/article.html", "Article"),
-    ("blog/articles.html", "Articles"),
-)
-
-LANGUAGES = [
-    ('fr', 'French'),
-]
 
 try:
     from local_settings import *
