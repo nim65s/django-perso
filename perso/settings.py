@@ -130,7 +130,6 @@ INSTALLED_APPS = (
     'when',
     'cine',
     'comptes',
-    'blog',
     'django.contrib.admin',
     'dajaxice',
     'dajax',
