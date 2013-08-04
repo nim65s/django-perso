@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.conf.urls import patterns, include, url
-from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.views.generic import TemplateView
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
@@ -9,11 +8,6 @@ from perso.views import login_view, logout_view, profil
 
 admin.autodiscover()
 dajaxice_autodiscover()
-
-urlpatterns = i18n_patterns('',
-        url(r'^admin/', include(admin.site.urls)),
-        url(r'^blog', include('cms.urls', namespace="blog")),
-)
 
 urlpatterns = patterns('',
         url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
@@ -28,7 +22,8 @@ urlpatterns = patterns('',
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
 
         url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
-) + urlpatterns
+        url(r'^admin/', include(admin.site.urls)),
+)
 
 
 if settings.DEBUG:
