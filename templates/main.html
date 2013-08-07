@@ -64,7 +64,7 @@
         <script src="{% static "js/bootstrap.min.js" %}"></script>
         {% dajaxice_js_import %}
         <script src="{% static "/static/dajax/jquery.dajax.core.js" %}"></script>
-        {% render_block "js" %}
+        {% block "js" %}{% endblock %}
         <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         {{ google_analytics }}
     </body>
