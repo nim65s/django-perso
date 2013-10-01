@@ -11,3 +11,12 @@ def google_analytics(request):
                 'ga_site': settings.GOOGLE_ANALYTICS_SITE,
                 }),
             }
+
+def disqus(request):
+    if settings.DEBUG:
+        return { 'disqus': "" }
+    return {
+            'disqus': rentder_to_string("disqus.html", {
+                'disqus_shortname': settings.DISQUS_SHORTNAME,
+                }),
+            }

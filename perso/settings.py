@@ -130,10 +130,12 @@ INSTALLED_APPS = (
     'when',
     'cine',
     'comptes',
+    #'blog',
     'django.contrib.admin',
     'dajaxice',
     'dajax',
     'sekizai',
+    #'tinymce',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'

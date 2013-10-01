@@ -17,12 +17,14 @@ urlpatterns = patterns('',
         url(r'^accounts/logout', logout_view, name='logout'),
         url(r'^accounts/profil', profil, name='profil'),
 
-        url(r'^when/', include('when.urls', namespace="when")),
+        #url(r'^blog/', include('blog.urls', namespace="blog")),
         url(r'^cine/', include('cine.urls', namespace="cine")),
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
+        url(r'^when/', include('when.urls', namespace="when")),
 
         url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
         url(r'^admin/', include(admin.site.urls)),
+        #url(r'^tinymce/', include('tinymce.urls')),
 )
 
 
