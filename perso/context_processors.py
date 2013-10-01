@@ -16,7 +16,7 @@ def disqus(request):
     if settings.DEBUG:
         return { 'disqus': "" }
     return {
-            'disqus': rentder_to_string("disqus.html", {
+            'disqus': render_to_string("disqus.html", {
                 'disqus_shortname': settings.DISQUS_SHORTNAME,
                 }),
             }
