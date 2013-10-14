@@ -2,3 +2,4 @@ Perso.db
 local_settings.py
 static_dest/*
 blog
+media
