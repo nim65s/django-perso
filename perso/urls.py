@@ -25,6 +25,7 @@ urlpatterns = patterns('',
         url(r'^accounts/password_reset_complete$', password_reset_complete, name='password_reset_complete'),
 
         #url(r'^blog/', include('blog.urls', namespace="blog")),
+        url(r'^weblog/', include('zinnia.urls')),
         url(r'^cine/', include('cine.urls', namespace="cine")),
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
         url(r'^when/', include('when.urls', namespace="when")),

@@ -58,7 +58,7 @@
         {% for message in messages %}
             <p class="messages"><span{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</span></p>
         {% endfor %}
-        <div class="container-fluid">{% block content %}{% endblock %}</div>
+        <div class="container-fluid">{% block maincontent %}{% block content %}{% endblock %}{% endblock %}</div>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
         <script src="{% static "js/bootstrap.min.js" %}"></script>

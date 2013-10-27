@@ -136,6 +136,10 @@ INSTALLED_APPS = (
     'dajax',
     'sekizai',
     #'tinymce',
+    'zinnia',
+    'tagging',
+    'mptt',
+    'django.contrib.comments',  # :@
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
@@ -189,6 +193,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "perso.context_processors.google_analytics",
     "perso.context_processors.disqus",
     "sekizai.context_processors.sekizai",
+    "zinnia.context_processors.version",
 )
 
 CACHES = {

@@ -1,0 +1,47 @@
+{% extends "main.html" %}
+
+{% block titre %}Nim’s web.log \o/{% endblock %}
+{% block soustitre %}Nim’s web.log \o/{% endblock %}
+
+{% block nav %}
+    <li><a href="{% url 'zinnia_entry_archive_index' %}">Home</a></li>
+    <li><a href="{% url 'zinnia_sitemap' %}">Sitemap</a></li>
+    <li><a href="{% url 'zinnia_entry_latest_feed' %}">RSS</a></li>
+    <li><form method="get" action="{% url 'zinnia_entry_search' %}" class="form-inline navbar-form">
+        <input type="text" value="Search" name="pattern" onfocus="this.value=''" class="input-small"/>
+        <input type="submit" class="btn" value="OK" />
+    </form></li>
+{% endblock %}
+
+{% block maincontent %}
+<div class="row-fluid">
+    <div class="span9">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="span3">
+        {% block sidebar %}{% endblock %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% comment %}
+blocks
+    title
+    meta-description
+    meta-keyword
+    meta
+    link
+    script
+    breadcrumbs
+    slider
+
+thèmes:
+    theme-class
+    color-class
+    sidebar-class
+    body-class
+
+include
+    zinnia/tags/search_form.html
+{% endcomment %}
