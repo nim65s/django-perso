@@ -11,8 +11,6 @@ admin.autodiscover()
 dajaxice_autodiscover()
 
 urlpatterns = patterns('',
-        url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
-        url(r'^about$', TemplateView.as_view(template_name='about.html'), name="about"),
 
         url(r'^accounts/login', login_view, name='login'),
         url(r'^accounts/logout', logout_view, name='logout'),
@@ -24,8 +22,6 @@ urlpatterns = patterns('',
             {'post_reset_redirect' : '/accounts/password_reset_complete'}, name='password_reset_confirm'),
         url(r'^accounts/password_reset_complete$', password_reset_complete, name='password_reset_complete'),
 
-        #url(r'^blog/', include('blog.urls', namespace="blog")),
-        url(r'^weblog/', include('zinnia.urls')),
         url(r'^cine/', include('cine.urls', namespace="cine")),
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
         url(r'^when/', include('when.urls', namespace="when")),
@@ -33,6 +29,7 @@ urlpatterns = patterns('',
         url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
         url(r'^admin/', include(admin.site.urls)),
         #url(r'^tinymce/', include('tinymce.urls')),
+        url(r'', include('zinnia.urls')),
 )
 
 

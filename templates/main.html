@@ -1,7 +1,4 @@
-{% load staticfiles %}
-{% load dajaxice_templatetags %}
-{% load sekizai_tags %}
-<!DOCTYPE html>
+{% load staticfiles dajaxice_templatetags sekizai_tags %}<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
@@ -10,10 +7,17 @@
         {% with_data "css-data" as stylesheets %}{% for stylesheet in stylesheets %}
             <link href="{% static stylesheet %}" rel="stylesheet" media="screen" />
         {% endfor %}{% end_with_data %}
+        {% block link %}{% endblock %}
         {% add_data "css-data" "css/bootstrap.min.css" %}
         {% add_data "css-data" "nim.css" %}
         {% render_block "css" %}
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+        <meta name="description" content="{% block meta-description %}{% endblock %}" />
+        <meta name="keywords" content="{% block meta-keyword %}{% endblock %}" />
+        <meta name="author" content="Nim65s" />
+        {% block meta %}{% endblock %}
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="cache-control" content="public" />
+        {% block zinnia_css %}{% endblock %}
     </head>
     <body>
         <header class="navbar">
@@ -40,19 +44,7 @@
                         {% endif %}
                     </ul>
                 {% else %}
-                    <form method="post" action="{% url 'login' %}" class="form-inline navbar-form pull-right">
-                        {% csrf_token %}
-                        {% if next %}
-                            <input type="hidden" name="next" value="{{ next }}" />
-                        {% else %}
-                            <input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                        {% endif %}
-                        <input type="text" name="username" class="input-small" placeholder="Login" autofocus required>
-                        <input type="password" name="password" class="input-small" placeholder="Password" required>
-                        <button type="submit" class="btn">log.in</button>
-                        <a href="{% url 'password_reset' %}"><button type="button" class="btn btn-warning">Mot de passe oublié ?</button></a>
-                    </form>
-                {% endif %}
+                                    {% endif %}
             </div>
         </header>
         {% for message in messages %}
@@ -64,7 +56,8 @@
         <script src="{% static "js/bootstrap.min.js" %}"></script>
         {% dajaxice_js_import %}
         <script src="{% static "/static/dajax/jquery.dajax.core.js" %}"></script>
-        {% block "js" %}{% endblock %}
+        {% block js %}{% endblock %}
+        {% block script %}{% endblock %}
         <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         {{ google_analytics }}
     </body>
