@@ -16,6 +16,9 @@
   {% if user.is_authenticated %}<ul class="list-group">
     <li class="list-group-item"><a href="{% url 'profil' %}">Mon Profil</a></li>
     <li class="list-group-item"><a href="{% url 'logout' %}">Déconnexion</a></li>
+    {% if user.is_superuser %}
+      <li class="list-group-item"><a href="/admin/">Admin</a></li>
+    {% endif %}
   </ul>
   {% else %}<form method="post" action="{% url 'login' %}" role="form">
     {% csrf_token %}
