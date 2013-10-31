@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'tagging',
     'mptt',
     'django.contrib.comments',  # :@
+    'widget_tweaks',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
