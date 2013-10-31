@@ -1,4 +1,4 @@
-{% load i18n staticfiles %}
+{% load i18n staticfiles dajaxice_templatetags %}
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
@@ -110,6 +110,8 @@
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    {% dajaxice_js_import %}
+    <script src="{% static "/static/dajax/jquery.dajax.core.js" %}"></script>
     <script type="text/javascript" src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>
     {% block "js" %}{% endblock %}
   </body>
