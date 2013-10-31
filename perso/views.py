@@ -11,10 +11,10 @@ from perso.models import *
 def login_view(request):
     if request.method == 'GET':
         messages.error(request, 'Vous n’êtes pas loggé')
-        c = {}
+        next = '/'
         if 'next' in request.GET:
-            c['next'] = request.GET['next']
-        return render(request, 'home.html', c)
+            next = request.GET['next']
+        return redirect(next)
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)
