@@ -1,5 +1,5 @@
 {% extends "zinnia:zinnia/base.html" %}
-{% load zinnia_tags i18n %}
+{% load zinnia_tags perso_extra i18n %}
 
 {% block sidebar %}
 <aside id="widget-welcome" class="widget panel panel-default">
@@ -20,7 +20,7 @@
       <li class="list-group-item"><a href="/admin/">Admin</a></li>
     {% endif %}
   </ul>
-  {% else %}<form method="post" action="{% url 'login' %}" role="form">
+  {% else %}<form method="post" action="{% url 'login' %}{% url_get request %}" role="form">
     {% csrf_token %}
     {% if next %}<input type="hidden" name="next" value="{{ next }}" />
     {% else %}<input type="hidden" name="next" value="{{ request.get_full_path }}" />

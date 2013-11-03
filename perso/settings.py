@@ -131,18 +131,17 @@ INSTALLED_APPS = (
     'when',
     'cine',
     'comptes',
-    #'blog',
     'django.contrib.admin',
     'dajaxice',
     'dajax',
     'sekizai',
-    #'tinymce',
     'zinnia_bootstrap',
     'zinnia',
     'tagging',
     'mptt',
     'django.contrib.comments',  # :@
     'widget_tweaks',
+    'perso',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'

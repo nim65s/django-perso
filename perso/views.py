@@ -13,7 +13,7 @@ def login_view(request):
         messages.error(request, 'Vous n’êtes pas loggé')
         next = '/'
         if 'next' in request.GET:
-            next = request.GET['next']
+            next += '?next=%s' % request.GET['next']
         return redirect(next)
     username = request.POST['username']
     password = request.POST['password']
