@@ -16,10 +16,10 @@ urlpatterns = patterns('',
         url(r'^accounts/logout', logout_view, name='logout'),
         url(r'^accounts/profil', profil, name='profil'),
 
-        url(r'^accounts/password_reset$', password_reset, {'post_reset_redirect' : '/accounts/password_reset_done'}, name="password_reset"),
+        url(r'^accounts/password_reset$', password_reset, {'post_reset_redirect': '/accounts/password_reset_done'}, name="password_reset"),
         url(r'^accounts/password_reset_done$', password_reset_done, name='password_reset_done'),
         url(r'^accounts/password_reset_confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)$', password_reset_confirm,
-            {'post_reset_redirect' : '/accounts/password_reset_complete'}, name='password_reset_confirm'),
+            {'post_reset_redirect': '/accounts/password_reset_complete'}, name='password_reset_confirm'),
         url(r'^accounts/password_reset_complete$', password_reset_complete, name='password_reset_complete'),
 
         url(r'^cine/', include('cine.urls', namespace="cine")),
@@ -35,7 +35,7 @@ urlpatterns = patterns('',
 
 if settings.DEBUG:
     urlpatterns = patterns('',
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    url(r'', include('django.contrib.staticfiles.urls')),
-) + urlpatterns
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+        url(r'', include('django.contrib.staticfiles.urls')),
+    ) + urlpatterns
