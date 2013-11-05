@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'cine',
     'comptes',
     'django.contrib.admin',
+    'tinymce',
     'dajaxice',
     'dajax',
     'sekizai',
