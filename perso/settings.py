@@ -26,7 +26,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['saurel.me']
+ALLOWED_HOSTS = ['saurel.me', 'perso.saurel.me']
 EMAIL_HOST = 'yuppa.totheweb.fr'
 SERVER_EMAIL = 'root@yuppa.totheweb.fr'
 SEND_BROKEN_LINK_EMAILS = True
