@@ -7,6 +7,8 @@ from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
 from perso.views import login_view, logout_view, profil
 
+from zinnia.sitemaps import TagSitemap, EntrySitemap, CategorySitemap
+
 admin.autodiscover()
 dajaxice_autodiscover()
 
@@ -39,3 +41,10 @@ if settings.DEBUG:
             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
         url(r'', include('django.contrib.staticfiles.urls')),
     ) + urlpatterns
+
+sitemaps = {'tags': TagSitemap, 'blog': EntrySitemap, 'categories': CategorySitemap}
+
+urlpatterns += patterns('django.contrib.sitemaps.views',
+    url(r'^sitemap.xml$', 'index', {'sitemaps': sitemaps}),
+    url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps': sitemaps}),
+)
