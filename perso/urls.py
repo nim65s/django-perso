@@ -1,13 +1,12 @@
-from django.conf import settings
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
-from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete
-from django.views.generic import TemplateView
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+from zinnia.sitemaps import CategorySitemap, EntrySitemap, TagSitemap
 
+from django.conf import settings
+from django.conf.urls import include, patterns, url
+from django.contrib import admin
+from django.contrib.auth.views import password_reset, password_reset_complete, password_reset_confirm, password_reset_done
+from django.views.generic import TemplateView
 from perso.views import login_view, logout_view, profil
-
-from zinnia.sitemaps import TagSitemap, EntrySitemap, CategorySitemap
 
 admin.autodiscover()
 dajaxice_autodiscover()

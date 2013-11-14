@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import os
 import optparse
+import os
 import subprocess
 import sys
 

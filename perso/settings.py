@@ -2,6 +2,7 @@
 
 import os
 from os.path import abspath, dirname, join
+
 gettext = lambda s: s
 PROJECT_PATH = abspath(dirname(dirname(__file__)))
 
