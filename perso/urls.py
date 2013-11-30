@@ -19,7 +19,7 @@ urlpatterns = patterns('',
 
         url(r'^accounts/password_reset$', password_reset, {'post_reset_redirect': '/accounts/password_reset_done'}, name="password_reset"),
         url(r'^accounts/password_reset_done$', password_reset_done, name='password_reset_done'),
-        url(r'^accounts/password_reset_confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)$', password_reset_confirm,
+        url(r'^accounts/password_reset_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)$', password_reset_confirm,
             {'post_reset_redirect': '/accounts/password_reset_complete'}, name='password_reset_confirm'),
         url(r'^accounts/password_reset_complete$', password_reset_complete, name='password_reset_complete'),
 
