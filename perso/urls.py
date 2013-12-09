@@ -1,12 +1,11 @@
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
-from zinnia.sitemaps import CategorySitemap, EntrySitemap, TagSitemap
-
 from django.conf import settings
 from django.conf.urls import include, patterns, url
 from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_complete, password_reset_confirm, password_reset_done
 from django.views.generic import TemplateView
 from perso.views import login_view, logout_view, profil
+from zinnia.sitemaps import CategorySitemap, EntrySitemap, TagSitemap
 
 admin.autodiscover()
 dajaxice_autodiscover()
@@ -31,6 +30,7 @@ urlpatterns = patterns('',
         url(r'^admin/', include(admin.site.urls)),
         url(r'^tinymce/', include('tinymce.urls')),
         url(r'', include('zinnia.urls')),
+        url(r'^cgi', 'django.views.defaults.permission_denied'),
 )
 
 
