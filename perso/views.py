@@ -3,9 +3,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
+from django.http import HttpResponse
 from django.shortcuts import redirect, render
 
-from perso.models import *
+from .models import *
 
 
 def login_view(request):
@@ -70,3 +71,7 @@ def profil(request):
     c['form'] = form
     c['pwform'] = PasswordChangeForm(request.user)
     return render(request, 'profil.html', c)
+
+
+def rsssub_view(request, url):
+    return HttpResponse(url, content_type="text/plain")
