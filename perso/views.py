@@ -1,4 +1,6 @@
 #-*- coding: utf-8 -*-
+import random
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -75,3 +77,13 @@ def profil(request):
 
 def rsssub_view(request, url):
     return HttpResponse(url, content_type="text/plain")
+
+
+def daniel(request):
+    elts = [u'grand saut de toit en toi', u'mur', u'passerelle étroite', u'petit saut de toit en toit',
+            u'raccourci caché', u'raccourci bien caché', u'raccourci sur une corde raide', u'toit encombré',
+            u'toit instable', u'toit très pentu', u'trou dans un mur', u'trou étroit dans un mur']
+    ret = u""
+    for i in xrange(15):
+        ret += u"%s & %s \n" % (random.choice(elts), random.choice(elts))
+    return HttpResponse(ret, content_type="text/plain")
