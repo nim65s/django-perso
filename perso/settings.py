@@ -1,7 +1,10 @@
-# Django settings for perso project.
+from __future__ import unicode_literals
 
 import os
 from os.path import abspath, dirname, join
+
+# Django settings for perso project.
+
 
 gettext = lambda s: s
 PROJECT_PATH = abspath(dirname(dirname(__file__)))
@@ -77,9 +80,9 @@ STATIC_URL = '/static/'
 # Additional locations of static files
 STATICFILES_DIRS = (
         join(PROJECT_PATH, "static"),
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+        # Put strings here, like "/home/html/static" or "C:/www/django/static".
+        # Always use forward slashes, even on Windows.
+        # Don't forget to use absolute paths, not relative paths.
 )
 
 # List of finder classes that know how to find static files in
@@ -87,7 +90,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
     'dajaxice.finders.DajaxiceFinder',
 )
 
@@ -171,7 +174,7 @@ LOGGING = {
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            #'formatter': 'simple',
+            # 'formatter': 'simple',
         },
     },
     'loggers': {

@@ -1,4 +1,7 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+
+from __future__ import unicode_literals
+
 import random
 
 from django.contrib import messages
@@ -7,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.utils.encoding import python_2_unicode_compatible
 
 from .models import *
 
@@ -26,10 +30,10 @@ def login_view(request):
             login(request, user)
             if user.is_superuser:
                 messages.set_level(request, messages.DEBUG)
-            messages.success(request, u"Vous avez été authentifié avec succès")
-            messages.debug(request, u"Debug on for surperadmin")
+            messages.success(request, "Vous avez été authentifié avec succès")
+            messages.debug(request, "Debug on for surperadmin")
         else:
-            messages.error(request, u"Votre compte utilisateur a été désactivé…")
+            messages.error(request, "Votre compte utilisateur a été désactivé…")
     else:
         messages.error(request, "Les identifiants entrés sont incorrects.")
     next = '/'
@@ -42,7 +46,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    messages.info(request, u"Vous avec été déconnecté avec succès")
+    messages.info(request, "Vous avec été déconnecté avec succès")
     return redirect('/')
 
 
@@ -57,19 +61,19 @@ def profil(request):
                 updated_user = User.objects.get(username=request.POST['old_username'])
                 if updated_user == request.user:
                     form.save()
-                    messages.success(request, u"Profil mis à jour")
+                    messages.success(request, "Profil mis à jour")
                 else:
-                    messages.error(request, u"NAMÉHO, c’est pas ton profil ça !")
+                    messages.error(request, "NAMÉHO, c’est pas ton profil ça !")
         else:
             if request.user.check_password(request.POST['old_password']):
                 if request.POST['new_password1'] == request.POST['new_password2']:
                     request.user.set_password(request.POST['new_password1'])
                     request.user.save()
-                    messages.success(request, u"Mot de passe mis à jour")
+                    messages.success(request, "Mot de passe mis à jour")
                 else:
-                    messages.error(request, u"Les deux mots de passe entrés ne concordent pas")
+                    messages.error(request, "Les deux mots de passe entrés ne concordent pas")
             else:
-                messages.error(request, u"Mauvais «Ancien mot de passe»")
+                messages.error(request, "Mauvais «Ancien mot de passe»")
     c['form'] = form
     c['pwform'] = PasswordChangeForm(request.user)
     return render(request, 'profil.html', c)
@@ -77,13 +81,3 @@ def profil(request):
 
 def rsssub_view(request, url):
     return HttpResponse(url, content_type="text/plain")
-
-
-def daniel(request):
-    elts = [u'grand saut de toit en toi', u'mur', u'passerelle étroite', u'petit saut de toit en toit',
-            u'raccourci caché', u'raccourci bien caché', u'raccourci sur une corde raide', u'toit encombré',
-            u'toit instable', u'toit très pentu', u'trou dans un mur', u'trou étroit dans un mur']
-    ret = u""
-    for i in xrange(15):
-        ret += u"%s & %s \n" % (random.choice(elts), random.choice(elts))
-    return HttpResponse(ret, content_type="text/plain")
