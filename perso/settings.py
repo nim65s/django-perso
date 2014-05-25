@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     'django.contrib.comments',  # :@
     'widget_tweaks',
     'perso',
+    'raven.contrib.django.raven_compat',
 )
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
@@ -214,3 +215,6 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+with open('/etc/nim/perso/raven') as f:
+    RAVEN_CONFIG = {'dsn': f.read().strip()}
