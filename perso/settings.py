@@ -132,12 +132,8 @@ SITE_ID = 1
 STATICFILES_DIRS = (join(BASE_DIR, "static"),)
 MEDIA_ROOT = join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
+STATIC_ROOT = join(BASE_DIR, "static_dest")
 STATIC_URL = '/static/'
-
-if DEBUG:
-    STATIC_ROOT = join(BASE_DIR, "static_dest")
-else:
-    STATIC_ROOT = '/var/www/perso/static-dest'
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -176,7 +172,6 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme_advanced_buttons2': 'justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube',
     'theme_advanced_buttons3': '',
     'theme_advanced_toolbar_align': 'center',
-
 }
 
 BOOTSTRAP3 = {}
