@@ -34,7 +34,7 @@
       <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
     </div>
     <button type="submit" class="btn btn-default">log. in</button>
-    <a href="{% url 'password_reset' %}"><button type="button" class="btn btn-warning">Mot de passe oublié ?</button></a>
+    <form style="display: inline" action="{% url 'password_reset' %}" method="get"><button type="submit" class="btn btn-warning">Mot de passe oublié ?</button></form>
   </form>
   {% endif %}
 </aside>
