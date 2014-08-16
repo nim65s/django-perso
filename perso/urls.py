@@ -26,7 +26,7 @@ urlpatterns = patterns('',
 
         url(r'^cine/', include('cine.urls', namespace="cine")),
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
-        url(r'^when/', include('when.urls', namespace="when")),
+        #url(r'^when/', include('when.urls', namespace="when")),
 
         url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
         url(r'^admin/', include(admin.site.urls)),
