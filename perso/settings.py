@@ -69,6 +69,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     'perso',
     'raven.contrib.django.raven_compat',
+    'django-disqus',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,7 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'sekizai.context_processors.sekizai',
     "perso.context_processors.google_analytics",
-    "perso.context_processors.disqus",
+    "django-disqus.context_processors.disqus",
 )
 
 

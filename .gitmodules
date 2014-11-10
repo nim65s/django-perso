@@ -4,3 +4,6 @@
 [submodule "comptes"]
 	path = comptes
 	url = git@github.com:nim65s/django-comptes.git
+[submodule "django-disqus"]
+	path = django-disqus
+	url = git@github.com:nim65s/django-disqus.git
