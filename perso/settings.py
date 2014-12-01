@@ -1,123 +1,139 @@
-import os
+#-*- coding: utf-8 -*-
+"""
+Django settings for sourire_interieur project.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/1.7/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/1.7/ref/settings/
+"""
+
+# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from os.path import dirname, isfile, join
+from pathlib import Path
+
+PROJECT = "perso"
+PROJECT_VERBOSE = u"Nim’s web.log \o/"
+MAIL_USER = "majo"
+SELF_MAIL = False
+ALLOWED_HOSTS = ["saurel.me"]
+ALLOWED_HOSTS.append("www.%s" % ALLOWED_HOSTS[0])
 
 BASE_DIR = dirname(dirname(__file__))
+CONF_DIR = Path("/etc/nim/" + PROJECT)
 
-ADMINS = (('Guilhem Saurel', 'guilhem+admin-perso@saurel.me'),)
-MANAGERS = ADMINS
+if not CONF_DIR.is_dir():
+    CONF_DIR.mkdir(parents=True)
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = CONF_DIR.joinpath("secret_key.txt").open().read().strip()
+
+# SECURITY WARNING: don"t run with debug turned on in production!
 DEBUG = True
-if isfile('/etc/nim/perso/prod'):
+
+if CONF_DIR.joinpath("prod").is_file():
     DEBUG = False
-    EMAIL_SUBJECT_PREFIX = '[Perso] '
-    with open('/etc/nim/perso/google_key') as f:
-        GOOGLE_ANALYTICS_KEY = f.read().strip()
-    with open('/etc/nim/perso/google_site') as f:
-        GOOGLE_ANALYTICS_SITE = f.read().strip()
-    with open('/etc/nim/perso/disqus') as f:
-        DISQUS_SHORTNAME = f.read().strip()
-else:
-    EMAIL_SUBJECT_PREFIX = '[Perso-Dev] '
+    GOOGLE_ANALYTICS_KEY = CONF_DIR.joinpath("google_key").open().read().strip()
+    GOOGLE_ANALYTICS_SITE = CONF_DIR.joinpath("google_site").open().read().strip()
+    DISQUS_SHORTNAME = CONF_DIR.joinpath("disqus").open().read().strip()
+
+EMAIL_SUBJECT_PREFIX = ("[%s Dev] " if DEBUG else "[%s] ") % PROJECT_VERBOSE
 
 # TODO 1.7
 # EMAIL_USE_SSL = True
-# EMAIL_HOST = 'ssl0.ovh.net'
+# EMAIL_HOST = "ssl0.ovh.net"
 # EMAIL_PORT = 465
-EMAIL_HOST = 'smtp.totheweb.fr'
+EMAIL_HOST = "smtp.%s" % (ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'majo@totheweb.fr'
-SERVER_EMAIL = 'majo+perso@totheweb.fr'
-DEFAULT_FROM_EMAIL = 'Perso <majo@totheweb.fr>'
-with open('/etc/nim/majo_pw') as f:
-    EMAIL_HOST_PASSWORD = f.read().strip()
+EMAIL_HOST_USER = "%s@%s" % (MAIL_USER, ALLOWED_HOSTS[0])
+SERVER_EMAIL = "%s+%s@%s" % (MAIL_USER, PROJECT, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
+DEFAULT_FROM_EMAIL = "%s <%s@%s>" % (PROJECT_VERBOSE, MAIL_USER, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
+EMAIL_HOST_PASSWORD = CONF_DIR.joinpath("email_password").open().read().strip()
 
-
+ADMINS = (("Guilhem Saurel", "guilhem+admin-%s@saurel.me" % PROJECT),)
+MANAGERS = ADMINS
 TEMPLATE_DEBUG = DEBUG
-
-ALLOWED_HOSTS = ['saurel.me', 'www.saurel.me', 'perso.saurel.me']
-
-# SECURITY WARNING: keep the secret key used in production secret!
-if DEBUG:
-    SECRET_KEY = 'p0c9pc$)q4(9-1(qht(rw1)i5t8*le+xd$mgtrx*pqfcrvge#@'
-else:
-    with open('/etc/nim/perso/secret_key.txt') as f:
-        SECRET_KEY = f.read().strip()
 
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.sites',
-    'django.contrib.staticfiles',
-    'django.contrib.sitemaps',
-    'when',
-    'cine',
-    'comptes',
-    'tinymce',
-    'dajaxice',
-    'dajax',
-    'sekizai',
-    'zinnia_bootstrap',
-    'zinnia',
-    'tagging',
-    'mptt',
-    'django.contrib.comments',  # :@
-    'widget_tweaks',
-    'perso',
-    'raven.contrib.django.raven_compat',
-    'django-disqus',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.sites",
+    "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
+    "when",
+    "cine",
+    "comptes",
+    "tinymce",
+    "dajaxice",
+    "dajax",
+    "sekizai",
+    "zinnia_bootstrap",
+    "zinnia",
+    "tagging",
+    "mptt",
+    "django.contrib.comments",  # :@
+    "widget_tweaks",
+    "perso",
+    "raven.contrib.django.raven_compat",
+    "django-disqus",
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.i18n',
-    'django.core.context_processors.request',
-    'django.core.context_processors.media',
-    'django.contrib.messages.context_processors.messages',
-    'sekizai.context_processors.sekizai',
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.request",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "sekizai.context_processors.sekizai",
     "perso.context_processors.google_analytics",
     "django-disqus.context_processors.disqus",
 )
 
+ROOT_URLCONF = "%s.urls" % PROJECT
 
-ROOT_URLCONF = 'perso.urls'
-
-WSGI_APPLICATION = 'perso.wsgi.application'
+WSGI_APPLICATION = "%s.wsgi.application" % PROJECT
 
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-with open('/etc/nim/perso/db_password.txt') as f:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'perso',
-            'USER': 'persopguser',
-            'PASSWORD': f.read().strip(),
-            'HOST': 'localhost',
-        }
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": PROJECT,
+        "USER": "persopguser",
+        "PASSWORD": CONF_DIR.joinpath("db_password.txt").open().read().strip(),
+        "HOST": "localhost",
     }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'fr-FR'
+LANGUAGE_CODE = "fr-FR"
 
-TIME_ZONE = 'Europe/Paris'
+TIME_ZONE = "Europe/Paris"
 
 USE_I18N = True
 
@@ -132,48 +148,73 @@ SITE_ID = 1
 
 STATICFILES_DIRS = (join(BASE_DIR, "static"),)
 MEDIA_ROOT = join(BASE_DIR, "media")
-MEDIA_URL = '/media/'
-STATIC_ROOT = join(BASE_DIR, "static_dest")
-STATIC_URL = '/static/'
+MEDIA_URL = "/media/"
+STATIC_URL = "/static/"
+STATIC_ROOT = join(BASE_DIR, "static_dest") if DEBUG else "/var/www/%s/static_dest" % PROJECT
 
 STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
-    'dajaxice.finders.DajaxiceFinder',
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    # "django.contrib.staticfiles.finders.DefaultStorageFinder",
+    "dajaxice.finders.DajaxiceFinder",
 )
 
-TEMPLATE_DIRS = (join(BASE_DIR, 'templates'),)
+if DEBUG:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+        }
+    }
+else:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "LOCATION": "127.0.0.1:11211",
+        }
+    }
+
+
+
+TEMPLATE_DIRS = (join(BASE_DIR, "templates"),)
 
 TEMPLATE_LOADERS = (
-    'app_namespace.Loader',
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-    'django.template.loaders.eggs.Loader',
+    "app_namespace.Loader",
+    "django.template.loaders.filesystem.Loader",
+    "django.template.loaders.app_directories.Loader",
+    "django.template.loaders.eggs.Loader",
 )
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-    }
-}
+RAVEN_CONFIG = {"dsn": CONF_DIR.joinpath("raven").open().read().strip()}
 
 TINYMCE_DEFAULT_CONFIG = {
-    'plugins': 'youtube,inlinepopups',
-    'theme': 'advanced',
-    'theme_advanced_buttons1': 'bold,italic,underline,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink',
-    'theme_advanced_buttons2': 'justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube',
-    'theme_advanced_buttons3': '',
-    'theme_advanced_toolbar_align': 'center',
+    "plugins": "youtube,inlinepopups",
+    "theme": "advanced",
+    "theme_advanced_buttons1": "bold,italic,underline,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink",
+    "theme_advanced_buttons2": "justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube",
+    "theme_advanced_buttons3": "",
+    "theme_advanced_toolbar_align": "center",
 }
 
 BOOTSTRAP3 = {}
 if DEBUG:
-    BOOTSTRAP3['jquery_url'] = "/static/js/jquery.min.js"
-    BOOTSTRAP3['base_url'] = "/static/"
+    BOOTSTRAP3["jquery_url"] = "/static/js/jquery.min.js"
+    BOOTSTRAP3["base_url"] = "/static/"
 else:
-    BOOTSTRAP3['jquery_url'] = "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+    BOOTSTRAP3["jquery_url"] = "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
 
-
-with open('/etc/nim/perso/raven') as f:
-    RAVEN_CONFIG = {'dsn': f.read().strip()}
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "null": {
+            "level": "DEBUG",
+            "class": "logging.NullHandler",
+        },
+    },
+    "loggers": {
+        "django.security.DisallowedHost": {
+            "handlers": ["null"],
+            "propagate": False,
+        },
+    },
+}
