@@ -80,7 +80,7 @@ INSTALLED_APPS = (
     "zinnia",
     "tagging",
     "mptt",
-    #"django.contrib.comments",  # :@
+    "django.contrib.comments",  # :@
     "widget_tweaks",
     "perso",
     "raven.contrib.django.raven_compat",
