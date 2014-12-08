@@ -80,7 +80,7 @@ INSTALLED_APPS = (
     "zinnia",
     "tagging",
     "mptt",
-    "django.contrib.comments",  # :@
+    #"django.contrib.comments",  # :@
     "widget_tweaks",
     "perso",
     "raven.contrib.django.raven_compat",
@@ -122,7 +122,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": PROJECT,
-        "USER": "persopguser",
+        "USER": PROJECT,
         "PASSWORD": CONF_DIR.joinpath("db_password.txt").open().read().strip(),
         "HOST": "localhost",
     }

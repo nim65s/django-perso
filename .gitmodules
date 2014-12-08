@@ -7,3 +7,6 @@
 [submodule "django-disqus"]
 	path = django-disqus
 	url = git@github.com:nim65s/django-disqus.git
+[submodule "django-DD-when"]
+	path = when
+	url = git@github.com:nim65s/django-DD-when.git

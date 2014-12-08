@@ -1,0 +1,11 @@
+Django<1.7
+django-mptt
+django-blog-zinnia
+zinnia-theme-bootstrap==0.14.1
+django-sekizai
+django-dajax
+django-dajaxice
+django-tinymce
+Pillow
+django-widget-tweaks
+django-braces
