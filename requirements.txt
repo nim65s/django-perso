@@ -1,7 +1,7 @@
 Django<1.7
 django-mptt
-django-blog-zinnia
-zinnia-theme-bootstrap==0.14.1
+django-blog-zinnia==0.14.1
+zinnia-theme-bootstrap
 django-sekizai
 django-dajax
 django-dajaxice
