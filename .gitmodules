@@ -10,3 +10,6 @@
 [submodule "django-DD-when"]
 	path = when
 	url = git@github.com:nim65s/django-DD-when.git
+[submodule "django-ga"]
+	path = django-ga
+	url = git@github.com:nim65s/django-ga.git

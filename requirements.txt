@@ -9,3 +9,4 @@ django-tinymce
 Pillow
 django-widget-tweaks
 django-braces
+django-bootstrap3

@@ -68,6 +68,7 @@ INSTALLED_APPS = (
     "django.contrib.messages",
     "django.contrib.sites",
     "django.contrib.staticfiles",
+    "django.contrib.comments",  # :@
     "django.contrib.sitemaps",
     "when",
     "cine",
@@ -76,15 +77,16 @@ INSTALLED_APPS = (
     "dajaxice",
     "dajax",
     "sekizai",
-    "zinnia_bootstrap",
-    "zinnia",
     "tagging",
     "mptt",
-    "django.contrib.comments",  # :@
+    "zinnia_bootstrap",
+    "zinnia",
+    PROJECT,
     "widget_tweaks",
-    "perso",
-    "raven.contrib.django.raven_compat",
+    "django-ga",
     "django-disqus",
+    "raven.contrib.django.raven_compat",
+    "bootstrap3",
 )
 
 MIDDLEWARE_CLASSES = (
@@ -94,6 +96,7 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "cine.middleware.CheckVoteMiddleware",
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -106,7 +109,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
     "sekizai.context_processors.sekizai",
-    "perso.context_processors.google_analytics",
+    "django-ga.context_processors.google_analytics",
     "django-disqus.context_processors.disqus",
 )
 
