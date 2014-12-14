@@ -2,17 +2,14 @@
 
 from __future__ import unicode_literals
 
-import random
-
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
-from django.utils.encoding import python_2_unicode_compatible
 
-from .models import *
+from .models import User, UserForm
 
 
 def login_view(request):

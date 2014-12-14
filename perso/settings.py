@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 Django settings for sourire_interieur project.
 
@@ -10,7 +10,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-from os.path import dirname, isfile, join
+from os.path import dirname, join
+
 from pathlib import Path
 
 PROJECT = "perso"
@@ -175,7 +176,6 @@ else:
             "LOCATION": "127.0.0.1:11211",
         }
     }
-
 
 
 TEMPLATE_DIRS = (join(BASE_DIR, "templates"),)
