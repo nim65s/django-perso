@@ -184,7 +184,7 @@ TEMPLATE_LOADERS = (
     "app_namespace.Loader",
     "django.template.loaders.filesystem.Loader",
     "django.template.loaders.app_directories.Loader",
-    "django.template.loaders.eggs.Loader",
+    # "django.template.loaders.eggs.Loader",
 )
 
 RAVEN_CONFIG = {"dsn": CONF_DIR.joinpath("raven").open().read().strip()}
