@@ -88,6 +88,8 @@ INSTALLED_APPS = (
     "django-disqus",
     "raven.contrib.django.raven_compat",
     "bootstrap3",
+    "photologue",
+    "sortedm2m",
 )
 
 MIDDLEWARE_CLASSES = (

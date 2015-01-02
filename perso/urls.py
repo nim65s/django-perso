@@ -31,8 +31,9 @@ urlpatterns = patterns('',
         url(r'^admin/', include(admin.site.urls)),
         url(r'^tinymce/', include('tinymce.urls')),
         url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),
-        url(r'', include('zinnia.urls')),
         url(r'^cgi', 'django.views.defaults.permission_denied'),
+        url(r'^photo/', include('photologue.urls', namespace='photologue')),
+        url(r'', include('zinnia.urls')),
 )
 
 
