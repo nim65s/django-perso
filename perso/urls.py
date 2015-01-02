@@ -1,10 +1,12 @@
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+from photologue.models import Gallery
 from zinnia.sitemaps import CategorySitemap, EntrySitemap, TagSitemap
 
 from django.conf import settings
 from django.conf.urls import include, patterns, url
 from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_complete, password_reset_confirm, password_reset_done
+from django.views.generic import DetailView
 
 from .views import login_view, logout_view, profil, rsssub_view
 
@@ -32,6 +34,7 @@ urlpatterns = patterns('',
         url(r'^tinymce/', include('tinymce.urls')),
         url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),
         url(r'^cgi', 'django.views.defaults.permission_denied'),
+        url(r'^photo/gallery/(?P<slug>[\-\d\w]+)/$', DetailView.as_view(model=Gallery), name='pl-gallery'),
         url(r'^photo/', include('photologue.urls', namespace='photologue')),
         url(r'', include('zinnia.urls')),
 )
