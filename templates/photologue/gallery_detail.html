@@ -5,6 +5,10 @@
 {% block content %}
     <h1 class="page-header">Album: {{ gallery.title }}</h1>
     <p class="muted"><small>Publié le {{ gallery.date_added }}</small></p>
+    {% if not gallery.is_public %}
+        <div class="alert alert-danger text-center">Cet album est privé: vous ne pouvez y accéder que si vous disposez au préalable du lien.<br>
+        Réfléchissez-donc aux conséquences avant de le partager.</div>
+    {% endif %}
     {% if gallery.description %}{{ gallery.description|safe }}{% endif %}
     <div class="clearfix">
         {% for photo in gallery.photos.all %}
@@ -13,5 +17,6 @@
             </a>
         {% endfor %}
     </div>
+    <br>
     <div><a href="{% url 'photologue:gallery-list' %}" class="btn btn-default">Afficher les albums publics</a></div>
 {% endblock %}
