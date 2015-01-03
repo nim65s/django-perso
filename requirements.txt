@@ -1,5 +1,6 @@
 Django<1.7
 django-mptt
+django-app-namespace-template-loader
 django-blog-zinnia==0.14.1
 django-photologue
 zinnia-theme-bootstrap==0.3.1
