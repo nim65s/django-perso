@@ -1,8 +1,9 @@
-from braces.views import SuperuserRequiredMixin
 from photologue.models import Gallery
 
 from django.conf.urls import patterns, url
 from django.views.generic import DetailView, ListView
+
+from .views import PhotoDetailView
 
 urlpatterns = patterns('',
         url(r'^albums/$', ListView.as_view(queryset=Gallery.objects.is_public()), name='gallery-list'),

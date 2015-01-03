@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.views.generic import DetailView
 
 from .models import User, UserForm
 
