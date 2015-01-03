@@ -12,7 +12,7 @@
     {% if gallery.description %}{{ gallery.description|safe }}{% endif %}
     <div class="clearfix">
         {% for photo in gallery.photos.all %}
-            <a href="{{ photo.image.url }}" data-lightbox="album">
+            <a href="{{ photo.image.url }}">
                  <img src="{{ photo.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ photo.title }}">
             </a>
         {% endfor %}

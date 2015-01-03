@@ -71,7 +71,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.comments',  # :@
     'django.contrib.sitemaps',
-    'jquery_lightbox',
     'when',
     'cine',
     'comptes',

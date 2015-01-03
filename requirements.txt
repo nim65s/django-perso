@@ -5,7 +5,6 @@ django-bootstrap3
 django-braces
 django-dajax
 django-dajaxice
-django-jquery-lightbox
 django-mptt
 django-photologue
 django-sekizai
