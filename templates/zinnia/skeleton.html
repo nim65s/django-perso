@@ -27,6 +27,7 @@
     {% block link %}{% endblock link %}
     {% block script %}{% endblock script %}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+    <link href="{% static 'css/lightbox.css' %}" rel="stylesheet" />
   </head>
   <body class="zinnia {% block body-class %}{% endblock body-class %}">
     <div id="wrap">
@@ -116,5 +117,6 @@
     <script src="{% static "dajax/jquery.dajax.core.js" %}"></script>
     <script type="text/javascript" src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>
     {% block "js" %}{% endblock %}
+    <script src="{% static 'js/lightbox.js' %}"></script>
   </body>
 </html>
