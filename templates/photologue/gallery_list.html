@@ -7,7 +7,7 @@
     {% for gallery in object_list %}
         <div class="clearfix">
             <h2><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h2>
-            <p class="muted"><small>Publié le {{ gallery.date_added }}</small></p>
+            <p class="text-right muted"><small>Publié le {{ gallery.date_added }}</small></p>
             {% if gallery.description %}<p>{{ gallery.description|safe }}</p>{% endif %}
             {% for photo in gallery.sample %}
                 <a href="{{ photo.image.url }}" data-lightbox="gallery-{{ gallery.slug }}">

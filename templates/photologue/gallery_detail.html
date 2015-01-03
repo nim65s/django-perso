@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1 class="page-header">Album: {{ gallery.title }}</h1>
-    <p class="muted"><small>Publié le {{ gallery.date_added }}</small></p>
+    <p class="text-right muted"><small>Publié le {{ gallery.date_added }}</small></p>
     {% if not gallery.is_public %}
         <div class="alert alert-danger text-center">Cet album est privé: vous ne pouvez y accéder que si vous disposez au préalable du lien.<br>
         Réfléchissez-donc aux conséquences avant de le partager.</div>
