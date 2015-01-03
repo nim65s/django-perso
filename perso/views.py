@@ -2,6 +2,9 @@
 
 from __future__ import unicode_literals
 
+from braces.views import SuperuserRequiredMixin
+from photologue.models import Photo
+
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -78,3 +81,7 @@ def profil(request):
 
 def rsssub_view(request, url):
     return HttpResponse(url, content_type="text/plain")
+
+
+class PhotoDetailView(SuperuserRequiredMixin, DetailView):
+    model = Photo
