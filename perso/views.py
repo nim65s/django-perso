@@ -3,14 +3,14 @@
 from __future__ import unicode_literals
 
 from braces.views import SuperuserRequiredMixin
-from photologue.models import Photo
+from photologue.models import Gallery, Photo
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
-from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.http import Http404, HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView
 
 from .models import User, UserForm
@@ -86,3 +86,23 @@ def rsssub_view(request, url):
 
 class PhotoDetailView(SuperuserRequiredMixin, DetailView):
     model = Photo
+
+class GalleryPhotoDetailView(DetailView):
+    def get_object(self, queryset=None):
+        slug = self.kwargs.get(self.slug_url_kwarg, None)
+        self.gallery = get_object_or_404(Gallery, slug=slug)
+        self.index = int(self.kwargs.get('index', 1))
+        self.max_index = self.gallery.photos.count()
+
+        if not 0 < self.index <= self.max_index:
+            raise Http404
+
+        return self.gallery.photos.all()[self.index - 1]
+
+    def get_context_data(self, **kwargs):
+        c = {'gallery': self.gallery, 'index': self.index}
+        if self.index > 1:
+            c['prev'] = self.gallery.photos.all()[self.index - 2]
+        if self.index < self.max_index:
+            c['next'] = self.gallery.photos.all()[self.index]
+        return super(GalleryPhotoDetailView, self).get_context_data(**c)
