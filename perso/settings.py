@@ -70,8 +70,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django.contrib.comments',  # :@
     'django.contrib.sitemaps',
+    'django_comments',
     'when',
     'cine',
     'comptes',
