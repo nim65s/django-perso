@@ -3,6 +3,7 @@ django-app-namespace-template-loader
 django-blog-zinnia==0.14.1
 django-bootstrap3
 django-braces
+django-contrib-comments
 django-dajax
 django-dajaxice
 django-mptt
