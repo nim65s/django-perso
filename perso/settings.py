@@ -17,7 +17,7 @@ from pathlib import Path
 PROJECT = "perso"
 PROJECT_VERBOSE = u"Nim’s web.log \o/"
 MAIL_USER = "majo"
-SELF_MAIL = False
+SELF_MAIL = True
 ALLOWED_HOSTS = ["saurel.me"]
 ALLOWED_HOSTS.append("www.%s" % ALLOWED_HOSTS[0])
 
