@@ -1,4 +1,3 @@
-from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 from zinnia.sitemaps import CategorySitemap, EntrySitemap, TagSitemap
 
 from django.conf import settings
@@ -9,7 +8,6 @@ from django.contrib.auth.views import password_reset, password_reset_complete, p
 from .views import login_view, logout_view, profil, rsssub_view
 
 admin.autodiscover()
-dajaxice_autodiscover()
 
 urlpatterns = patterns('',
 
@@ -27,13 +25,13 @@ urlpatterns = patterns('',
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
         # url(r'^when/', include('when.urls', namespace="when")),
 
-        url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
         url(r'^admin/', include(admin.site.urls)),
         url(r'^tinymce/', include('tinymce.urls')),
         url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),
         url(r'^cgi', 'django.views.defaults.permission_denied'),
         url(r'^photo/', include('perso.urls_photo', namespace='photologue')),
-        url(r'', include('zinnia.urls')),
+        url(r'^comments/', include('django_comments.urls')),
+        url(r'', include('zinnia.urls', namespace="zinnia")),
 )
 
 

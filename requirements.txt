@@ -1,11 +1,9 @@
-Django<1.7
+Django
 django-app-namespace-template-loader
-django-blog-zinnia==0.14.1
+django-blog-zinnia
 django-bootstrap3
 django-braces
 django-contrib-comments
-django-dajax
-django-dajaxice
 django-mptt
 django-photologue
 django-sekizai
@@ -13,4 +11,4 @@ django-tinymce
 django-widget-tweaks
 Pillow
 python-memcached
-zinnia-theme-bootstrap==0.3.1
+zinnia-theme-bootstrap

@@ -76,8 +76,6 @@ INSTALLED_APPS = (
     'cine',
     'comptes',
     'tinymce',
-    'dajaxice',
-    'dajax',
     'sekizai',
     'tagging',
     'mptt',
@@ -158,13 +156,6 @@ MEDIA_ROOT = join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 STATIC_URL = "/static/"
 STATIC_ROOT = join(BASE_DIR, "static_dest") if DEBUG else "/var/www/%s/static_dest" % PROJECT
-
-STATICFILES_FINDERS = (
-    "django.contrib.staticfiles.finders.FileSystemFinder",
-    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-    # "django.contrib.staticfiles.finders.DefaultStorageFinder",
-    "dajaxice.finders.DajaxiceFinder",
-)
 
 if DEBUG:
     CACHES = {

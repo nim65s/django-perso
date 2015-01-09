@@ -1,4 +1,4 @@
-{% load i18n staticfiles dajaxice_templatetags %}
+{% load i18n staticfiles %}
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
@@ -11,7 +11,7 @@
     <meta name="author" content="Nim65s" />
     {% block meta %}{% endblock meta %}
     <link rel="pingback" href="/xmlrpc/" />
-    <link rel="home" href="{% url 'zinnia_entry_archive_index' %}" />
+    <link rel="home" href="{% url 'zinnia:entry_archive_index' %}" />
     <link rel="stylesheet" href="{% static "zinnia_bootstrap/bootstrap/css/bootstrap.min.css" %}" />
     <link rel="stylesheet" href="{% static "nim.css" %}" />
     <link rel="stylesheet" href="{% static "css/datepicker3.css" %}" />
@@ -39,16 +39,16 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a href="{% url 'zinnia_entry_archive_index' %}" title="Nim’s web.log" class="navbar-brand" id="brand" rel="home">Nim’s web.log \o/</a>
+            <a href="{% url 'zinnia:entry_archive_index' %}" title="Nim’s web.log" class="navbar-brand" id="brand" rel="home">Nim’s web.log \o/</a>
           </div>
           <div class="collapse navbar-collapse navbar-ex1-collapse">{% block nav %}
             <ul class="nav navbar-nav navbar-left">
-              <li class="active"><a href="{% url "zinnia_entry_archive_index" %}">Blog</a></li>
+              <li class="active"><a href="{% url "zinnia:entry_archive_index" %}">Blog</a></li>
               <li><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
               <li><a href="{% url "cine:home" %}">CinéNim</a></li>
               <li><a href="{% url "comptes:home" %}">Comptes</a></li>
             </ul>
-            <form method="get" action="{% url 'zinnia_entry_search' %}" class="navbar-form navbar-right">
+            <form method="get" action="{% url 'zinnia:entry_search' %}" class="navbar-form navbar-right">
               <div class="form-group">
                 <input type="text" class="search-query form-control" placeholder="{% trans 'Search' %}" name="pattern" value="{{ pattern }}" />
               </div>
@@ -57,10 +57,10 @@
               </button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-              {% url 'zinnia_sitemap' as sitemap_url %}
+              {% url 'zinnia:sitemap' as sitemap_url %}
               <li {% if sitemap in request.path %}class="active"{% endif %}>
               <li><a href="{{ sitemap_url }}" title="{% trans "Sitemap" %}" class="sitemap">Sitemap</a></li>
-              <li><a href="{% url 'zinnia_entry_latest_feed' %}" title="{% trans "RSS Feed of latest entries" %}" class="feeds">RSS</a></li>
+              <li><a href="{% url 'zinnia:entry_latest_feed' %}" title="{% trans "RSS Feed of latest entries" %}" class="feeds">RSS</a></li>
             </ul>
           {% endblock %}</div>
         </div>
@@ -82,12 +82,12 @@
               <h3>{% trans "Useful links" %}</h3>
               <ul>
                 <li>
-                  <a href="{% url 'zinnia_entry_archive_index' %}" title="{% trans "Weblog index" %}">
+                  <a href="{% url 'zinnia:entry_archive_index' %}" title="{% trans "Weblog index" %}">
                     {% trans "Weblog index" %}
                   </a>
                 </li>
                 <li>
-                  <a href="{% url 'zinnia_sitemap' %}" title="{% trans "Sitemap" %}">
+                  <a href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}">
                     {% trans "Sitemap" %}
                   </a>
                 </li>
@@ -112,8 +112,6 @@
     </footer>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    {% dajaxice_js_import %}
-    <script src="{% static "dajax/jquery.dajax.core.js" %}"></script>
     <script type="text/javascript" src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>
     {% block "js" %}{% endblock %}
   </body>
