@@ -9,7 +9,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from os.path import dirname, join
 
 from pathlib import Path
@@ -27,35 +26,25 @@ CONF_DIR = Path("/etc/nim/" + PROJECT)
 if not CONF_DIR.is_dir():
     CONF_DIR.mkdir(parents=True)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = CONF_DIR.joinpath("secret_key.txt").open().read().strip()
 
-# SECURITY WARNING: don"t run with debug turned on in production!
 DEBUG = True
 INTEGRATION = False
+PROD = False
 
 if CONF_DIR.joinpath("integration").is_file():
     DEBUG = False
     INTEGRATION = True
 elif CONF_DIR.joinpath("prod").is_file():
     DEBUG = False
-    GOOGLE_ANALYTICS_KEY = CONF_DIR.joinpath("google_key").open().read().strip()
-    GOOGLE_ANALYTICS_SITE = CONF_DIR.joinpath("google_site").open().read().strip()
-    DISQUS_SHORTNAME = CONF_DIR.joinpath("disqus").open().read().strip()
+    PROD = True
 
 EMAIL_SUBJECT_PREFIX = ("[%s Dev] " if DEBUG or INTEGRATION else "[%s] ") % PROJECT_VERBOSE
 
-# TODO 1.7
-# EMAIL_USE_SSL = True
-# EMAIL_HOST = "ssl0.ovh.net"
-# EMAIL_PORT = 465
-EMAIL_USE_TLS = True
-EMAIL_HOST = "mail.gandi.net"  # "smtp.%s" % (ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr") ← ça c’est pour ovh…
-EMAIL_PORT = 587
-EMAIL_HOST_USER = "%s@%s" % (MAIL_USER, ALLOWED_HOSTS[0])
+EMAIL_USE_SSL = True
+EMAIL_HOST = "mail.gandi.net"  # TODO "smtp.%s" % (ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr") ← ça c’est pour ovh…
+EMAIL_PORT = 465
+EMAIL_HOST_USER = "%s@%s" % (MAIL_USER, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
 SERVER_EMAIL = "%s+%s@%s" % (MAIL_USER, PROJECT, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
 DEFAULT_FROM_EMAIL = "%s <%s@%s>" % (PROJECT_VERBOSE, MAIL_USER, ALLOWED_HOSTS[0] if SELF_MAIL else "totheweb.fr")
 EMAIL_HOST_PASSWORD = CONF_DIR.joinpath("email_password").open().read().strip()
@@ -64,16 +53,15 @@ ADMINS = (("Guilhem Saurel", "guilhem+admin-%s@saurel.me" % PROJECT),)
 MANAGERS = ADMINS
 TEMPLATE_DEBUG = DEBUG
 
-# Application definition
-
-INSTALLED_APPS = (
+INSTALLED_APPS = [
+    PROJECT,
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django_comments',
     'when',
@@ -83,29 +71,28 @@ INSTALLED_APPS = (
     'sekizai',
     'tagging',
     'mptt',
-    PROJECT,
     'zinnia_bootstrap',
     'zinnia',
     'widget_tweaks',
     'django-ga',
     'django-disqus',
-    'raven.contrib.django.raven_compat',
     'bootstrap3',
     'photologue',
     'sortedm2m',
-)
+]
 
-MIDDLEWARE_CLASSES = (
+
+MIDDLEWARE_CLASSES = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.auth.middleware.SessionAuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "cine.middleware.CheckVoteMiddleware",
-)
+]
 
-TEMPLATE_CONTEXT_PROCESSORS = (
+TEMPLATE_CONTEXT_PROCESSORS = [
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
     "django.core.context_processors.i18n",
@@ -114,18 +101,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.static",
     "django.core.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "sekizai.context_processors.sekizai",
-    "django-ga.context_processors.google_analytics",
-    "django-disqus.context_processors.disqus",
-)
+]
 
 ROOT_URLCONF = "%s.urls" % PROJECT
 
 WSGI_APPLICATION = "%s.wsgi.application" % PROJECT
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
     "default": {
@@ -136,9 +116,6 @@ DATABASES = {
         "HOST": "localhost",
     }
 }
-
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = "fr-FR"
 
@@ -152,9 +129,6 @@ USE_TZ = True
 
 SITE_ID = 1
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
-
 STATICFILES_DIRS = (join(BASE_DIR, "static"),)
 MEDIA_ROOT = join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
@@ -167,33 +141,6 @@ CACHES = {
             "LOCATION": "127.0.0.1:11211",
             }
         }
-
-
-TEMPLATE_DIRS = (join(BASE_DIR, "templates"),)
-
-TEMPLATE_LOADERS = (
-    "app_namespace.Loader",
-    "django.template.loaders.filesystem.Loader",
-    "django.template.loaders.app_directories.Loader",
-)
-
-RAVEN_CONFIG = {"dsn": CONF_DIR.joinpath("raven").open().read().strip()}
-
-TINYMCE_DEFAULT_CONFIG = {
-    "plugins": "youtube,inlinepopups",
-    "theme": "advanced",
-    "theme_advanced_buttons1": "bold,italic,underline,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink",
-    "theme_advanced_buttons2": "justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube",
-    "theme_advanced_buttons3": "",
-    "theme_advanced_toolbar_align": "center",
-}
-
-BOOTSTRAP3 = {}
-if DEBUG:
-    BOOTSTRAP3["jquery_url"] = "/static/js/jquery.min.js"
-    BOOTSTRAP3["base_url"] = "/static/"
-else:
-    BOOTSTRAP3["jquery_url"] = "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
 
 LOGGING = {
     "version": 1,
@@ -211,3 +158,52 @@ LOGGING = {
         },
     },
 }
+
+if not DEBUG:
+    INSTALLED_APPS.append('raven.contrib.django.raven_compat')
+    RAVEN_CONFIG = {"dsn": CONF_DIR.joinpath("raven").open().read().strip()}
+
+if 'zinnia' in INSTALLED_APPS:
+    TEMPLATE_LOADERS = (
+        "app_namespace.Loader",
+        "django.template.loaders.filesystem.Loader",
+        "django.template.loaders.app_directories.Loader",
+    )
+
+if 'tinymce' in INSTALLED_APPS:
+    TINYMCE_DEFAULT_CONFIG = {
+        "plugins": "youtube,inlinepopups",
+        "theme": "advanced",
+        "theme_advanced_buttons1": "bold,italic,underline,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink",
+        "theme_advanced_buttons2": "justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube",
+        "theme_advanced_buttons3": "",
+        "theme_advanced_toolbar_align": "center",
+    }
+
+if 'bootstrap3' in INSTALLED_APPS:
+    BOOTSTRAP3 = {
+        "horizontal_label_class": "col-md-3",
+        "horizontal_field_class": "col-md-6",
+    }
+    if DEBUG:
+        BOOTSTRAP3["jquery_url"] = "/static/js/jquery.min.js"
+        BOOTSTRAP3["base_url"] = "/static/"
+    else:
+        BOOTSTRAP3["jquery_url"] = "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+
+if 'django-disqus' in INSTALLED_APPS:
+    TEMPLATE_CONTEXT_PROCESSORS.append("django-disqus.context_processors.disqus")
+    if PROD:
+        DISQUS_SHORTNAME = CONF_DIR.joinpath("disqus").open().read().strip()
+
+if 'django-ga' in INSTALLED_APPS:
+    TEMPLATE_CONTEXT_PROCESSORS.append("django-ga.context_processors.google_analytics")
+    if PROD:
+        GOOGLE_ANALYTICS_KEY = CONF_DIR.joinpath("google_key").open().read().strip()
+        GOOGLE_ANALYTICS_SITE = CONF_DIR.joinpath("google_site").open().read().strip()
+
+if 'sekizai' in INSTALLED_APPS:
+    TEMPLATE_CONTEXT_PROCESSORS.append("sekizai.context_processors.sekizai")
+
+if 'cine' in INSTALLED_APPS:
+    MIDDLEWARE_CLASSES.append("cine.middleware.CheckVoteMiddleware")
