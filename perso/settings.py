@@ -35,14 +35,18 @@ SECRET_KEY = CONF_DIR.joinpath("secret_key.txt").open().read().strip()
 
 # SECURITY WARNING: don"t run with debug turned on in production!
 DEBUG = True
+INTEGRATION = False
 
-if CONF_DIR.joinpath("prod").is_file():
+if CONF_DIR.joinpath("integration").is_file():
+    DEBUG = False
+    INTEGRATION = True
+elif CONF_DIR.joinpath("prod").is_file():
     DEBUG = False
     GOOGLE_ANALYTICS_KEY = CONF_DIR.joinpath("google_key").open().read().strip()
     GOOGLE_ANALYTICS_SITE = CONF_DIR.joinpath("google_site").open().read().strip()
     DISQUS_SHORTNAME = CONF_DIR.joinpath("disqus").open().read().strip()
 
-EMAIL_SUBJECT_PREFIX = ("[%s Dev] " if DEBUG else "[%s] ") % PROJECT_VERBOSE
+EMAIL_SUBJECT_PREFIX = ("[%s Dev] " if DEBUG or INTEGRATION else "[%s] ") % PROJECT_VERBOSE
 
 # TODO 1.7
 # EMAIL_USE_SSL = True
@@ -157,19 +161,12 @@ MEDIA_URL = "/media/"
 STATIC_URL = "/static/"
 STATIC_ROOT = join(BASE_DIR, "static_dest") if DEBUG else "/var/www/%s/static_dest" % PROJECT
 
-if DEBUG:
-    CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.dummy.DummyCache",
-        }
-    }
-else:
-    CACHES = {
+CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
             "LOCATION": "127.0.0.1:11211",
+            }
         }
-    }
 
 
 TEMPLATE_DIRS = (join(BASE_DIR, "templates"),)
@@ -178,7 +175,6 @@ TEMPLATE_LOADERS = (
     "app_namespace.Loader",
     "django.template.loaders.filesystem.Loader",
     "django.template.loaders.app_directories.Loader",
-    # "django.template.loaders.eggs.Loader",
 )
 
 RAVEN_CONFIG = {"dsn": CONF_DIR.joinpath("raven").open().read().strip()}
