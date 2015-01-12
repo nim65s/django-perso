@@ -7,8 +7,8 @@ django-contrib-comments
 django-mptt
 django-photologue
 django-sekizai
-django-tinymce
 django-widget-tweaks
 Pillow
 python-memcached
 zinnia-theme-bootstrap
+zinnia-wysiwyg-tinymce
