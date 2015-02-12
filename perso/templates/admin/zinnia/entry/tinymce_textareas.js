@@ -15,9 +15,13 @@ tinyMCE.init({
     theme_advanced_toolbar_align : "center",
     theme_advanced_statusbar_location : "bottom",
     theme_advanced_resizing : true,
-    plugins: "contextmenu,directionality,fullscreen,paste,preview,searchreplace,spellchecker,visualchars,wordcount,youtube,inlinepopups,vimeo",
+    plugins: "contextmenu,directionality,fullscreen,paste,preview,searchreplace,spellchecker,visualchars,wordcount,youtube,inlinepopups,dailymotion,vimeo",
     paste_auto_cleanup_on_paste : true,
-    theme_advanced_buttons1 : "formatselect,|,bold,italic,underline,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink",
-    theme_advanced_buttons2 : "justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube,vimeo",
+    theme_advanced_buttons1 : "formatselect,|,bold,italic,underline,strikethrough,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink,|,preview,fullscreen",
+    theme_advanced_buttons2 : "justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube,dailymotion,vimeo",
     theme_advanced_buttons3 : "",
-    });
+    file_browser_callback : "mce_filebrowser",
+    external_link_list_url : "{% url 'tinymce-external-links' %}",
+    external_image_list_url : "{% url 'tinymce-external-images' %}",
+    external_media_list_url : "{% url 'tinymce-external-files' %}",
+});

@@ -153,6 +153,9 @@ LOGGING = {
     },
 }
 
+if (Path(BASE_DIR) / PROJECT / 'context_processors.py').is_file():
+    TEMPLATE_CONTEXT_PROCESSORS.append('%s.context_processors.%s' % (PROJECT, PROJECT))
+
 if not DEBUG:
     INSTALLED_APPS.append('raven.contrib.django.raven_compat')
     RAVEN_CONFIG = {"dsn": (CONF_DIR / "raven").open().read().strip()}
@@ -163,13 +166,14 @@ if 'zinnia' in INSTALLED_APPS:
         "django.template.loaders.filesystem.Loader",
         "django.template.loaders.app_directories.Loader",
     )
+    MIGRATION_MODULES = {'zinnia': '%s.zinnia_migrations' % PROJECT}
 
 if 'tinymce' in INSTALLED_APPS:
     TINYMCE_DEFAULT_CONFIG = {
-        "plugins": "contextmenu,directionality,fullscreen,paste,preview,searchreplace,spellchecker,visualchars,wordcount,youtube,inlinepopups,vimeo",
+        "plugins": "contextmenu,directionality,fullscreen,paste,preview,searchreplace,spellchecker,visualchars,wordcount,youtube,inlinepopups,dailymotion,vimeo",
         "theme": "advanced",
-        "theme_advanced_buttons1": "formatselect,|,bold,italic,underline,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink",
-        "theme_advanced_buttons2": "justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube,vimeo",
+        "theme_advanced_buttons1": "formatselect,|,bold,italic,underline,strikethrough,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink,|,preview,fullscreen",
+        "theme_advanced_buttons2": "justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube,dailymotion,vimeo",
         "theme_advanced_buttons3": "",
         "theme_advanced_toolbar_align": "center",
     }
