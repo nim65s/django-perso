@@ -7,7 +7,7 @@
     <p class="text-right muted"><small>Publié le {{ object.date_added }}</small></p>
 
     {% if object.caption %}<p>{{ object.caption|safe }}</p>{% endif %}
-    <img src="{{ object.image.url }}" class="thumbnail" alt="{{ object.title }}">
+    <img src="{{ object.get_display_url }}" class="thumbnail" alt="{{ object.title }}">
     <div class="row text-center">
         <div class="col-md-4">
             {% if prev %}
