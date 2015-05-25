@@ -8,6 +8,7 @@ django-mptt
 django-photologue
 django-sekizai
 django-widget-tweaks
+gunicorn
 Pillow
 python-memcached
 zinnia-theme-bootstrap
