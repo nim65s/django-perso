@@ -23,6 +23,7 @@ urlpatterns = patterns('',
 
         url(r'^cine/', include('cine.urls', namespace="cine")),
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
+        url(r'^gpg/', include('gpg.urls', namespace="gpg")),
         # url(r'^when/', include('when.urls', namespace="when")),
 
         url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),
