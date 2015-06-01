@@ -4,6 +4,7 @@ from django.conf import settings
 from django.conf.urls import include, patterns, url
 from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_complete, password_reset_confirm, password_reset_done
+from django.views.generic import RedirectView
 
 from .views import login_view, logout_view, profil, rsssub_view
 
@@ -23,7 +24,8 @@ urlpatterns = patterns('',
 
         url(r'^cine/', include('cine.urls', namespace="cine")),
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
-        url(r'^gpg/', include('gpg.urls', namespace="gpg")),
+        url(r'^gpg/(?P<url>.*)$', RedirectView.as_view(url='/PGP/%(url)s', permanent=True)),
+        url(r'^PGP/', include('gpg.urls', namespace="gpg")),
         # url(r'^when/', include('when.urls', namespace="when")),
 
         url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),
