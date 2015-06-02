@@ -213,3 +213,6 @@ if 'registration' in INSTALLED_APPS:
 if 'cmcic' in INSTALLED_APPS and PROD:
     CM_CIC_TPE = (CONF_DIR / "cm_cic_tpe").open().read().strip()
     CM_CIC_KEY = (CONF_DIR / "cm_cic_key").open().read().strip()
+
+if 'photologue' in INSTALLED_APPS:
+    PHOTOLOGUE_GALLERY_SAMPLE_SIZE = 10
