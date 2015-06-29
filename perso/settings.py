@@ -167,7 +167,6 @@ if 'zinnia' in INSTALLED_APPS:
         "django.template.loaders.filesystem.Loader",
         "django.template.loaders.app_directories.Loader",
     )
-    MIGRATION_MODULES = {'zinnia': '%s.zinnia_migrations' % PROJECT}
 
 if 'tinymce' in INSTALLED_APPS:
     TINYMCE_DEFAULT_CONFIG = {
