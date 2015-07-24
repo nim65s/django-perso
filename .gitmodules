@@ -22,3 +22,6 @@
 	path = gpg
 	url = git@github.com:nim65s/django-PGP-tables.git
 	branch = master
+[submodule "groupe"]
+	path = groupe
+	url = git@bitbucket.org:nim65s/groupe.git
