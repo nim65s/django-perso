@@ -26,6 +26,7 @@ urlpatterns = patterns('',
         url(r'^comptes/', include('comptes.urls', namespace="comptes")),
         url(r'^gpg/(?P<url>.*)$', RedirectView.as_view(url='/PGP/%(url)s', permanent=True)),
         url(r'^PGP/', include('gpg.urls', namespace="gpg")),
+        url(r'^groupe/', include('groupe.urls', namespace="groupe")),
         # url(r'^when/', include('when.urls', namespace="when")),
 
         url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),

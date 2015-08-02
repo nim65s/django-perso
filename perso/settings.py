@@ -80,6 +80,7 @@ INSTALLED_APPS = [
     'sortedm2m',
     'sorl.thumbnail',
     'gpg',
+    'groupe',
 ]
 
 MIDDLEWARE_CLASSES = [
