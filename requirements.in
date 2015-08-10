@@ -18,6 +18,7 @@ jedi
 pathlib
 pep8-naming
 Pillow
+pip-tools
 psycopg2
 pygments
 pytz

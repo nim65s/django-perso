@@ -5,6 +5,7 @@
 #    pip-compile requirements.in
 #
 beautifulsoup4==4.4.0     # via django-blog-zinnia
+click==4.1                # via pip-tools
 django-app-namespace-template-loader==0.3
 django-blog-zinnia==0.15.2
 django-bootstrap3==6.1.0
@@ -21,6 +22,7 @@ django-widget-tweaks==1.4.1
 django-xmlrpc==0.1.5      # via django-blog-zinnia
 django==1.8.3
 enum34==1.0.4
+first==2.0.1              # via pip-tools
 flake8==2.4.1
 gunicorn==19.3.0
 ipython==3.2.1
@@ -33,6 +35,7 @@ pathlib==1.0.1
 pep8-naming==0.3.3
 pep8==1.5.7               # via flake8
 pillow==2.9.0
+pip-tools==1.1.3
 psycopg2==2.6.1
 pyflakes==0.8.1           # via flake8
 pygments==2.0.2
@@ -41,7 +44,7 @@ python-memcached==1.57
 pytz==2015.4
 raven==5.5.0
 requests==2.7.0
-six==1.9.0                # via django-app-namespace-template-loader, django-braces, python-memcached
+six==1.9.0                # via django-app-namespace-template-loader, django-braces, pip-tools, python-memcached
 sorl-thumbnail==12.3      # via zinnia-wysiwyg-tinymce
 zinnia-theme-bootstrap==0.4
 zinnia-wysiwyg-tinymce==1.2.1
