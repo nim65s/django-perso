@@ -8,10 +8,16 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "perso.settings")
-
-from locale import setlocale, LC_ALL
-setlocale(LC_ALL, 'fr_FR.UTF-8')
+import sys
+from locale import LC_ALL, setlocale
 
 from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "perso.settings")
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+setlocale(LC_ALL, 'fr_FR.UTF-8')
+
 application = get_wsgi_application()
