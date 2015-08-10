@@ -9,7 +9,9 @@ django-photologue
 django-sekizai
 django-widget-tweaks
 gunicorn
+markdown
 Pillow
+pygments
 python-memcached
 zinnia-theme-bootstrap
 zinnia-wysiwyg-tinymce

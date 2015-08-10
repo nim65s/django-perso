@@ -65,13 +65,11 @@ INSTALLED_APPS = [
     'when',
     'cine',
     'comptes',
-    'tinymce',
     'sekizai',
     'tagging',
     'mptt',
     'zinnia_bootstrap',
     'zinnia',
-    'zinnia_tinymce',
     'widget_tweaks',
     'django-ga',
     'django-disqus',
@@ -168,6 +166,8 @@ if 'zinnia' in INSTALLED_APPS:
         "django.template.loaders.filesystem.Loader",
         "django.template.loaders.app_directories.Loader",
     )
+    ZINNIA_MARKUP_LANGUAGE = 'markdown'
+    ZINNIA_MARKDOWN_EXTENSIONS = ['markdown.extensions.codehilite']
 
 if 'tinymce' in INSTALLED_APPS:
     TINYMCE_DEFAULT_CONFIG = {
