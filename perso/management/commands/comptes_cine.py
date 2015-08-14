@@ -1,7 +1,3 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-
 from datetime import datetime
 
 from cine.models import Soiree, get_cinephiles
@@ -28,6 +24,11 @@ class Command(BaseCommand):
         occasion.save()
 
         creancier = User.objects.get(username=creancier)
-        debiteurs = Soiree.objects.last().dispos()
 
-        Dette(creancier=creancier, montant=montant, debiteurs=debiteurs, description=description, moment=datetime.now(), occasion=occasion).save()
+        soiree = Soiree.objects.last()
+
+        dette = Dette(creancier=creancier, montant=montant, description=description, moment=soiree.datetime(), occasion=occasion)
+        dette.save()
+        for debiteur in soiree.dispos():
+            dette.debiteurs.add(debiteur)
+        dette.save()

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Django settings for perso project.
 
@@ -10,11 +9,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 from os.path import dirname, join
-
 from pathlib import Path
 
 PROJECT = "perso"
-PROJECT_VERBOSE = u"Nim’s web.log \o/"
+PROJECT_VERBOSE = "Nim’s web.log \o/"
 MAIL_USER = "majo"
 SELF_MAIL = True
 ALLOWED_HOSTS = ["saurel.me"]

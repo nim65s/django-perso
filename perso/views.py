@@ -1,8 +1,5 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
-
 from braces.views import SuperuserRequiredMixin
+from photologue.models import Gallery, Photo
 
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -11,7 +8,6 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import Http404, HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView
-from photologue.models import Gallery, Photo
 
 from .models import User, UserForm
 

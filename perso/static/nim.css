@@ -45,9 +45,8 @@ div.btn-group[data-toggle=buttons-radio] input[type=radio] {
 #sortable li span { position: absolute; margin-left: -1.3em; }
 
 .right, .euro { text-align: right; }
-.euro:after {
-    content: ' €';
-}
+.euro { font-family: 'Source Code Pro', monospace; }
+.euro:after { content: ' €'; }
 
 .vert { color: green; }
 .rouge { color: red; }
