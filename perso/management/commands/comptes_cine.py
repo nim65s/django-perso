@@ -4,11 +4,9 @@ from __future__ import unicode_literals
 
 from datetime import datetime
 
-from django.contrib.auth.models import User
-
 from cine.models import Soiree, get_cinephiles
 from comptes.models import Occasion
-
+from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 
 
@@ -20,7 +18,7 @@ class Command(BaseCommand):
         parser.add_argument('montant', type=float)
         parser.add_argument('description', default='pizza')
 
-    def handle(self, *args, creancier, montant, description, **options):
+    def handle(self, creancier, montant, description, *args, **options):
         occasion, _ = Occasion.objects.get_or_create(nom='CinéNim')
 
         membres = occasion.membres.all()
