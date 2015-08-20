@@ -3,100 +3,100 @@
 
 {% block sidebar %}
 <aside id="widget-welcome" class="widget panel panel-default">
-  <div class="panel-heading">
-    {% trans "Welcome!" %}
-  </div>
-  <div class="panel-body">
-      <p>Bienvenue sur mon modeste weblog.</p>
-      <p>Il sert pour l’instant principalement de point d’entrée de certaines applications utiles (ou pas) ; mais, qui sait, peut-être qu’un jour on y verra aussi du contenu !</p>
-  </div>
+    <div class="panel-heading">
+        {% trans "Welcome!" %}
+    </div>
+    <div class="panel-body">
+        <p>Bienvenue sur mon modeste weblog.</p>
+        <p>Il sert pour l’instant principalement de point d’entrée de certaines applications utiles (ou pas) ; mais, qui sait, peut-être qu’un jour on y verra aussi du contenu !</p>
+    </div>
 </aside>
 <aside id="widget-login" class="widget panel panel-default">
-  <div class="panel-heading">Espace Membres</div>
-  {% if user.is_authenticated %}<ul class="list-group">
-    <li class="list-group-item"><a href="{% url 'profil' %}">Mon Profil</a></li>
-    <li class="list-group-item"><a href="{% url 'logout' %}">Déconnexion</a></li>
-    {% if user.is_superuser %}
-      <li class="list-group-item"><a href="/admin/">Admin</a></li>
+    <div class="panel-heading">Espace Membres</div>
+    {% if user.is_authenticated %}<ul class="list-group">
+        <li class="list-group-item"><a href="{% url 'profil' %}">Mon Profil</a></li>
+        <li class="list-group-item"><a href="{% url 'logout' %}">Déconnexion</a></li>
+        {% if user.is_superuser %}
+        <li class="list-group-item"><a href="/admin/">Admin</a></li>
+        {% endif %}
+    </ul>
+    {% else %}<form method="post" action="{% url 'login' %}{% url_get request %}" role="form">
+        {% csrf_token %}
+        {% if next %}<input type="hidden" name="next" value="{{ next }}" />
+        {% else %}<input type="hidden" name="next" value="{{ request.get_full_path }}" />
+        {% endif %}
+        <div class="form-group">
+            <label for="username">Login</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Login" autofocus required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-default">log. in</button>
+        <a href="{% url 'password_reset' %}" class="btn btn-warning">Mot de passe oublié ?</a>
+    </form>
     {% endif %}
-  </ul>
-  {% else %}<form method="post" action="{% url 'login' %}{% url_get request %}" role="form">
-    {% csrf_token %}
-    {% if next %}<input type="hidden" name="next" value="{{ next }}" />
-    {% else %}<input type="hidden" name="next" value="{{ request.get_full_path }}" />
-    {% endif %}
-    <div class="form-group">
-      <label for="username">Login</label>
-      <input type="text" class="form-control" id="username" name="username" placeholder="Login" autofocus required>
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-    </div>
-    <button type="submit" class="btn btn-default">log. in</button>
-    <a href="{% url 'password_reset' %}" class="btn btn-warning">Mot de passe oublié ?</a>
-  </form>
-  {% endif %}
 </aside>
 <aside id="widget-twitter" class="widget panel">
-  <a class="twitter-timeline" href="https://twitter.com/nim65s" data-widget-id="363235224311721984">Tweets by @nim65s</a>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <a class="twitter-timeline" href="https://twitter.com/nim65s" data-widget-id="363235224311721984">Tweets by @nim65s</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </aside>
 <aside id="widget-categories" class="widget panel panel-default">
-  <div class="panel-heading">
-    {% trans "Categories" %}
-  </div>
-  {% get_categories %}
+    <div class="panel-heading">
+        {% trans "Categories" %}
+    </div>
+    {% get_categories %}
 </aside>
 <aside id="widget-recents" class="widget panel panel-default">
-  <div class="panel-heading">
-    {% trans "Recent entries" %}
-  </div>
-  {% get_recent_entries %}
+    <div class="panel-heading">
+        {% trans "Recent entries" %}
+    </div>
+    {% get_recent_entries %}
 </aside>
 <aside id="widget-linkbacks" class="widget panel panel-default">
-  <div class="panel-heading">
-    {% trans "Recent linkbacks" %}
-  </div>
-  {% get_recent_linkbacks %}
+    <div class="panel-heading">
+        {% trans "Recent linkbacks" %}
+    </div>
+    {% get_recent_linkbacks %}
 </aside>
 <aside id="widget-randoms" class="widget panel panel-default">
-  <div class="panel-heading">
-    {% trans "Random entries" %}
-  </div>
-  {% get_random_entries %}
+    <div class="panel-heading">
+        {% trans "Random entries" %}
+    </div>
+    {% get_random_entries %}
 </aside>
 {% if user.is_authenticated %}
 <aside id="widget-tools" class="widget panel panel-danger">
-  <div class="panel-heading">
-    {% trans "Tools" %}
-  </div>
-  <ul class="list-group">
-    {% if perms.zinnia %}
-    <li class="list-group-item">
-      <a href="{% url 'admin:app_list' 'zinnia' %}" title="{% trans "Dashboard" %}">
-        <span class="glyphicon glyphicon-book"></span>
-        {% trans "Dashboard" %}
-      </a>
-    </li>
-    {% endif %}
-    {% if perms.zinnia.add_entry %}
-    <li class="list-group-item">
-      <a href="{% url 'admin:zinnia_entry_add' %}" title="{% trans "Post an entry" %}">
-        <span class="glyphicon glyphicon-pencil"></span>
-        {% trans "Post an entry" %}
-      </a>
-    </li>
-    {% endif %}
-    {% block admin-tools %}
-    {% endblock admin-tools %}
-    <li class="list-group-item">
-      <a href="{% url 'admin:logout' %}" title="{% trans "Log out" %}">
-        <span class="glyphicon glyphicon-off"></span>
-        {% trans "Log out" %}
-      </a>
-    </li>
-  </ul>
+    <div class="panel-heading">
+        {% trans "Tools" %}
+    </div>
+    <ul class="list-group">
+        {% if perms.zinnia %}
+        <li class="list-group-item">
+            <a href="{% url 'admin:app_list' 'zinnia' %}" title="{% trans "Dashboard" %}">
+                <span class="glyphicon glyphicon-book"></span>
+                {% trans "Dashboard" %}
+            </a>
+        </li>
+        {% endif %}
+        {% if perms.zinnia.add_entry %}
+        <li class="list-group-item">
+            <a href="{% url 'admin:zinnia_entry_add' %}" title="{% trans "Post an entry" %}">
+                <span class="glyphicon glyphicon-pencil"></span>
+                {% trans "Post an entry" %}
+            </a>
+        </li>
+        {% endif %}
+        {% block admin-tools %}
+        {% endblock admin-tools %}
+        <li class="list-group-item">
+            <a href="{% url 'admin:logout' %}" title="{% trans "Log out" %}">
+                <span class="glyphicon glyphicon-off"></span>
+                {% trans "Log out" %}
+            </a>
+        </li>
+    </ul>
 </aside>
 {% endif %}
 {% endblock sidebar %}

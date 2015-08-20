@@ -1,122 +1,122 @@
 {% load i18n staticfiles %}
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
-  <head>
-    <meta charset="utf-8">
-    <title>Nim’s web.log - {% block title %}\o/{% endblock title %}{% block title-page %}{% endblock title-page %}</title>
-    <meta name="robots" content="follow, all" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="{% block meta-description %}Nim’s weblog{% endblock meta-description %}{% block meta-description-page %}{% endblock meta-description-page %}" />
-    <meta name="keywords" content="{% block meta-keywords %}django, blog, weblog, zinnia{% endblock meta-keywords %}" />
-    <meta name="author" content="Nim65s" />
-    {% block meta %}{% endblock meta %}
-    <link rel="pingback" href="/xmlrpc/" />
-    <link rel="home" href="{% url 'zinnia:entry_archive_index' %}" />
-    <link rel="stylesheet" href="{% static "zinnia_bootstrap/bootstrap/css/bootstrap.min.css" %}" />
-    <link rel="stylesheet" href="{% static "nim.css" %}" />
-    <link rel="stylesheet" href="{% static "css/datepicker3.css" %}" />
-    <link rel="stylesheet" href="{% static "css/zenburn.css" %}" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
-    {% block style %}{% endblock style %}
-    <!--[if lt IE 9]>
-        <script src="{% static "zinnia_bootstrap/assets/js/html5shiv.js" %}"></script>
-        <script src="{% static "zinnia_bootstrap/assets/js/respond.min.js" %}"></script>
-    <![endif]-->
-    <link rel="shortcut icon" href="{% static "favicon.png" %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "apple-touch-icon-144-precomposed.png" %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "apple-touch-icon-114-precomposed.png" %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "apple-touch-icon-72-precomposed.png" %}" />
-    <link rel="apple-touch-icon-precomposed" href="{% static "apple-touch-icon-57-precomposed.png" %}" />
-    {% block link %}{% endblock link %}
-    {% block script %}{% endblock script %}
-    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-  </head>
-  <body class="zinnia {% block body-class %}{% endblock body-class %}">
-    <div id="wrap">
-      <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">{% trans "Toggle navigation" %}</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="{% url 'zinnia:entry_archive_index' %}" title="Nim’s web.log" class="navbar-brand" id="brand" rel="home">Nim’s web.log \o/</a>
-          </div>
-          <div class="collapse navbar-collapse navbar-ex1-collapse">{% block nav %}
-            <ul class="nav navbar-nav navbar-left">
-              <li class="active"><a href="{% url "zinnia:entry_archive_index" %}">Blog</a></li>
-              <li><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
-              <li><a href="{% url "cine:home" %}">CinéNim</a></li>
-              <li><a href="{% url "comptes:home" %}">Comptes</a></li>
-              <li><a href="{% url "gpg:ksps" %}">PGP</a></li>
-            </ul>
-            <form method="get" action="{% url 'zinnia:entry_search' %}" class="navbar-form navbar-right">
-              <div class="form-group">
-                <input type="text" class="search-query form-control" placeholder="{% trans 'Search' %}" name="pattern" value="{{ pattern }}" />
-              </div>
-              <button type="submit" name="submit" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-search"></span>
-              </button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-              {% url 'zinnia:sitemap' as sitemap_url %}
-              <li {% if sitemap in request.path %}class="active"{% endif %}>
-              <li><a href="{{ sitemap_url }}" title="{% trans "Sitemap" %}" class="sitemap">Sitemap</a></li>
-              <li><a href="{% url 'zinnia:entry_latest_feed' %}" title="{% trans "RSS Feed of latest entries" %}" class="feeds">RSS</a></li>
-            </ul>
-          {% endblock %}</div>
+    <head>
+        <meta charset="utf-8">
+        <title>Nim’s web.log - {% block title %}\o/{% endblock title %}{% block title-page %}{% endblock title-page %}</title>
+        <meta name="robots" content="follow, all" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="{% block meta-description %}Nim’s weblog{% endblock meta-description %}{% block meta-description-page %}{% endblock meta-description-page %}" />
+        <meta name="keywords" content="{% block meta-keywords %}django, blog, weblog, zinnia{% endblock meta-keywords %}" />
+        <meta name="author" content="Nim65s" />
+        {% block meta %}{% endblock meta %}
+        <link rel="pingback" href="/xmlrpc/" />
+        <link rel="home" href="{% url 'zinnia:entry_archive_index' %}" />
+        <link rel="stylesheet" href="{% static "zinnia_bootstrap/bootstrap/css/bootstrap.min.css" %}" />
+        <link rel="stylesheet" href="{% static "nim.css" %}" />
+        <link rel="stylesheet" href="{% static "css/datepicker3.css" %}" />
+        <link rel="stylesheet" href="{% static "css/zenburn.css" %}" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+        {% block style %}{% endblock style %}
+        <!--[if lt IE 9]>
+            <script src="{% static "zinnia_bootstrap/assets/js/html5shiv.js" %}"></script>
+            <script src="{% static "zinnia_bootstrap/assets/js/respond.min.js" %}"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="{% static "favicon.png" %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "apple-touch-icon-144-precomposed.png" %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "apple-touch-icon-114-precomposed.png" %}" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "apple-touch-icon-72-precomposed.png" %}" />
+        <link rel="apple-touch-icon-precomposed" href="{% static "apple-touch-icon-57-precomposed.png" %}" />
+        {% block link %}{% endblock link %}
+        {% block script %}{% endblock script %}
+        <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
+    </head>
+    <body class="zinnia {% block body-class %}{% endblock body-class %}">
+        <div id="wrap">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">{% trans "Toggle navigation" %}</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="{% url 'zinnia:entry_archive_index' %}" title="Nim’s web.log" class="navbar-brand" id="brand" rel="home">Nim’s web.log \o/</a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">{% block nav %}
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="active"><a href="{% url "zinnia:entry_archive_index" %}">Blog</a></li>
+                            <li><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
+                            <li><a href="{% url "cine:home" %}">CinéNim</a></li>
+                            <li><a href="{% url "comptes:home" %}">Comptes</a></li>
+                            <li><a href="{% url "gpg:ksps" %}">PGP</a></li>
+                        </ul>
+                        <form method="get" action="{% url 'zinnia:entry_search' %}" class="navbar-form navbar-right">
+                            <div class="form-group">
+                                <input type="text" class="search-query form-control" placeholder="{% trans 'Search' %}" name="pattern" value="{{ pattern }}" />
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-default btn-sm">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </form>
+                        <ul class="nav navbar-nav navbar-right">
+                            {% url 'zinnia:sitemap' as sitemap_url %}
+                            <li {% if sitemap in request.path %}class="active"{% endif %}>
+                                <li><a href="{{ sitemap_url }}" title="{% trans "Sitemap" %}" class="sitemap">Sitemap</a></li>
+                                <li><a href="{% url 'zinnia:entry_latest_feed' %}" title="{% trans "RSS Feed of latest entries" %}" class="feeds">RSS</a></li>
+                        </ul>
+                        {% endblock %}</div>
+                </div>
+            </nav>
+            {% block slider %}{% endblock %}
+            <div class="container">
+                <div class="row">
+                    {% for message in messages %}
+                    <div class="alert alert-dismissable{% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% block maincontent %}
+                    <div id="content" class="hfeed col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        {% block breadcrumbs %}{% endblock %}
+                        {% block content %}
+                        <div class="links">
+                            <h3>{% trans "Useful links" %}</h3>
+                            <ul>
+                                <li>
+                                    <a href="{% url 'zinnia:entry_archive_index' %}" title="{% trans "Weblog index" %}">
+                                        {% trans "Weblog index" %}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}">
+                                        {% trans "Sitemap" %}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="search">
+                            <h3>{% trans "Search" %}</h3>
+                            {% include "zinnia/tags/search_form.html" %}
+                        </div>
+                        {% endblock content %}
+                    </div>
+                    <div id="sidebar" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        {% block sidebar %}
+                        {% endblock sidebar %}
+                    </div>
+                    {% endblock maincontent %}
+                </div>
+            </div>
         </div>
-      </nav>
-      {% block slider %}{% endblock %}
-      <div class="container">
-        <div class="row">
-          {% for message in messages %}
-            <div class="alert alert-dismissable{% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              {{ message }}
-            </div>
-          {% endfor %}
-          {% block maincontent %}
-          <div id="content" class="hfeed col-xs-12 col-sm-8 col-md-8 col-lg-8">
-            {% block breadcrumbs %}{% endblock %}
-            {% block content %}
-            <div class="links">
-              <h3>{% trans "Useful links" %}</h3>
-              <ul>
-                <li>
-                  <a href="{% url 'zinnia:entry_archive_index' %}" title="{% trans "Weblog index" %}">
-                    {% trans "Weblog index" %}
-                  </a>
-                </li>
-                <li>
-                  <a href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}">
-                    {% trans "Sitemap" %}
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div class="search">
-              <h3>{% trans "Search" %}</h3>
-              {% include "zinnia/tags/search_form.html" %}
-            </div>
-            {% endblock content %}
-          </div>
-          <div id="sidebar" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-            {% block sidebar %}
-            {% endblock sidebar %}
-          </div>
-          {% endblock maincontent %}
-        </div>
-      </div>
-    </div>
-    <footer class="container" id="mainfooter">
-      <p class="text-muted credit">Nim’s web.log: Powered by <a href="http://www.djangoproject.com">the love of ponies</a> and <a href="http://getbootstrap.com">the design fellas from Twitter</a>, but also by <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia</a>.</p>
-    </footer>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>
-    {% block js %}{% endblock %}
-  </body>
+        <footer class="container" id="mainfooter">
+            <p class="text-muted credit">Nim’s web.log: Powered by <a href="http://www.djangoproject.com">the love of ponies</a> and <a href="http://getbootstrap.com">the design fellas from Twitter</a>, but also by <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia</a>.</p>
+        </footer>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>
+        {% block js %}{% endblock %}
+    </body>
 </html>
