@@ -1,4 +1,4 @@
-{% load i18n staticfiles %}
+{% load i18n staticfiles perso_extra %}
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -44,14 +44,24 @@
                         </button>
                         <a href="{% url 'zinnia:entry_archive_index' %}" title="Nim’s web.log" class="navbar-brand" id="brand" rel="home">Nim’s web.log \o/</a>
                     </div>
-                    <div class="collapse navbar-collapse navbar-ex1-collapse">{% block nav %}
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-left">
-                            <li class="active"><a href="{% url "zinnia:entry_archive_index" %}">Blog</a></li>
-                            <li><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
-                            <li><a href="{% url "cine:home" %}">CinéNim</a></li>
-                            <li><a href="{% url "comptes:home" %}">Comptes</a></li>
-                            <li><a href="{% url "gpg:ksps" %}">PGP</a></li>
+                            <li><a href="{% url "zinnia:entry_archive_index" %}">Blog</a></li>
+                            <li class="{% if request|path_in_url:"photo" %}active {% endif %}"><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
+                            <li class="{% if request|path_in_url:"cine" %}active {% endif %}dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CinéNim <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{% url 'cine:home' %}">Soirées</a></li>
+                                    <li><a href="{% url 'cine:films' %}">Films</a></li>
+                                    <li><a href="{% url 'cine:votes' %}">Votes</a></li>
+                                    <li><a href="{% url 'cine:cinephiles' %}">Cinéphiles</a></li>
+                                    <li><a href="{% url 'cine:adress' %}">Mon adresse</a></li>
+                                </ul>
+                            </li>
+                            <li class="{% if request|path_in_url:"comptes" %}active {% endif %}"><a href="{% url "comptes:home" %}">Comptes</a></li>
+                            <li class="{% if request|path_in_url:"PGP" %}active {% endif %}"><a href="{% url "gpg:ksps" %}">PGP</a></li>
                         </ul>
+                        {% block navbar-right %}
                         <form method="get" action="{% url 'zinnia:entry_search' %}" class="navbar-form navbar-right">
                             <div class="form-group">
                                 <input type="text" class="search-query form-control" placeholder="{% trans 'Search' %}" name="pattern" value="{{ pattern }}" />
@@ -66,7 +76,8 @@
                                 <li><a href="{{ sitemap_url }}" title="{% trans "Sitemap" %}" class="sitemap">Sitemap</a></li>
                                 <li><a href="{% url 'zinnia:entry_latest_feed' %}" title="{% trans "RSS Feed of latest entries" %}" class="feeds">RSS</a></li>
                         </ul>
-                        {% endblock %}</div>
+                        {% endblock %}
+                    </div>
                 </div>
             </nav>
             {% block slider %}{% endblock %}

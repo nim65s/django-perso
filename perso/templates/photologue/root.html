@@ -1,12 +1,6 @@
 {% extends "base.html" %}
 
-{% block nav %}
-  <ul class="nav navbar-nav navbar-left">
-    <li><a href="{% url "zinnia:entry_archive_index" %}">Blog</a></li>
-    <li class="active"><a href="{% url 'photologue:gallery-list' %}">Photos</a></li>
-    <li><a href="{% url "cine:home" %}">CinéNim</a></li>
-    <li><a href="{% url "comptes:home" %}">Comptes</a></li>
-  </ul>
+{% block navbar-right %}
   {% if user.is_superuser %}
     <ul class="nav navbar-nav navbar-right">
       <li><a href="/admin/photologue/">Photologue Admin</a></li>

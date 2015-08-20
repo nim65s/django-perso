@@ -9,3 +9,7 @@ def url_get(request, key=None, value=None):
     if key:
         get[key] = value
     return "?%s" % get.urlencode()
+
+@register.filter
+def path_in_url(request, path):
+    return path in request.path
