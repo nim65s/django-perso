@@ -47,6 +47,10 @@ div.btn-group[data-toggle=buttons-radio] input[type=radio] {
 .right, .euro { text-align: right; }
 .euro { font-family: 'Source Code Pro', monospace; }
 .euro:after { content: ' €'; }
+.at:after { content: '@'; }
+.dot:after { content: '.'; }
+.mail:before { content: '<'; }
+.mail:after { content: '>'; }
 
 .vert { color: green; }
 .rouge { color: red; }

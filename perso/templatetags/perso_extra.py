@@ -12,5 +12,11 @@ def url_get(request, key=None, value=None):
 
 
 @register.filter
-def path_in_url(request, path):
+def in_url(path, request):
     return path in request.path
+
+
+@register.filter
+def email(email, request):
+    at, dot = ('<span class="%s"></span>' % i for i in ['at', 'dot'])
+    return '<span class="mail">%s</span>' % (email if request.user.is_authenticated() else email.replace('@', at).replace('.', dot))
