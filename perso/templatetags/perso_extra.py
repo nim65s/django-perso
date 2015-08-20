@@ -1,4 +1,5 @@
 from django import template
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -19,4 +20,4 @@ def in_url(path, request):
 @register.filter
 def email(email, request):
     at, dot = ('<span class="%s"></span>' % i for i in ['at', 'dot'])
-    return '<span class="mail">%s</span>' % (email if request.user.is_authenticated() else email.replace('@', at).replace('.', dot))
+    return mark_safe('<span class="mail">%s</span>' % (email if request.user.is_authenticated() else email.replace('@', at).replace('.', dot)))
