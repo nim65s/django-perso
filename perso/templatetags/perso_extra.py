@@ -12,7 +12,6 @@ def url_get(request, key=None, value=None):
     return "?%s" % get.urlencode()
 
 
-
 @register.filter
 def email(email, request):
     at, dot = ('<span class="%s"></span>' % i for i in ['at', 'dot'])
