@@ -12,10 +12,6 @@ def url_get(request, key=None, value=None):
     return "?%s" % get.urlencode()
 
 
-@register.filter
-def in_url(path, request):
-    return path in request.path
-
 
 @register.filter
 def email(email, request):

@@ -47,8 +47,8 @@
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <ul class="nav navbar-nav navbar-left">
                             <li><a href="{% url "zinnia:entry_archive_index" %}">Blog</a></li>
-                            <li class="{% if "photo"|in_url:request %}active {% endif %}"><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
-                            <li class="{% if "cine"|in_url:request %}active {% endif %}dropdown">
+                            <li class="{% if "photo" in request.path %}active {% endif %}"><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
+                            <li class="{% if "cine" in request.path %}active {% endif %}dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CinéNim <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{% url 'cine:home' %}">Soirées</a></li>
@@ -58,8 +58,8 @@
                                     <li><a href="{% url 'cine:adress' %}">Mon adresse</a></li>
                                 </ul>
                             </li>
-                            <li class="{% if "comptes"|in_url:request %}active {% endif %}"><a href="{% url "comptes:home" %}">Comptes</a></li>
-                            <li class="{% if "PGP"|in_url:request %}active {% endif %}"><a href="{% url "gpg:ksps" %}">PGP</a></li>
+                            <li class="{% if "comptes" in request.path %}active {% endif %}"><a href="{% url "comptes:home" %}">Comptes</a></li>
+                            <li class="{% if "PGP" in request.path %}active {% endif %}"><a href="{% url "gpg:ksps" %}">PGP</a></li>
                         </ul>
                         {% block navbar-right %}
                         <form method="get" action="{% url 'zinnia:entry_search' %}" class="navbar-form navbar-right">
