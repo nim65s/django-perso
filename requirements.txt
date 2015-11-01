@@ -21,36 +21,37 @@ django-tagging==0.4       # via django-blog-zinnia
 django-tinymce==2.0.5     # via zinnia-wysiwyg-tinymce
 django-widget-tweaks==1.4.1
 django-xmlrpc==0.1.5      # via django-blog-zinnia
-django==1.8.4
+django==1.8.5
 enum34==1.0.4
 first==2.0.1              # via pip-tools
-flake8==2.4.1
+flake8==2.5.0
 gunicorn==19.3.0
 ipython-genutils==0.1.0   # via traitlets
 ipython==4.0.0
 isort==4.2.2
 jedi==0.9.0
-markdown==2.6.2
+markdown==2.6.3
 mccabe==0.3.1             # via flake8
 mots-vides==2015.5.11     # via django-blog-zinnia
-path.py==8.1.1            # via pickleshare
+path.py==8.1.2            # via pickleshare
 pathlib==1.0.1
 pep8-naming==0.3.3
 pep8==1.5.7               # via flake8
-pexpect==3.3              # via ipython
+pexpect==4.0.1            # via ipython
 pickleshare==0.5          # via ipython
-pillow==2.9.0
-pip-tools==1.1.4
+pillow==3.0.0
+pip-tools==1.1.6
 psycopg2==2.6.1
-pyflakes==0.8.1           # via flake8
+ptyprocess==0.5           # via pexpect
+pyflakes==1.0.0           # via flake8
 pygments==2.0.2
-pyparsing==2.0.3          # via django-blog-zinnia
+pyparsing==2.0.5          # via django-blog-zinnia
 python-memcached==1.57
-pytz==2015.6
-raven==5.7.2
-requests==2.7.0
+pytz==2015.7
+raven==5.8.1
+requests==2.8.1
 simplegeneric==0.8.1      # via ipython
-six==1.9.0                # via django-app-namespace-template-loader, django-braces, pip-tools, python-memcached
+six==1.10.0               # via django-app-namespace-template-loader, django-braces, pip-tools, python-memcached
 sorl-thumbnail==12.3      # via zinnia-wysiwyg-tinymce
 traitlets==4.0.0          # via ipython
 zinnia-theme-bootstrap==0.4
