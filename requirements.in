@@ -2,13 +2,11 @@ Django
 django-app-namespace-template-loader
 django-blog-zinnia
 django-bootstrap3
-django-braces
 django-contrib-comments
 django-mptt
 django-photologue
 django-sekizai
 django-widget-tweaks
-enum34
 flake8
 gunicorn
 markdown
