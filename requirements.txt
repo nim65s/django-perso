@@ -17,7 +17,6 @@ django-photologue==3.3.2
 django-sekizai==0.8.2
 django-sortedm2m==1.1.0   # via django-photologue
 django-tagging==0.4       # via django-blog-zinnia
-django-tinymce==2.0.6     # via zinnia-wysiwyg-tinymce
 django-widget-tweaks==1.4.1
 django-xmlrpc==0.1.5      # via django-blog-zinnia
 django==1.9
@@ -50,7 +49,5 @@ raven==5.8.1
 requests==2.8.1
 simplegeneric==0.8.1      # via ipython
 six==1.10.0               # via django-app-namespace-template-loader, pip-tools, python-memcached
-sorl-thumbnail==12.3      # via zinnia-wysiwyg-tinymce
 traitlets==4.0.0          # via ipython
 zinnia-theme-bootstrap==0.4
-zinnia-wysiwyg-tinymce==1.3
