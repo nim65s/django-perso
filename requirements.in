@@ -2,6 +2,7 @@ Django
 django-app-namespace-template-loader
 django-blog-zinnia
 django-bootstrap3
+django-braces
 django-contrib-comments
 django-mptt
 django-photologue

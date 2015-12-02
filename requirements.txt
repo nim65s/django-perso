@@ -10,6 +10,7 @@ decorator==4.0.4          # via ipython, traitlets
 django-app-namespace-template-loader==0.3
 django-blog-zinnia==0.15.2
 django-bootstrap3==6.2.2
+django-braces==1.8.1
 django-classy-tags==0.6.2  # via django-sekizai
 django-contrib-comments==1.6.1
 django-mptt==0.7.4
@@ -48,6 +49,6 @@ pytz==2015.7
 raven==5.8.1
 requests==2.8.1
 simplegeneric==0.8.1      # via ipython
-six==1.10.0               # via django-app-namespace-template-loader, pip-tools, python-memcached
+six==1.10.0               # via django-app-namespace-template-loader, django-braces, pip-tools, python-memcached
 traitlets==4.0.0          # via ipython
 zinnia-theme-bootstrap==0.4
