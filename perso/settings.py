@@ -19,7 +19,7 @@ ALLOWED_HOSTS = ["saurel.me"]
 ALLOWED_HOSTS.append("www.%s" % ALLOWED_HOSTS[0])
 
 BASE_DIR = dirname(dirname(__file__))
-CONF_DIR = Path("/etc/nim/" + PROJECT)
+CONF_DIR = Path("/etc/django/") / PROJECT
 
 if not CONF_DIR.is_dir():
     CONF_DIR.mkdir(parents=True)
