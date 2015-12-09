@@ -60,6 +60,7 @@
                             </li>
                             <li class="{% if "comptes" in request.path %}active {% endif %}"><a href="{% url "comptes:home" %}">Comptes</a></li>
                             <li class="{% if "PGP" in request.path %}active {% endif %}"><a href="{% url "gpg:ksps" %}">PGP</a></li>
+                            <li class="{% if "secret_santa" in request.path %}active {% endif %}"><a href="{% url "secret_santa:secret_santa" %}">Noël</a></li>
                         </ul>
                         {% block navbar-right %}
                         <form method="get" action="{% url 'zinnia:entry_search' %}" class="navbar-form navbar-right">

@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'sortedm2m',
     'gpg',
     'groupe',
+    'secret_santa',
 ]
 
 MIDDLEWARE_CLASSES = [
