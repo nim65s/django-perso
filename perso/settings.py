@@ -74,7 +74,6 @@ INSTALLED_APPS = [
     'bootstrap3',
     'photologue',
     'sortedm2m',
-    'sorl.thumbnail',
     'gpg',
     'groupe',
 ]
