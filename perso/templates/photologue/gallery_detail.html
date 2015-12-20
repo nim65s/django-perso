@@ -2,7 +2,7 @@
 
 {% block title %}Album: {{ gallery.title }}{% endblock %}
 
-{% block content %}
+{% block photologue_content %}
     <h1 class="page-header">Album: {{ gallery.title }}</h1>
     <p class="text-right muted"><small>Publié le {{ gallery.date_added }}</small></p>
     {% if not gallery.is_public %}

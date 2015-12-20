@@ -78,45 +78,15 @@
                         {{ message }}
                     </div>
                     {% endfor %}
-                    {% block maincontent %}
-                    <div id="content" class="hfeed col-xs-12 col-sm-8 col-md-8 col-lg-8">
-                        {% block breadcrumbs %}{% endblock %}
-                        {% block content %}
-                        <div class="links">
-                            <h3>{% trans "Useful links" %}</h3>
-                            <ul>
-                                <li>
-                                    <a href="{% url 'zinnia:entry_archive_index' %}" title="{% trans "Weblog index" %}">
-                                        {% trans "Weblog index" %}
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}">
-                                        {% trans "Sitemap" %}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="search">
-                            <h3>{% trans "Search" %}</h3>
-                            {% include "zinnia/tags/search_form.html" %}
-                        </div>
-                        {% endblock content %}
-                    </div>
-                    <div id="sidebar" class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                        {% block sidebar %}
-                        {% endblock sidebar %}
-                    </div>
-                    {% endblock maincontent %}
+                    {% block content %}{% endblock content %}
                 </div>
             </div>
         </div>
         <footer class="container" id="mainfooter">
-            <p class="text-muted credit">Nim’s web.log: Powered by <a href="http://www.djangoproject.com">the love of ponies</a> and <a href="http://getbootstrap.com">the design fellas from Twitter</a>, but also by <a href="https://github.com/Fantomas42/django-blog-zinnia">Zinnia</a>.</p>
+            <p class="text-muted credit">Nim’s web.log: Powered by <a href="http://www.djangoproject.com">the love of ponies</a> and <a href="http://getbootstrap.com">the design fellas from Twitter</a>.</p>
         </footer>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-        <script type="text/javascript" src="{% static "zinnia_bootstrap/bootstrap/js/bootstrap.min.js" %}"></script>
+        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         {% block js %}{% endblock %}
     </body>
 </html>
