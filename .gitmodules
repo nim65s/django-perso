@@ -28,3 +28,6 @@
 [submodule "noel"]
 	path = secret_santa
 	url = git@github.com:nim65s/django-secret_santa.git
+[submodule "dbmdb"]
+	path = dbmdb
+	url = git@github.com:nim65s/dbmdb.git
