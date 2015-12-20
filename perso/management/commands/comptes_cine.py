@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from cine.models import Soiree, get_cinephiles
 from comptes.models import Dette, Occasion
 from django.contrib.auth.models import User

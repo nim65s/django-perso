@@ -152,25 +152,6 @@ if not DEBUG:
     INSTALLED_APPS.append('raven.contrib.django.raven_compat')
     RAVEN_CONFIG = {"dsn": (CONF_DIR / "raven").open().read().strip()}
 
-if 'zinnia' in INSTALLED_APPS:
-    TEMPLATE_LOADERS = (
-        "app_namespace.Loader",
-        "django.template.loaders.filesystem.Loader",
-        "django.template.loaders.app_directories.Loader",
-    )
-    ZINNIA_MARKUP_LANGUAGE = 'markdown'
-    ZINNIA_MARKDOWN_EXTENSIONS = ['markdown.extensions.codehilite']
-
-if 'tinymce' in INSTALLED_APPS:
-    TINYMCE_DEFAULT_CONFIG = {
-        "plugins": "contextmenu,directionality,fullscreen,paste,preview,searchreplace,spellchecker,visualchars,wordcount,youtube,inlinepopups,dailymotion,vimeo",
-        "theme": "advanced",
-        "theme_advanced_buttons1": "formatselect,|,bold,italic,underline,strikethrough,|,undo,redo,|,cleanup,|,bullist,numlist,|,link,unlink,|,preview,fullscreen",
-        "theme_advanced_buttons2": "justifyleft,justifycenter,justifyright,justifyfull,|,image,youtube,dailymotion,vimeo",
-        "theme_advanced_buttons3": "",
-        "theme_advanced_toolbar_align": "center",
-    }
-
 if 'bootstrap3' in INSTALLED_APPS:
     BOOTSTRAP3 = {
         "horizontal_label_class": "col-md-3",
