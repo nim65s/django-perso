@@ -59,16 +59,9 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
-    'django_comments',
     'when',
     'cine',
     'comptes',
-    'sekizai',
-    'tagging',
-    'mptt',
-    'zinnia_bootstrap',
-    'zinnia',
-    'widget_tweaks',
     'django-ga',
     'django-disqus',
     'bootstrap3',
@@ -77,6 +70,7 @@ INSTALLED_APPS = [
     'gpg',
     'groupe',
     'secret_santa',
+    'dmdb',
 ]
 
 MIDDLEWARE_CLASSES = [

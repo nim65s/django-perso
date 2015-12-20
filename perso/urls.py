@@ -1,7 +1,7 @@
-from zinnia.sitemaps import CategorySitemap, EntrySitemap, TagSitemap
+#from zinnia.sitemaps import CategorySitemap, EntrySitemap, TagSitemap
 
 from django.conf import settings
-from django.conf.urls import include, patterns, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_complete, password_reset_confirm, password_reset_done
 from django.views.generic import RedirectView
@@ -10,7 +10,7 @@ from .views import login_view, logout_view, profil, rsssub_view
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = [
 
         url(r'^accounts/login', login_view, name='login'),
         url(r'^accounts/logout', logout_view, name='logout'),
@@ -33,22 +33,14 @@ urlpatterns = patterns('',
         url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),
         url(r'^admin/', include(admin.site.urls)),
         url(r'^photo/', include('perso.urls_photo', namespace='photologue')),
-        url(r'^comments/', include('django_comments.urls')),
         url(r'^cgi', 'django.views.defaults.permission_denied'),
-        url(r'', include('zinnia.urls', namespace="zinnia")),
-)
+        url(r'', include('dmdb.urls')),
+]
 
 
-if settings.DEBUG:
-    urlpatterns = patterns('',
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
-            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-        url(r'', include('django.contrib.staticfiles.urls')),
-    ) + urlpatterns
-
-sitemaps = {'tags': TagSitemap, 'blog': EntrySitemap, 'categories': CategorySitemap}
-
-urlpatterns += patterns('django.contrib.sitemaps.views',
-    url(r'^sitemap.xml$', 'index', {'sitemaps': sitemaps}),
-    url(r'^sitemap-(?P<section>.+)\.xml$', 'sitemap', {'sitemaps': sitemaps}),
-)
+#if settings.DEBUG:
+    #urlpatterns = patterns('',
+        #url(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+            #{'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+        #url(r'', include('django.contrib.staticfiles.urls')),
+    #) + urlpatterns

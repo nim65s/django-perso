@@ -1,19 +1,12 @@
-Django<1.9
-django-app-namespace-template-loader
-django-blog-zinnia
+Django
 django-bootstrap3
 django-braces
-django-mptt
 django-photologue
-django-sekizai
-django-widget-tweaks
 flake8
 gunicorn
 markdown
 IPython
 isort
-jedi
-pathlib
 pep8-naming
 Pillow
 pip-tools
@@ -23,4 +16,4 @@ pytz
 raven
 requests
 python-memcached
-zinnia-theme-bootstrap
+-e git://github.com/Nim65s/MarkDownBlog.git#egg=dmdb
