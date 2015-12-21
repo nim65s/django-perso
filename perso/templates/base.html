@@ -53,11 +53,11 @@
                             <li class="{% if "cine" in request.path %}active {% endif %}dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CinéNim <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="{% url 'cine:home' %}">Soirées</a></li>
-                                    <li><a href="{% url 'cine:films' %}">Films</a></li>
-                                    <li><a href="{% url 'cine:votes' %}">Votes</a></li>
-                                    <li><a href="{% url 'cine:cinephiles' %}">Cinéphiles</a></li>
-                                    <li><a href="{% url 'cine:adress' %}">Mon adresse</a></li>
+                                    <li><a href="{% url 'cinenim:home' %}">Soirées</a></li>
+                                    <li><a href="{% url 'cinenim:films' %}">Films</a></li>
+                                    <li><a href="{% url 'cinenim:votes' %}">Votes</a></li>
+                                    <li><a href="{% url 'cinenim:cinephiles' %}">Cinéphiles</a></li>
+                                    <li><a href="{% url 'cinenim:adress' %}">Mon adresse</a></li>
                                 </ul>
                             </li>
                             <li class="{% if "comptes" in request.path %}active {% endif %}"><a href="{% url "comptes:home" %}">Comptes</a></li>
