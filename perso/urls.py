@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_complete, password_reset_confirm, password_reset_done
+from django.views.defaults import permission_denied
 from django.views.generic import RedirectView
 
 from .views import login_view, logout_view, profil, rsssub_view
@@ -30,6 +31,6 @@ urlpatterns = [
         url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),
         url(r'^admin/', include(admin.site.urls)),
         url(r'^photo/', include('perso.urls_photo')),
-        url(r'^cgi', 'django.views.defaults.permission_denied'),
+        url(r'^cgi', permission_denied),
         url(r'', include('dmdb.urls')),
         ]
