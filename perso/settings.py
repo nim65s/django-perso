@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
-    'when',
     'cine',
     'comptes',
     'django-disqus',
@@ -139,7 +138,6 @@ USE_TZ = True
 
 SITE_ID = 1
 
-
 MEDIA_ROOT = join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
@@ -187,23 +185,8 @@ if 'bootstrap3' in INSTALLED_APPS:
     else:
         BOOTSTRAP3["jquery_url"] = "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
 
-if 'django-disqus' in INSTALLED_APPS:
-    TEMPLATES[0]['OPTIONS']['context_processors'].append("django-disqus.context_processors.disqus")
-    if PROD:
-        DISQUS_SHORTNAME = (CONF_DIR / "disqus").open().read().strip()
-
-if 'sekizai' in INSTALLED_APPS:
-    TEMPLATES[0]['OPTIONS']['context_processors'].append("sekizai.context_processors.sekizai")
-
 if 'cine' in INSTALLED_APPS:
     MIDDLEWARE_CLASSES.append('cine.middleware.CheckVoteMiddleware')
-
-if 'registration' in INSTALLED_APPS:
-    ACCOUNT_ACTIVATION_DAYS = 7
-
-if 'cmcic' in INSTALLED_APPS and PROD:
-    CM_CIC_TPE = (CONF_DIR / "cm_cic_tpe").open().read().strip()
-    CM_CIC_KEY = (CONF_DIR / "cm_cic_key").open().read().strip()
 
 if 'photologue' in INSTALLED_APPS:
     PHOTOLOGUE_GALLERY_SAMPLE_SIZE = 10
