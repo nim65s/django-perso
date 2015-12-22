@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'when',
     'cine',
     'comptes',
-    'django-ga',
     'django-disqus',
     'bootstrap3',
     'photologue',
@@ -192,12 +191,6 @@ if 'django-disqus' in INSTALLED_APPS:
     TEMPLATES[0]['OPTIONS']['context_processors'].append("django-disqus.context_processors.disqus")
     if PROD:
         DISQUS_SHORTNAME = (CONF_DIR / "disqus").open().read().strip()
-
-if 'django-ga' in INSTALLED_APPS:
-    TEMPLATES[0]['OPTIONS']['context_processors'].append("django-ga.context_processors.google_analytics")
-    if PROD:
-        GOOGLE_ANALYTICS_KEY = (CONF_DIR / "google_key").open().read().strip()
-        GOOGLE_ANALYTICS_SITE = (CONF_DIR / "google_site").open().read().strip()
 
 if 'sekizai' in INSTALLED_APPS:
     TEMPLATES[0]['OPTIONS']['context_processors'].append("sekizai.context_processors.sekizai")

@@ -14,10 +14,6 @@
 	path = when
 	url = git@github.com:nim65s/django-DD-when.git
 	branch = master
-[submodule "django-ga"]
-	path = django-ga
-	url = git@github.com:nim65s/django-ga.git
-	branch = master
 [submodule "gpg"]
 	path = gpg
 	url = git@github.com:nim65s/django-PGP-tables.git
