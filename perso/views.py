@@ -76,10 +76,6 @@ def profil(request):
     return render(request, 'profil.html', c)
 
 
-def rsssub_view(request, url):
-    return HttpResponse(url, content_type="text/plain")
-
-
 class PhotoDetailView(SuperuserRequiredMixin, DetailView):
     model = Photo
 

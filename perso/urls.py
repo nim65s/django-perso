@@ -4,7 +4,7 @@ from django.contrib.auth.views import password_reset, password_reset_complete, p
 from django.views.defaults import permission_denied
 from django.views.generic import RedirectView
 
-from .views import login_view, logout_view, profil, rsssub_view
+from .views import login_view, logout_view, profil
 
 admin.autodiscover()
 
@@ -27,7 +27,6 @@ urlpatterns = [
         url(r'^groupe/', include('groupe.urls')),
         # url(r'^when/', include('when.urls')),
 
-        url(r'^rss-sub/(?P<url>.+)$', rsssub_view, name='rss-sub'),
         url(r'^admin/', include(admin.site.urls)),
         url(r'^photo/', include('perso.urls_photo')),
         url(r'^cgi', permission_denied),
