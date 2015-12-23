@@ -6,6 +6,8 @@
 #
 -e git+git://github.com/Nim65s/django-cineclub.git#egg=cine
 -e git+git://github.com/Nim65s/MarkDownBlog.git#egg=dmdb
+-e git+git://github.com/Nim65s/django-PGP-tables.git#egg=pgp_tables
+beautifulsoup4==4.4.1
 click==6.2                # via pip-tools
 contextlib2==0.4.0        # via raven
 decorator==4.0.6          # via ipython, traitlets

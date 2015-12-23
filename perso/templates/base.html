@@ -59,7 +59,7 @@
                                 </ul>
                             </li>
                             <li class="{% if "comptes" in request.path %}active {% endif %}"><a href="{% url "comptes:home" %}">Comptes</a></li>
-                            <li class="{% if "PGP" in request.path %}active {% endif %}"><a href="{% url "gpg:ksps" %}">PGP</a></li>
+                            <li class="{% if "PGP" in request.path %}active {% endif %}"><a href="{% url "pgp_tables:ksps" %}">PGP</a></li>
                         </ul>
                         {% block navbar-right %}
                         <ul class="nav navbar-nav navbar-right">

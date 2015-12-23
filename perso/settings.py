@@ -63,7 +63,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'photologue',
     'sortedm2m',
-    'gpg',
+    'pgp_tables',
     'groupe',
     'dmdb',
 ]

@@ -14,7 +14,7 @@ urlpatterns = [
         url(r'^cine/', include('cine.urls')),
         url(r'^comptes/', include('comptes.urls')),
         url(r'^gpg/(?P<url>.*)$', RedirectView.as_view(url='/PGP/%(url)s', permanent=True)),
-        url(r'^PGP/', include('gpg.urls')),
+        url(r'^PGP/', include('pgp_tables.urls')),
         url(r'^groupe/', include('groupe.urls')),
 
         url(r'^admin/', include(admin.site.urls)),
