@@ -1,47 +1,27 @@
-{% extends "zinnia/base.html" %}
-{% load widget_tweaks %}
+{% extends "base.html" %}
+{% load bootstrap3 %}
 
 {% block content %}
+
 <h1>Modifier le profil</h1>
-<form method="post" action="{% url 'profil' %}" class="form-horizontal" role="form">
-    {% csrf_token %}
 
-    {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
-    {% for field in form.visible_fields %}<div class="form-group{% if field.errors %} has-error{% endif %}">
-        <label for="{{ field.id_for_label }}" class="col-sm-2 control-label">{{ field.label }}</label>
-        <div class="col-sm-10">
-            {% if field.errors %}<span class="help-block">{{ field.errors}}</span>{% endif %}
-            {% if field|field_type == "emailfield" %}
-                {{ field|add_class:"form-control"|attr:"type:email" }}
-            {% else %}
-                {{ field|add_class:"form-control" }}
-            {% endif %}
-            {% if field.help_text %}<span class="help-block">{{ field.help_text}}</span>{% endif %}
-        </div>
-    </div>{% endfor %}
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% bootstrap_form form layout="horizontal" %}
+        {% buttons layout="horizontal" %}
+        <button type="submit" class="btn btn-primary">Ok !</button>
+        {% endbuttons %}
+    </form>
 
-    <input type="hidden" name="old_username" value="{{ request.user.username }}" />
-    <div class="form-group"><div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn">Modifier</button>
-    </div></div>
-</form>
+
 <h1>Modifier le mot de passe</h1>
-<form method="post" action="{% url 'profil' %}" class="form-horizontal" role="form">
-    {% csrf_token %}
 
-    {% for hidden in pwform.hidden_fields %}{{ hidden }}{% endfor %}
-    {% for field in pwform.visible_fields %}<div class="form-group{% if field.errors %} has-error{% endif %}">
-        <label for="{{ field.id_for_label }}" class="col-sm-2 control-label">{{ field.label }}</label>
-        <div class="col-sm-10">
-            {% if field.errors %}<span class="help-block">{{ field.errors}}</span>{% endif %}
-            {{ field|add_class:"form-control" }}
-            {% if field.help_text %}<span class="help-block">{{ field.help_text}}</span>{% endif %}
-        </div>
-    </div>{% endfor %}
-
-    <div class="form-group"><div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn">Modifier</button>
-    </div></div>
-</form>
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+        {% bootstrap_form pwform layout="horizontal" %}
+        {% buttons layout="horizontal" %}
+        <button type="submit" class="btn btn-primary">Ok !</button>
+        {% endbuttons %}
+    </form>
 
 {% endblock %}

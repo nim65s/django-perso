@@ -64,6 +64,13 @@
                             <li class="{% if "PGP" in request.path %}active {% endif %}"><a href="{% url "gpg:ksps" %}">PGP</a></li>
                         </ul>
                         {% block navbar-right %}
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'logout' %}">Log out</a></li>
+                            {% else %}
+                            <li><a href="{% url 'login' %}">Log in</a></li>
+                            {% endif %}
+                        </ul>
                         {% endblock %}
                     </div>
                 </div>

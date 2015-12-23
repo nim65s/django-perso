@@ -1,24 +1,15 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.contrib.auth.views import password_reset, password_reset_complete, password_reset_confirm, password_reset_done
 from django.views.defaults import permission_denied
 from django.views.generic import RedirectView
 
-from .views import login_view, logout_view, profil
+from .views import profil
 
 admin.autodiscover()
 
 urlpatterns = [
-
-        url(r'^accounts/login', login_view, name='login'),
-        url(r'^accounts/logout', logout_view, name='logout'),
         url(r'^accounts/profil', profil, name='profil'),
-
-        url(r'^accounts/password_reset$', password_reset, {'post_reset_redirect': '/accounts/password_reset_done'}, name="password_reset"),
-        url(r'^accounts/password_reset_done$', password_reset_done, name='password_reset_done'),
-        url(r'^accounts/password_reset_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)$', password_reset_confirm,
-            {'post_reset_redirect': '/accounts/password_reset_complete'}, name='password_reset_confirm'),
-        url(r'^accounts/password_reset_complete$', password_reset_complete, name='password_reset_complete'),
+        url(r'^accounts/', include('django.contrib.auth.urls')),
 
         url(r'^cine/', include('cine.urls')),
         url(r'^comptes/', include('comptes.urls')),
