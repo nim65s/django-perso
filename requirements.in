@@ -17,3 +17,4 @@ raven
 requests
 python-memcached
 -e git://github.com/Nim65s/MarkDownBlog.git#egg=dmdb
+-e git://github.com/Nim65s/django-cineclub.git#egg=cine
