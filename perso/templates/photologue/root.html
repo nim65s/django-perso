@@ -1,14 +1,7 @@
 {% extends "base.html" %}
 
-{% block navbar-right %}
-  {% if user.is_superuser %}
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="/admin/photologue/">Photologue Admin</a></li>
-    </ul>
-  {% endif %}
-{% endblock %}
-
 {% block content %}
+{% if user.is_superuser %}<p class="text-right"><a href="/admin/photologue/">Photologue Admin</a></p>{% endif %}
 {% block photologue_content %}{% endblock %}
 <hr>
 <div class="text-center">
