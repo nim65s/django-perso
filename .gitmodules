@@ -2,10 +2,6 @@
 	path = comptes
 	url = git@github.com:nim65s/django-comptes.git
 	branch = master
-[submodule "django-DD-when"]
-	path = when
-	url = git@github.com:nim65s/django-DD-when.git
-	branch = master
 [submodule "gpg"]
 	path = gpg
 	url = git@github.com:nim65s/django-PGP-tables.git
