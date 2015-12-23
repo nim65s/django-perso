@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cine',
     'comptes',
-    'django-disqus',
     'bootstrap3',
     'photologue',
     'sortedm2m',
