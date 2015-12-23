@@ -10,13 +10,11 @@
         <meta name="keywords" content="{% block meta-keywords %}django, blog, weblog{% endblock meta-keywords %}" />
         <meta name="author" content="Nim65s" />
         {% block meta %}{% endblock meta %}
-        <link rel="pingback" href="/xmlrpc/" />
         <link rel="home" href="{% url 'dmdb:blog' %}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static "nim.css" %}" />
         <link rel="stylesheet" href="{% static "css/datepicker3.css" %}" />
         <link rel="stylesheet" href="{% static "css/zenburn.css" %}" />
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
         {% block style %}{% endblock style %}
         {% comment %}
         <!--[if lt IE 9]>
@@ -138,7 +136,7 @@
         <footer class="container" id="mainfooter">
             <p class="text-muted credit">Nim’s web.log: Powered by <a href="http://www.djangoproject.com">the love of ponies</a> and <a href="http://getbootstrap.com">the design fellas from Twitter</a>.</p>
         </footer>
-        <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         {% block js %}{% endblock %}
     </body>
