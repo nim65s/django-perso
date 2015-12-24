@@ -5,6 +5,7 @@
 #    pip-compile requirements.in
 #
 -e git+git://github.com/Nim65s/django-cineclub.git#egg=cine
+-e git+git://github.com/Nim65s/django-comptes.git#egg=comptes
 -e git+git://github.com/Nim65s/MarkDownBlog.git#egg=dmdb
 -e git+git://github.com/Nim65s/django-PGP-tables.git#egg=pgp_tables
 beautifulsoup4==4.4.1
