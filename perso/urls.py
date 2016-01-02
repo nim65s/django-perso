@@ -5,8 +5,6 @@ from django.views.generic import RedirectView
 
 from .views import profil
 
-admin.autodiscover()
-
 urlpatterns = [
         url(r'^accounts/profil', profil, name='profil'),
         url(r'^accounts/', include('django.contrib.auth.urls')),
@@ -17,7 +15,7 @@ urlpatterns = [
         url(r'^PGP/', include('pgp_tables.urls')),
         url(r'^groupe/', include('groupe.urls')),
 
-        url(r'^admin/', include(admin.site.urls)),
+        url(r'^admin/', admin.site.urls),
         url(r'^photo/', include('perso.urls_photo')),
         url(r'^cgi', permission_denied),
         url(r'', include('dmdb.urls')),
