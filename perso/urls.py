@@ -1,5 +1,6 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.core.urlresolvers import reverse_lazy
 from django.views.defaults import permission_denied
 from django.views.generic import RedirectView
 
