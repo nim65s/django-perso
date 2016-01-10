@@ -14,13 +14,13 @@ contextlib2==0.4.0        # via raven
 decorator==4.0.6          # via ipython, traitlets
 django-bootstrap3==6.2.2
 django-braces==1.8.1
-django-photologue==3.4.1
+django-photologue==3.5
 django-sortedm2m==1.1.1   # via django-photologue
 django==1.9.1
 exifread==2.1.2           # via django-photologue
 first==2.0.1              # via pip-tools
 flake8==2.5.1
-gunicorn==19.4.3
+gunicorn==19.4.5
 ipython-genutils==0.1.0   # via traitlets
 ipython==4.0.1
 isort==4.2.2
@@ -31,8 +31,8 @@ pep8-naming==0.3.3
 pep8==1.5.7               # via flake8
 pexpect==4.0.1            # via ipython
 pickleshare==0.5          # via ipython
-pillow==3.0.0
-pip-tools==1.4.2
+pillow==3.1.0
+pip-tools==1.4.3
 psycopg2==2.6.1
 ptyprocess==0.5           # via pexpect
 pyflakes==1.0.0           # via flake8
