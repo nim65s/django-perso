@@ -25,12 +25,10 @@ server {
     error_log  /var/log/nginx/perso.err;
 
     location /static/ {
-        autoindex on;
         alias /var/www/perso/static_dest/;
     }
 
     location /media/ {
-        autoindex on;
         alias /var/www/perso/media/;
     }
 
