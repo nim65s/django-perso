@@ -1,5 +1,4 @@
-
-.codehilite code, .codehilite pre{color:#fdce93;background-color:#3f3f3f}
+.codehilite code, .codehilite pre, pre.codehilite {color:#fdce93;background-color:#3f3f3f}
 .codehilite .hll{background-color:#222}
 .codehilite .c{color:#7f9f7f}
 .codehilite .err{color:#e37170;background-color:#3d3535}
