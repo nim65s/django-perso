@@ -14,5 +14,9 @@ def url_get(request, key=None, value=None):
 
 @register.filter
 def email(email, request):
-    at, dot = ('<span class="%s"></span>' % i for i in ['at', 'dot'])
-    return mark_safe('<span class="mail">%s</span>' % (email if request.user.is_authenticated() else email.replace('@', at).replace('.', dot)))
+    if request.user.is_authenticated():
+        content = '<a href="mailto:%s">%s</a>' % (email, email)
+    else:
+        at, dot = ('<span class="%s"></span>' % i for i in ['at', 'dot'])
+        content = email.replace('@', at).replace('.', dot)
+    return mark_safe('<span class="mail">%s</span>' % content)

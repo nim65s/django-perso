@@ -1,12 +1,12 @@
-from braces.views import SuperuserRequiredMixin
-from photologue.models import Gallery, Photo
-
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView
+
+from braces.views import SuperuserRequiredMixin
+from photologue.models import Gallery, Photo
 
 from .models import UserForm
 
@@ -30,9 +30,9 @@ def profil(request):
             else:
                 messages.error(request, "Mauvais «Ancien mot de passe»")
     return render(request, 'profil.html', {
-            'form': UserForm(instance=request.user),
-            'pwform': PasswordChangeForm(request.user),
-            })
+        'form': UserForm(instance=request.user),
+        'pwform': PasswordChangeForm(request.user),
+    })
 
 
 class PhotoDetailView(SuperuserRequiredMixin, DetailView):
