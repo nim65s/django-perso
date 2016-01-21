@@ -3,19 +3,19 @@
 {% block title %}Tous les albums{% endblock %}
 
 {% block photologue_content %}
-    <h1 class="page-header">Tous les albums</h1>
-    {% for gallery in object_list %}
-        <div class="clearfix">
-            <h2><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h2>
-            <p class="text-right muted"><small>Publié le {{ gallery.date_added }}</small></p>
-            {% if gallery.description %}<p>{{ gallery.description|safe }}</p>{% endif %}
-            {% for photo in gallery.sample %}
-                <a href="{{ gallery.get_absolute_url }}">
-                     <img src="{{ photo.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ photo.title }}">
-                </a>
-            {% endfor %}
-        </div>
-    {% empty %}
-        <div>Il n’y a pas encore d’albums disponibles.</div>
-    {% endfor %}
+<h1 class="page-header">Tous les albums</h1>
+{% for gallery in object_list %}
+<div class="clearfix">
+  <h2><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h2>
+  <p class="text-right muted"><small>Publié le {{ gallery.date_added }}</small></p>
+  {% if gallery.description %}<p>{{ gallery.description|safe }}</p>{% endif %}
+  {% for photo in gallery.sample %}
+  <a href="{{ gallery.get_absolute_url }}">
+    <img src="{{ photo.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ photo.title }}">
+  </a>
+  {% endfor %}
+</div>
+{% empty %}
+<div>Il n’y a pas encore d’albums disponibles.</div>
+{% endfor %}
 {% endblock %}

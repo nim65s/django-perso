@@ -3,30 +3,30 @@
 {% block title %}Photo: {{ object.title }}{% endblock %}
 
 {% block photologue_content %}
-    <h1 class="page-header">Photo: {{ object.title }}</h1>
-    <p class="text-right muted"><small>Publié le {{ object.date_added }}</small></p>
+<h1 class="page-header">Photo: {{ object.title }}</h1>
+<p class="text-right muted"><small>Publié le {{ object.date_added }}</small></p>
 
-    {% if object.caption %}<p>{{ object.caption|safe }}</p>{% endif %}
-    <a href="{{ object.image.url }}">
-        <img src="{{ object.get_display_url }}" class="thumbnail" alt="{{ object.title }}">
+{% if object.caption %}<p>{{ object.caption|safe }}</p>{% endif %}
+<a href="{{ object.image.url }}">
+  <img src="{{ object.get_display_url }}" class="thumbnail" alt="{{ object.title }}">
+</a>
+<div class="row text-center">
+  <div class="col-md-4">
+    {% if prev %}
+    <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"-1" %}">
+      <img src="{{ prev.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ prev.title }}">
     </a>
-    <div class="row text-center">
-        <div class="col-md-4">
-            {% if prev %}
-                <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"-1" %}">
-                     <img src="{{ prev.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ prev.title }}">
-                </a>
-            {% endif %}
-        </div>
-        <div class="col-md-4">
-            <a href="{{ gallery.get_absolute_url }}" class="btn btn-default">Retour à l’album</a>
-        </div>
-        <div class="col-md-4">
-            {% if next %}
-                <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"1" %}">
-                     <img src="{{ next.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ next.title }}">
-                </a>
-            {% endif %}
-        </div>
-    </div>
+    {% endif %}
+  </div>
+  <div class="col-md-4">
+    <a href="{{ gallery.get_absolute_url }}" class="btn btn-default">Retour à l’album</a>
+  </div>
+  <div class="col-md-4">
+    {% if next %}
+    <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"1" %}">
+      <img src="{{ next.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ next.title }}">
+    </a>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}

@@ -5,23 +5,23 @@
 
 <h1>Modifier le profil</h1>
 
-    <form action="" method="post" class="form-horizontal">
-        {% csrf_token %}
-        {% bootstrap_form form layout="horizontal" %}
-        {% buttons layout="horizontal" %}
-        <button type="submit" class="btn btn-primary">Ok !</button>
-        {% endbuttons %}
-    </form>
+<form action="" method="post" class="form-horizontal">
+  {% csrf_token %}
+  {% bootstrap_form form layout="horizontal" %}
+  {% buttons layout="horizontal" %}
+  <button type="submit" class="btn btn-primary">Ok !</button>
+  {% endbuttons %}
+</form>
 
 
 <h1>Modifier le mot de passe</h1>
 
-    <form action="" method="post" class="form-horizontal">
-        {% csrf_token %}
-        {% bootstrap_form pwform layout="horizontal" %}
-        {% buttons layout="horizontal" %}
-        <button type="submit" class="btn btn-primary">Ok !</button>
-        {% endbuttons %}
-    </form>
+<form action="" method="post" class="form-horizontal">
+  {% csrf_token %}
+  {% bootstrap_form pwform layout="horizontal" %}
+  {% buttons layout="horizontal" %}
+  <button type="submit" class="btn btn-primary">Ok !</button>
+  {% endbuttons %}
+</form>
 
 {% endblock %}
