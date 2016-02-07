@@ -13,6 +13,7 @@
 <div class="row text-center">
   <div class="col-md-4">
     {% if prev %}
+    Photo précédente
     <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"-1" %}">
       <img src="{{ prev.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ prev.title }}">
     </a>
@@ -23,6 +24,7 @@
   </div>
   <div class="col-md-4">
     {% if next %}
+    Photo suivante
     <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"1" %}">
       <img src="{{ next.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ next.title }}">
     </a>
