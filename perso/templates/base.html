@@ -9,6 +9,10 @@
     <meta name="description" content="{% block meta-description %}Nim’s weblog{% endblock meta-description %}{% block meta-description-page %}{% endblock meta-description-page %}" />
     <meta name="keywords" content="{% block meta-keywords %}django, blog, weblog{% endblock meta-keywords %}" />
     <meta name="author" content="Nim65s" />
+    <meta property="og:title" content="{% block og_title %}{{ title }}{% endblock %}" />
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
+    <meta property="og:image" content="{% block og_image %}{% static 'favicon.png' %}{% endblock %}" />
+    <meta property="og:url" content="{% block og_url %}{{ request.path }}{% endblock %}" />
     {% block meta %}{% endblock meta %}
     <link rel="home" href="{% url 'dmdb:blog' %}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
