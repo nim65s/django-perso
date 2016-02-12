@@ -11,7 +11,7 @@
 beautifulsoup4==4.4.1
 click==6.2                # via pip-tools
 contextlib2==0.5.1        # via raven
-decorator==4.0.6          # via ipython, traitlets
+decorator==4.0.9          # via ipython, traitlets
 django-bootstrap3==6.2.2
 django-braces==1.8.1
 django-photologue==3.5.1
@@ -19,10 +19,10 @@ django-sortedm2m==1.1.1   # via django-photologue
 Django==1.9.2
 ExifRead==2.1.2
 first==2.0.1              # via pip-tools
-flake8==2.5.2
+flake8==2.5.4
 gunicorn==19.4.5
 ipython-genutils==0.1.0   # via traitlets
-IPython==4.1.0
+IPython==4.1.1
 isort==4.2.2
 markdown==2.6.5
 mccabe==0.4.0             # via flake8
@@ -31,8 +31,8 @@ pep8-naming==0.3.3
 pep8==1.7.0               # via flake8
 pexpect==4.0.1            # via ipython
 pickleshare==0.6          # via ipython
-Pillow==3.1.0
-pip-tools==1.5
+Pillow==3.1.1
+pip-tools==1.6
 psycopg2==2.6.1
 ptyprocess==0.5.1         # via pexpect
 pyflakes==1.0.0           # via flake8
