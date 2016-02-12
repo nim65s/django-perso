@@ -4,10 +4,10 @@
 #
 #    pip-compile requirements.in
 #
--e git+git://github.com/Nim65s/django-cineclub.git#egg=cine
--e git+git://github.com/Nim65s/django-comptes.git#egg=comptes
--e git+git://github.com/Nim65s/django-PGP-tables.git#egg=pgp_tables
--e git+git://github.com/Nim65s/MarkDownBlog.git#egg=dmdb
+-e git+git://github.com/Nim65s/django-cineclub.git#egg=django-cineclub
+-e git+git://github.com/Nim65s/django-comptes.git#egg=django-comptes
+-e git+git://github.com/Nim65s/django-PGP-tables.git#egg=django-pgp-tables
+-e git+git://github.com/Nim65s/MarkDownBlog.git#egg=markdownblog
 beautifulsoup4==4.4.1
 click==6.2                # via pip-tools
 contextlib2==0.5.1        # via raven
@@ -16,8 +16,8 @@ django-bootstrap3==6.2.2
 django-braces==1.8.1
 django-photologue==3.5.1
 django-sortedm2m==1.1.1   # via django-photologue
-Django==1.9.2
-ExifRead==2.1.2
+Django==1.9.2             # via django-photologue
+ExifRead==2.1.2           # via django-photologue
 first==2.0.1              # via pip-tools
 flake8==2.5.4
 gunicorn==19.4.5
@@ -31,7 +31,7 @@ pep8-naming==0.3.3
 pep8==1.7.0               # via flake8
 pexpect==4.0.1            # via ipython
 pickleshare==0.6          # via ipython
-Pillow==3.1.1
+Pillow==3.1.1             # via django-photologue
 pip-tools==1.6
 psycopg2==2.6.1
 ptyprocess==0.5.1         # via pexpect
