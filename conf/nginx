@@ -26,10 +26,12 @@ server {
 
     location /static/ {
         alias /var/www/perso/static_dest/;
+        expires 30d;
     }
 
     location /media/ {
         alias /var/www/perso/media/;
+        expires 30d;
     }
 
     location / {
