@@ -1,10 +1,17 @@
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.contrib.sitemaps.views import index, sitemap
 from django.core.urlresolvers import reverse_lazy
 from django.views.defaults import permission_denied
 from django.views.generic import RedirectView
 
+from dmdb.sitemaps import BlogEntrySitemap
+
 from .views import profil
+
+sitemaps = {
+    'blog': BlogEntrySitemap,
+}
 
 urlpatterns = [
     url(r'^accounts/profil', profil, name='profil'),
@@ -20,5 +27,8 @@ urlpatterns = [
     url(r'^photo/', include('perso.urls_photo')),
     url(r'^cgi', permission_denied),
     url(r'^home$', RedirectView.as_view(url=reverse_lazy('dmdb:blog'), permanent=True), name="home"),
+    url(r'^sitemap\.xml$', index, {'sitemaps': sitemaps}),
+    url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps}),
+
     url(r'', include('dmdb.urls')),
 ]
