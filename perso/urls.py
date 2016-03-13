@@ -5,12 +5,16 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.defaults import permission_denied
 from django.views.generic import RedirectView
 
+from photologue.sitemaps import GallerySitemap, PhotoSitemap
+
 from dmdb.sitemaps import BlogEntrySitemap
 
 from .views import profil
 
 sitemaps = {
     'blog': BlogEntrySitemap,
+    'gallery': GallerySitemap,
+    'photo': PhotoSitemap,
 }
 
 urlpatterns = [
