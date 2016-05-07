@@ -3,7 +3,7 @@
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
-    <title>Nim’s web.log - {% block title %}\o/{% endblock title %}{% block title-page %}{% endblock title-page %}</title>
+    <title>Nim’s web.log - {% block title %}{% if title %}{{ title }}{% else %}\o/{% endif %}{% endblock %}</title>
     <meta name="robots" content="follow, all" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="{% block meta-description %}Nim’s weblog{% endblock meta-description %}{% block meta-description-page %}{% endblock meta-description-page %}" />
@@ -96,36 +96,22 @@
             <aside id="widget-welcome" class="widget panel panel-default">
               <div class="panel-heading">Welcome!</div>
               <div class="panel-body">
-                <p>Bienvenue sur mon modeste weblog.</p>
-                <p>Il sert pour l’instant principalement de point d’entrée de certaines applications utiles (ou pas) ; mais, qui sait, peut-être qu’un jour on y verra aussi du contenu !</p>
+                <p>Bienvenue sur mon modeste site web.</p>
+                <p>Il sert principalement de point d’entrée à certaines applications utiles (ou pas) ; mais, il peut aussi me servir à blogger sur
+                des <a href="{% url 'dmdb:category' slug='voyages' %}">Voyages</a>,
+                de l’<a href="{% url 'dmdb:category' slug='informatique' %}">Informatique</a>,
+                ou encore de la <a href="{% url 'dmdb:category' slug='robotique' %}">Robotique</a>.</p>
+                <hr>
+                <p>À part ici, vous pouvez également mon profil <code>@nim65s</code> sur:
+                <ul>
+                  <li><a href="https://twitter.com/nim65s/">Twitter</a></li>
+                  <li><a href="https://github.com/nim65s/">Github</a></li>
+                  <li><a href="https://fr.linkedin.com/in/nim65s">LinkedIn</a></li>
+                  <li><a href="https://www.facebook.com/nim65s">Facebook</a></li>
+                  <li><a href="https://plus.google.com/+GuilhemSaurel">Google Plus</a></li>
+                </ul>
+                </p>
               </div>
-            </aside>
-            <aside id="widget-login" class="widget panel panel-default">
-              <div class="panel-heading">Espace Membres</div>
-              {% if user.is_authenticated %}<ul class="list-group">
-                <li class="list-group-item"><a href="{% url 'profil' %}">Mon Profil</a></li>
-                <li class="list-group-item"><a href="{% url 'logout' %}">Déconnexion</a></li>
-                {% if user.is_superuser %}
-                <li class="list-group-item"><a href="/admin/">Admin</a></li>
-                {% endif %}
-              </ul>
-              {% else %}<form method="post" action="{% url 'login' %}{% url_get request %}" role="form">
-                {% csrf_token %}
-                {% if next %}<input type="hidden" name="next" value="{{ next }}" />
-                {% else %}<input type="hidden" name="next" value="{{ request.get_full_path }}" />
-                {% endif %}
-                <div class="form-group">
-                  <label for="username">Login</label>
-                  <input type="text" class="form-control" id="username" name="username" placeholder="Login" autofocus required>
-                </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="btn btn-default">log. in</button>
-                <a href="{% url 'password_reset' %}" class="btn btn-warning">Mot de passe oublié ?</a>
-              </form>
-              {% endif %}
             </aside>
             <aside id="widget-twitter" class="widget panel">
               <a class="twitter-timeline" href="https://twitter.com/nim65s" data-widget-id="363235224311721984">Tweets by @nim65s</a>
