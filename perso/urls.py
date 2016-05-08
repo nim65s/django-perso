@@ -3,11 +3,10 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import index, sitemap
 from django.core.urlresolvers import reverse_lazy
 from django.views.defaults import permission_denied
-from django.views.generic import RedirectView
-
-from photologue.sitemaps import GallerySitemap, PhotoSitemap
+from django.views.generic import RedirectView, TemplateView
 
 from dmdb.sitemaps import BlogEntrySitemap
+from photologue.sitemaps import GallerySitemap, PhotoSitemap
 
 from .views import profil
 
@@ -20,6 +19,7 @@ sitemaps = {
 urlpatterns = [
     url(r'^accounts/profil', profil, name='profil'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^a-propos$', TemplateView.as_view(template_name='about.html'), name='about'),
 
     url(r'^cine/', include('cine.urls')),
     url(r'^comptes/', include('comptes.urls')),
