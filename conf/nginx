@@ -8,8 +8,8 @@ server {
     listen 443 ssl;
     server_name www.saurel.me;
 
-    ssl_certificate     ssl/saurel.me.startssl.chained.crt;
-    ssl_certificate_key ssl/saurel.me.key;
+    ssl_certificate     /etc/letsencrypt/live/saurel.me/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/saurel.me/privkey.pem;
 
     return 301 https://saurel.me$request_uri;
 }
@@ -18,8 +18,8 @@ server {
     listen 443 ssl;
     server_name saurel.me;
 
-    ssl_certificate     ssl/saurel.me.startssl.chained.crt;
-    ssl_certificate_key ssl/saurel.me.key;
+    ssl_certificate     /etc/letsencrypt/live/saurel.me/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/saurel.me/privkey.pem;
 
     access_log  /var/log/nginx/perso.log;
     error_log  /var/log/nginx/perso.err;
@@ -32,6 +32,10 @@ server {
     location /media/ {
         alias /var/www/perso/media/;
         expires 30d;
+    }
+
+    location /.well-known {
+        alias /var/www/letsencrypt/.well-known;
     }
 
     location / {
