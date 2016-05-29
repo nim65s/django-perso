@@ -191,4 +191,4 @@ if 'cine' in INSTALLED_APPS:
 if 'photologue' in INSTALLED_APPS:
     PHOTOLOGUE_GALLERY_SAMPLE_SIZE = 10
 
-AUTHENTICATION_BACKENDS = ['eouia.backends.EmailOrUsernameInsensitiveModelBackend']
+AUTHENTICATION_BACKENDS = ['yeouia.backends.YummyEmailOrUsernameInsensitiveModelBackend']
