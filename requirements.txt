@@ -7,6 +7,7 @@
 
 -e git+git://github.com/Nim65s/django-cineclub.git#egg=django-cineclub
 -e git+git://github.com/Nim65s/django-comptes.git#egg=django-comptes
+-e git+git://github.com/Nim65s/django-EmailOrUsernameInsensitiveAuth.git#egg=django-eouia
 -e git+git://github.com/Nim65s/django-PGP-tables.git#egg=django-pgp-tables
 -e git+git://github.com/Nim65s/MarkDownBlog.git#egg=markdownblog
 beautifulsoup4==4.4.1
