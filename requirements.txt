@@ -7,47 +7,25 @@
 
 -e git+git://github.com/Nim65s/django-cineclub.git#egg=django-cineclub
 -e git+git://github.com/Nim65s/django-comptes.git#egg=django-comptes
--e git+git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
 -e git+git://github.com/Nim65s/django-PGP-tables.git#egg=django-pgp-tables
+-e git+git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
 -e git+git://github.com/Nim65s/MarkDownBlog.git#egg=markdownblog
 beautifulsoup4==4.4.1
-click==6.2                # via pip-tools
-contextlib2==0.5.1        # via raven
-decorator==4.0.9          # via ipython, traitlets
+contextlib2==0.5.3        # via raven
 django-autoslug==1.9.3
-django-bootstrap3==6.2.2
+django-bootstrap3==7.0.1
 django-braces==1.8.1
 django-photologue==3.5.1
-django-sortedm2m==1.1.1   # via django-photologue
-Django==1.9.2             # via django-photologue
+django-sortedm2m==1.3.0   # via django-photologue
+Django==1.9.6             # via django-photologue
 ExifRead==2.1.2           # via django-photologue
-first==2.0.1              # via pip-tools
-flake8==2.5.4
-gunicorn==19.4.5
-ipython-genutils==0.1.0   # via traitlets
-IPython==4.1.1
-isort==4.2.2
-markdown==2.6.5
-mccabe==0.4.0             # via flake8
-path.py==8.1.2            # via pickleshare
-pep8-naming==0.3.3
-pep8==1.7.0               # via flake8
-pexpect==4.0.1            # via ipython
-pickleshare==0.6          # via ipython
-Pillow==3.1.1             # via django-photologue
-pip-tools==1.6
+gunicorn==19.6.0
+markdown==2.6.6
+Pillow==3.2.0             # via django-photologue
 psycopg2==2.6.1
-ptyprocess==0.5.1         # via pexpect
-pyflakes==1.0.0           # via flake8
-pygments==2.1
-python-memcached==1.57
-pytz==2015.7
-raven==5.10.2
-requests==2.9.1
-simplegeneric==0.8.1      # via ipython
-six==1.10.0               # via django-braces, pip-tools, python-memcached
-traitlets==4.1.0          # via ipython
-
-# The following packages are commented out because they are
-# considered to be unsafe in a requirements file:
-# setuptools                # via ipython
+pygments==2.1.3
+python-memcached==1.58
+pytz==2016.4
+raven==5.19.0
+requests==2.10.0
+six==1.10.0               # via django-braces, python-memcached

@@ -4,14 +4,9 @@ django-autoslug
 django-bootstrap3
 django-braces
 django-photologue
-flake8
 gunicorn
 markdown
-IPython
-isort
-pep8-naming
 Pillow
-pip-tools
 psycopg2
 pygments
 pytz
