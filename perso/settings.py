@@ -34,6 +34,7 @@ elif (CONF_DIR / "prod").is_file():
     PROD = True
 else:
     DEBUG = True
+    ALLOWED_HOSTS.append('127.0.0.1')
 
 EMAIL_SUBJECT_PREFIX = ("[%s Dev] " if DEBUG or INTEGRATION else "[%s] ") % PROJECT_VERBOSE
 
