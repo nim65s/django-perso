@@ -70,6 +70,7 @@
             {% block navbar-right %}
             <ul class="nav navbar-nav navbar-right">
               {% if request.user.is_authenticated %}
+              <li><a href="{% url 'profil' %}">Mon Profil</a></li>
               <li><a href="{% url 'logout' %}">Log out</a></li>
               {% else %}
               <li><a href="{% url 'login' %}?next={{ request.path }}">Log in</a></li>
