@@ -14,7 +14,7 @@ class Command(BaseCommand):
                 '292FF6C3', 'F94E9DF5', 'E4583762', 'D4BC9401', '0642FA40', '37D128F8', '264C4323', '80A5ECE3',
                 'D64CE766', '8D18CA37', '4653CF28', 'F8F5F173', 'F3B2CEDE', '56C4754A', '45C81AF8', '9D0EECA7',
                 'A64B5107', '7011B752', 'DCF76136', 'B10D7ED4', '54AC263D', '175B313D', '7D422C30', 'D9E7AABF',
-                '63F5CF3A', 'C068E338', '78758817']
+                '63F5CF3A', 'C068E338', '78758817', '5CD09700']
         ksp, created = KeySigningParty.objects.get_or_create(slug='CdL16')
         if created:
             ksp.name = 'Capitole du Libre 2016'
