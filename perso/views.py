@@ -7,6 +7,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.http import Http404, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView
+from django.views.decorators.cache import cache_page
+
 
 from braces.views import SuperuserRequiredMixin
 from photologue.models import Gallery, Photo
@@ -64,6 +66,7 @@ class GalleryPhotoDetailView(DetailView):
         return super(GalleryPhotoDetailView, self).get_context_data(**c)
 
 
+@cache_page(60 * 15)
 def pebble(request, lon, lat):
     # TODO: app, key
 
