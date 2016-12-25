@@ -114,7 +114,8 @@ def pebble(request, lon, lat):
         return ' ↑ '
 
     weather = weather.json()
-    return JsonResponse({'CALENDAR': calendar, 'TEMPERATURE': weather['main']['temp'],
+    return JsonResponse({'CALENDAR': '^'.join(calendar), 
+                         'TEMPERATURE': weather['main']['temp'],
                          'CONDITIONS': weather['weather'][0]['description'],
                          'WIND': wind_force(weather['wind']['speed']),
                          'WINDDIR': wind_dir(weather['wind']['deg']),
