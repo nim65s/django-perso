@@ -66,7 +66,7 @@ class GalleryPhotoDetailView(DetailView):
         return super(GalleryPhotoDetailView, self).get_context_data(**c)
 
 
-@cache_page(60 * 15)
+# @cache_page(60 * 15)
 def pebble(request, lon, lat):
     # TODO: app, key
 
@@ -114,6 +114,7 @@ def pebble(request, lon, lat):
             return 'NNW'
         return ' ↑ '
 
-    weather = "%i %s, %i°C %s" % (wind_force(weather['wind']['speed']), wind_dir(weather['wind']['deg']), 
-                                   weather['main']['temp'], weather['weather'][0]['description'])
-    return JsonResponse({'CALENDAR': '^'.join(calendar), 'WEATHER': weather})
+    # weather = "%i %s, %i°C %s" % (wind_force(weather['wind']['speed']), wind_dir(weather['wind']['deg']), 
+                                   # weather['main']['temp'], weather['weather'][0]['description'])
+    calendar = ["%i°C %s" % (weather['main']['temp'], weather['weather'][0]['description'])] + calendar
+    return JsonResponse({'C': '^'.join(calendar)})
