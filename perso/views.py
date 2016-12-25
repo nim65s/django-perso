@@ -74,6 +74,7 @@ def pebble(request, lon, lat):
     weather = requests.get('http://api.openweathermap.org/data/2.5/weather',
                            {'units': 'metric', 'lang': 'fr', 'lat': lat, 'lon': lon, 'appid': settings.OWM_KEY})
     weather.raise_for_status()
+    weather = weather.json()
 
     def wind_force(wind_speed):
         return round((wind_speed * 3.6 / 3) ** (2 / 3))
@@ -113,10 +114,6 @@ def pebble(request, lon, lat):
             return 'NNW'
         return ' ↑ '
 
-    weather = weather.json()
-    return JsonResponse({'CALENDAR': '^'.join(calendar), 
-                         'TEMPERATURE': weather['main']['temp'],
-                         'CONDITIONS': weather['weather'][0]['description'],
-                         'WIND': wind_force(weather['wind']['speed']),
-                         'WINDDIR': wind_dir(weather['wind']['deg']),
-                         })
+    weather = "%i %s, %i°C %s" % (wind_force(weather['wind']['speed']), wind_dir(weather['wind']['deg']), 
+                                   weather['main']['temp'], weather['weather'][0]['description'])
+    return JsonResponse({'CALENDAR': '^'.join(calendar), 'WEATHER': weather})
