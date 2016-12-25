@@ -8,7 +8,7 @@ from django.views.generic import RedirectView, TemplateView
 from dmdb.sitemaps import BlogEntrySitemap
 from photologue.sitemaps import GallerySitemap, PhotoSitemap
 
-from .views import profil
+from .views import profil, pebble
 
 sitemaps = {
     'blog': BlogEntrySitemap,
@@ -34,5 +34,6 @@ urlpatterns = [
     url(r'^sitemap\.xml$', index, {'sitemaps': sitemaps}),
     url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps}),
 
+    url(r'^pebble/(?P<lon>[0-9.]+)/(?P<lat>[0-9.]+)', pebble, name="pebble"),
     url(r'', include('dmdb.urls')),
 ]

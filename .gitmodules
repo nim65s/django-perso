@@ -1,6 +1,6 @@
 [submodule "groupe"]
 	path = groupe
-	url = git@bitbucket.org:nim65s/groupe.git
+	url = git@github.com:nim65s/groupe.git
 [submodule "dbmdb"]
 	path = dbmdb
 	url = git@github.com:nim65s/dbmdb.git

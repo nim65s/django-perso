@@ -191,4 +191,6 @@ if 'cine' in INSTALLED_APPS:
 if 'photologue' in INSTALLED_APPS:
     PHOTOLOGUE_GALLERY_SAMPLE_SIZE = 10
 
+OWM_KEY = (CONF_DIR / "owm_key").open().read().strip()
+
 AUTHENTICATION_BACKENDS = ['yeouia.backends.YummyEmailOrUsernameInsensitiveAuth']
