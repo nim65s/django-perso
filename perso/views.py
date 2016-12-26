@@ -66,11 +66,11 @@ class GalleryPhotoDetailView(DetailView):
         return super(GalleryPhotoDetailView, self).get_context_data(**c)
 
 
-# @cache_page(60 * 15)
+@cache_page(60 * 15)
 def pebble(request, lon, lat):
     # TODO: app, key
 
-    calendar = [item[:25] for item in check_output('khal agenda', shell=True).decode().split('\n')[1:] if item]
+    calendar = [item[:24].strip() for item in check_output('khal agenda', shell=True).decode().split('\n')[1:] if item]
     weather = requests.get('http://api.openweathermap.org/data/2.5/weather',
                            {'units': 'metric', 'lang': 'fr', 'lat': lat, 'lon': lon, 'appid': settings.OWM_KEY})
     weather.raise_for_status()
