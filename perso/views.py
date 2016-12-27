@@ -116,5 +116,5 @@ def pebble(request, lon, lat):
 
     # weather = "%i %s, %i°C %s" % (wind_force(weather['wind']['speed']), wind_dir(weather['wind']['deg']), 
                                    # weather['main']['temp'], weather['weather'][0]['description'])
-    calendar = ["%i°C %s" % (weather['main']['temp'], weather['weather'][0]['description'])] + calendar
-    return JsonResponse({'C': '^'.join(calendar)})
+    calendar = '^'.join(["%i°C %s" % (weather['main']['temp'], weather['weather'][0]['description'])] + calendar)
+    return JsonResponse({'C': calendar[:127]})
