@@ -8,7 +8,8 @@ from django.views.generic import RedirectView, TemplateView
 from dmdb.sitemaps import BlogEntrySitemap
 from photologue.sitemaps import GallerySitemap, PhotoSitemap
 
-from .views import profil, pebble
+from .views import profil
+from pebble.views import pebble
 
 sitemaps = {
     'blog': BlogEntrySitemap,

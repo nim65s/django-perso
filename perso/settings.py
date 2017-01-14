@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'pgp_tables',
     'groupe',
     'dmdb',
+    'pebble'
 ]
 
 MIDDLEWARE_CLASSES = [
