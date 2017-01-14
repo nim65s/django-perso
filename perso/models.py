@@ -1,21 +1,13 @@
-from django.contrib.auth.models import User
-from django.forms import ModelForm
+from django.db import models
 
 
-class UserForm(ModelForm):
+class Position(models.Model):
+    lon = models.FloatField()
+    lat = models.FloatField()
+    created = models.DateTimeField(auto_now_add=True)
+
     class Meta:
-        model = User
-        exclude = ('password', 'is_staff', 'is_active', 'is_superuser', 'groups', 'user_permissions')
+        ordering = ('created', )
 
-    def __init__(self, *args, **kwargs):
-        super(UserForm, self).__init__(*args, **kwargs)
-        instance = getattr(self, 'instance', None)
-        if instance and instance.id:
-            self.fields['last_login'].widget.attrs['readonly'] = True
-            self.fields['date_joined'].widget.attrs['readonly'] = True
-
-    def clean_last_login(self):
-        return self.instance.last_login
-
-    def clean_date_joined(self):
-        return self.instance.date_joined
+    def __str__(self):
+        return '%s: %f, %f' % (self.created, self.lon, self.lat)

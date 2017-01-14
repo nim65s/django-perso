@@ -35,5 +35,6 @@ urlpatterns = [
     url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps}),
 
     url(r'^pebble/(?P<lat>[0-9.]+)/(?P<lon>[0-9.]+)', pebble, name="pebble"),
+    url(r'^pebble/', pebble),
     url(r'', include('dmdb.urls')),
 ]

@@ -1,3 +1,6 @@
+from datetime import datetime, date
+import locale
+from math import ceil, floor
 from subprocess import check_output
 
 from django.conf import settings
@@ -12,9 +15,15 @@ from django.views.decorators.cache import cache_page
 
 from braces.views import SuperuserRequiredMixin
 from photologue.models import Gallery, Photo
+from pytz import timezone, utc
 import requests
 
-from .models import UserForm
+from .forms import UserForm
+from .models import Position
+
+DATE_FMT = '%Y/%m/%d '
+TIME_FMT = '%I:%M:%S %p'
+DT_FMT = DATE_FMT + TIME_FMT
 
 
 @login_required
@@ -66,55 +75,37 @@ class GalleryPhotoDetailView(DetailView):
         return super(GalleryPhotoDetailView, self).get_context_data(**c)
 
 
-@cache_page(60 * 15)
-def pebble(request, lon, lat):
-    # TODO: app, key
+# @cache_page(60 * 15)
+def pebble(request, lon=None, lat=None):
+    # TODO: app
+
+    if lon is None:
+        last = Position.objects.last()
+        lon, lat = last.lon, last.lat
+    else:
+        Position.objects.create(lon=lon, lat=lat)
 
     calendar = [item[:24].strip() for item in check_output('khal agenda', shell=True).decode().split('\n')[1:] if item]
-    weather = requests.get('http://api.openweathermap.org/data/2.5/weather',
-                           {'units': 'metric', 'lang': 'fr', 'lat': lat, 'lon': lon, 'appid': settings.OWM_KEY})
+    rep = {'C%i' % i: it for i, it in enumerate(calendar)}
+
+    weather = requests.get('http://api.openweathermap.org/data/2.5/forecast',
+                           {'units': 'metric', 'lang': 'fr', 'lat': lat, 'lon': lon, 'appid': settings.OWM_KEY,
+                            'cnt': round((24 - datetime.now().hour) / 3)})
     weather.raise_for_status()
-    weather = weather.json()
+    weatherl = weather.json()['list']
+    rep.update(T=round(weatherl[0]['main']['temp']), D=weatherl[0]['weather'][0]['description'],
+               W='%i%s' % (round((weatherl[0]['wind']['speed'] * 3.6 / 3) ** (2 / 3)),
+                           '89632147'[floor(((weatherl[0]['wind']['deg'] + 22.5) % 360) / 45)]),
+               R=ceil(sum([w['rain']['3h'] for w in weatherl if 'rain' in w and w['rain']])))
 
-    def wind_force(wind_speed):
-        return round((wind_speed * 3.6 / 3) ** (2 / 3))
+    r = requests.get('http://api.sunrise-sunset.org/json', {'lat': lat, 'lng': lon})
+    r.raise_for_status()
+    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+    sunrise = datetime.strptime(date.today().strftime(DATE_FMT) + r.json()['results']['sunrise'], DT_FMT)
+    sunset = datetime.strptime(date.today().strftime(DATE_FMT) + r.json()['results']['sunset'], DT_FMT)
+    locale.setlocale(locale.LC_ALL, 'fr_FR.UTF-8')
+    dt = sunset if sunrise < datetime.utcnow() < sunset else sunrise
+    dt = utc.localize(dt).astimezone(timezone('Europe/Paris'))
+    rep.update(H=dt.hour, M=dt.minute)
 
-    def wind_dir(wind):
-        if wind <= 11.25:
-            return ' ↑ '
-        if wind <= 33.75:
-            return 'NNE'
-        if wind <= 56.25:
-            return ' ↗ '
-        if wind <= 78.75:
-            return 'ENE'
-        if wind <= 101.25:
-            return ' → '
-        if wind <= 123.75:
-            return 'ESE'
-        if wind <= 146.25:
-            return ' ↘ '
-        if wind <= 168.75:
-            return 'SSE'
-        if wind <= 191.25:
-            return ' ↓ '
-        if wind <= 213.75:
-            return 'SSW'
-        if wind <= 236.25:
-            return ' ↙ '
-        if wind <= 258.75:
-            return 'WSW'
-        if wind <= 281.25:
-            return ' ← '
-        if wind <= 303.75:
-            return 'WNW'
-        if wind <= 326.25:
-            return ' ↖ '
-        if wind <= 348.75:
-            return 'NNW'
-        return ' ↑ '
-
-    # weather = "%i %s, %i°C %s" % (wind_force(weather['wind']['speed']), wind_dir(weather['wind']['deg']), 
-                                   # weather['main']['temp'], weather['weather'][0]['description'])
-    calendar = '^'.join(["%i°C %s" % (weather['main']['temp'], weather['weather'][0]['description'])] + calendar)
-    return JsonResponse({'C': calendar[:127]})
+    return JsonResponse(rep)
