@@ -15,21 +15,26 @@ TOULOUSE = (43.604482, 1.443962)
 
 
 def get_weather(lat, lon):
-    weatherl = cache.get('pebble_weather')
-    if weatherl is None:
-        weather = requests.get('http://api.openweathermap.org/data/2.5/forecast',
-                               {'units': 'metric', 'lang': 'fr', 'lat': lat, 'lon': lon, 'appid': settings.OWM_KEY,
-                                'cnt': round((24 - datetime.now().hour) / 3)})
-        if weather.status_code != 200:
+    wf = cache.get('pebble_wf')
+    if wf is None:
+        forecast = requests.get('http://api.openweathermap.org/data/2.5/forecast',
+                                {'units': 'metric', 'lang': 'fr', 'lat': lat, 'lon': lon, 'appid': settings.OWM_KEY,
+                                 'cnt': round((24 - datetime.now().hour) / 3)})
+        weather = requests.get('http://api.openweathermap.org/data/2.5/weather',
+                               {'units': 'metric', 'lang': 'fr', 'lat': lat, 'lon': lon, 'appid': settings.OWM_KEY})
+        if weather.status_code != 200 or forecast.status_code != 200:
             return {}
-        weatherl = weather.json()['list']
-        cache.set('pebble_weather', weatherl, 900)
-    windspeed = round((weatherl[0]['wind']['speed'] * 3.6 / 3) ** (2 / 3))
-    winddir = '89632147'[floor(((weatherl[0]['wind']['deg'] + 22.5) % 360) / 45)]
+        forecast = forecast.json()['list']
+        weather = weather.json()
+        cache.set('pebble_wf', (weather, forecast), 900)
+    else:
+        weather, forecast = wf
+    windspeed = round((weather['wind']['speed'] * 3.6 / 3) ** (2 / 3))
+    winddir = '89632147'[floor(((weather['wind']['deg'] + 22.5) % 360) / 45)]
     return {
-        'R': ceil(sum([w['rain']['3h'] for w in weatherl if 'rain' in w and w['rain']])),
-        'D': weatherl[0]['weather'][0]['description'],
-        'T': round(weatherl[0]['main']['temp']),
+        'R': ceil(sum([w['rain']['3h'] for w in forecast if 'rain' in w and w['rain']])),
+        'D': weather['weather'][0]['description'],
+        'T': round(weather['main']['temp']),
         'W': '%i%s' % (windspeed, winddir),
     }
 
