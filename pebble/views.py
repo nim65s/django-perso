@@ -1,5 +1,5 @@
-from datetime import datetime, date
 import locale
+from datetime import date, datetime
 from math import ceil, floor
 from subprocess import check_output
 
@@ -7,8 +7,8 @@ from django.conf import settings
 from django.core.cache import cache
 from django.http import JsonResponse
 
-from pytz import timezone, utc
 import requests
+from pytz import timezone, utc
 
 TZ = timezone(settings.TIME_ZONE)
 TOULOUSE = (43.604482, 1.443962)
@@ -30,7 +30,7 @@ def get_weather(lat, lon):
     else:
         weather, forecast = wf
     windspeed = round((weather['wind']['speed'] * 3.6 / 3) ** (2 / 3))
-    winddir = '89632147'[floor(((weather['wind']['deg'] + 22.5) % 360) / 45)]
+    winddir = '89632147'[floor(((weather['wind']['deg'] + 22.5) % 360) / 45)] if 'deg' in weather['wind'] else '5'
     return {
         'R': ceil(sum([w['rain']['3h'] for w in forecast if 'rain' in w and w['rain']])),
         'D': weather['weather'][0]['description'],
