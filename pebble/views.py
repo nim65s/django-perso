@@ -63,7 +63,7 @@ def get_next_sunrise_or_sunset(lat, lng):
 
 def get_calendar():
     calendar = [item[:24].strip()
-                for item in check_output('khal agenda', shell=True).decode().split('\n')
+                for item in check_output('khal list', shell=True).decode().split('\n')
                 if item and item != 'Today:'
                 ]
     return {'C%i' % i: it for i, it in enumerate(calendar)}
