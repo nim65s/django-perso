@@ -62,10 +62,17 @@ def get_next_sunrise_or_sunset(lat, lng):
 
 
 def get_calendar():
-    calendar = [item[:24].strip()
-                for item in check_output('khal list', shell=True).decode().split('\n')
-                if item and 'Today' not in item:
-                ]
+    # Get events from khal
+    calendar = [item.strip()[:24] for item in check_output('khal list -o', shell=True).decode().split('\n') if item]
+    # Remove first ("Today") and duplicate lines
+    old = calendar[0]
+    remove = []
+    for event in calendar:
+        if old == event:
+            remove.append(event)
+        old = event
+    for event in remove:
+        calendar.remove(event)
     return {'C%i' % i: it for i, it in enumerate(calendar)}
 
 
