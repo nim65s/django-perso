@@ -22,7 +22,7 @@ def get_weather(lat, lon):
                                  'cnt': round((24 - datetime.now().hour) / 3)})
         weather = requests.get('http://api.openweathermap.org/data/2.5/weather',
                                {'units': 'metric', 'lang': 'fr', 'lat': lat, 'lon': lon, 'appid': settings.OWM_KEY})
-        if weather.status_code != 200 or forecast.status_code != 200:
+        if weather.status_code != 200 or forecast.status_code != 200 or 'list' not in forecast.json():
             return {}
         forecast = forecast.json()['list']
         weather = weather.json()
