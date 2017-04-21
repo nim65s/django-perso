@@ -3,7 +3,7 @@ server {
     server_name saurel.me www.saurel.me;
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options "nosniff";
-    add_header Referrer-Policy "strict-origin-when-cross-origin";
+    add_header Referrer-Policy "origin-when-cross-origin";
     return 301 https://saurel.me$request_uri;
 }
 
@@ -13,7 +13,7 @@ server {
     add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options "nosniff";
-    add_header Referrer-Policy "strict-origin-when-cross-origin";
+    add_header Referrer-Policy "origin-when-cross-origin";
 
     ssl_certificate     /etc/letsencrypt/live/saurel.me/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/saurel.me/privkey.pem;
@@ -27,7 +27,7 @@ server {
     add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
     add_header X-XSS-Protection "1; mode=block";
     add_header X-Content-Type-Options "nosniff";
-    add_header Referrer-Policy "strict-origin-when-cross-origin";
+    add_header Referrer-Policy "origin-when-cross-origin";
 
     ssl_certificate     /etc/letsencrypt/live/saurel.me/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/saurel.me/privkey.pem;
