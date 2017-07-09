@@ -1,16 +1,14 @@
 beautifulsoup4
-Django
+django
 django-autoslug
 django-bootstrap3
 django-braces
 django-photologue
-gunicorn
 markdown
 Pillow
 psycopg2
 pygments
 pytz
-raven
 requests
 python-memcached
 -e git://github.com/Nim65s/MarkDownBlog.git#egg=markdownblog
