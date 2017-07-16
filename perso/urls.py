@@ -5,10 +5,10 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.defaults import permission_denied
 from django.views.generic import RedirectView, TemplateView
 
-from dmdb.feeds import BlogEntriesFeed
 from dmdb.sitemaps import BlogEntrySitemap
 from photologue.sitemaps import GallerySitemap, PhotoSitemap
 
+from .feeds import Feed
 from .views import profil
 
 sitemaps = {
@@ -37,6 +37,6 @@ urlpatterns = [
 
     url(r'^pebble/', include('pebble.urls')),
     url(r'^fixics/', include('fixics.urls')),
-    url(r'^feed/', BlogEntriesFeed(title="Nim's web.log"), name='feed'),
+    url(r'^feed', Feed(), name='feed'),
     url(r'', include('dmdb.urls')),
 ]
