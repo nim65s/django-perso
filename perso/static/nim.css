@@ -93,3 +93,7 @@ html, body { height: 100%; }
 article header h2 { border-bottom: 1px silver dashed; text-align: center; }
 article.list { border-bottom: 1px silver dashed; }
 article.list .content { max-height: 400px; overflow-y: scroll; }
+
+@media (min-width: 1350px) {
+    div.container.containerwide { width: 90%; }
+}

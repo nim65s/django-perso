@@ -79,7 +79,7 @@
         </div>
       </nav>
       {% block slider %}{% endblock %}
-      <div class="container">
+      <div class="container{% block maincontainerclass %}{% endblock %}">
         <div class="row">
           {% for message in messages %}
           <div class="alert alert-dismissable{% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}">

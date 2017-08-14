@@ -2,6 +2,8 @@
 
 {% block title %}Album: {{ gallery.title }}{% endblock %}
 
+{% block maincontainerclass %} containerwide{% endblock %}
+
 {% block photologue_content %}
 <h1 class="page-header">Album: {{ gallery.title }}</h1>
 <p class="text-right muted"><small>Publié le {{ gallery.date_added }}</small></p>
@@ -20,3 +22,4 @@
 <br>
 <div><a href="{% url 'photologue:gallery-list' %}" class="btn btn-default">Afficher les albums publics</a></div>
 {% endblock %}
+
