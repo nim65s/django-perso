@@ -1,34 +1,39 @@
 {% extends "photologue/root.html" %}
+{% load perso_extra %}
 
 {% block title %}Photo: {{ object.title }}{% endblock %}
 
 {% block photologue_content %}
 <h1 class="page-header">Photo: {{ object.title }}</h1>
-<p class="text-right muted"><small>Publié le {{ object.date_added }}</small></p>
+<p class="text-right muted"><small>Prise le {{ object.date_taken }}</small></p>
 
 {% if object.caption %}<p>{{ object.caption|safe }}</p>{% endif %}
+
 <a href="{{ object.image.url }}">
-  <img src="{{ object.get_display_url }}" class="thumbnail" alt="{{ object.title }}">
+    <img src="{{ object.get_display_url }}" class="thumbnail" alt="{{ object.title }}">
 </a>
-<div class="row text-center">
-  <div class="col-md-4">
+
+<div class="clearfix text-center">
     {% if prev %}
-    Photo précédente
-    <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"-1" %}">
-      <img src="{{ prev.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ prev.title }}">
-    </a>
+    <div class="text-left pull-left">
+        Photo précédente<br>
+        <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"-1" %}">
+            <img src="{{ prev.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ prev.title }}">
+        </a>
+    </div>
     {% endif %}
-  </div>
-  <div class="col-md-4">
-    <a href="{{ gallery.get_absolute_url }}" class="btn btn-default">Retour à l’album</a>
-  </div>
-  <div class="col-md-4">
     {% if next %}
-    Photo suivante
-    <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"1" %}">
-      <img src="{{ next.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ next.title }}">
-    </a>
+    <div class="text-right pull-right">
+        Photo suivante<br>
+        <a href="{% url 'photologue:pl-gallery-photo' gallery.slug index|add:"1" %}">
+            <img src="{{ next.get_thumbnail_url }}" class="thumbnail pull-left" alt="{{ next.title }}">
+        </a>
+    </div>
     {% endif %}
-  </div>
+    <a href="{{ gallery.get_absolute_url }}" class="btn btn-default">Retour à l’album</a><br>
+</div>
+
+<div>
+    {% exif photo %}
 </div>
 {% endblock %}
