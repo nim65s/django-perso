@@ -9,6 +9,7 @@
 -e git+git://github.com/Nim65s/django-PGP-tables.git#egg=django-pgp-tables
 -e git+git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
 -e git+git://github.com/Nim65s/MarkDownBlog.git#egg=markdownblog
+-e git+git://github.com/Nim65s/ndh.git#egg=ndh
 beautifulsoup4==4.6.0
 certifi==2017.7.27.1      # via requests
 chardet==3.0.4            # via requests
