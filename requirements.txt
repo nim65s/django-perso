@@ -10,23 +10,23 @@
 -e git+git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
 -e git+git://github.com/Nim65s/MarkDownBlog.git#egg=markdownblog
 beautifulsoup4==4.6.0
-certifi==2017.4.17        # via requests
+certifi==2017.7.27.1      # via requests
 chardet==3.0.4            # via requests
 django-autoslug==1.9.3
-django-bootstrap3==8.2.3
+django-bootstrap3==9.0.0
 django-braces==1.11.0
 django-photologue==3.7
-django-sortedm2m==1.4.0   # via django-photologue
-django==1.11.3
+django-sortedm2m==1.5.0   # via django-photologue
+django==1.11.5
 exifread==2.1.2           # via django-photologue
-idna==2.5                 # via requests
-markdown==2.6.8
+idna==2.6                 # via requests
+markdown==2.6.9
 olefile==0.44             # via pillow
 pillow==4.2.1             # via django-photologue
-psycopg2==2.7.1
+psycopg2==2.7.3.1
 pygments==2.2.0
 python-memcached==1.58
 pytz==2017.2
-requests==2.18.1
+requests==2.18.4
 six==1.10.0               # via python-memcached
-urllib3==1.21.1           # via requests
+urllib3==1.22             # via requests
