@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'dmdb',
     'pebble',
     'fixics',
+    'ndh',
 ]
 
 MIDDLEWARE_CLASSES = [

@@ -45,13 +45,7 @@ div.btn-group[data-toggle=buttons-radio] input[type=radio] {
 #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; }
 #sortable li span { position: absolute; margin-left: -1.3em; }
 
-.right, .euro { text-align: right; }
-.euro { font-family: 'Source Code Pro', monospace; }
-.euro:after { content: ' €'; }
-.at:after { content: '@'; }
-.dot:after { content: '.'; }
-.mail:before { content: '<'; }
-.mail:after { content: '>'; }
+.right { text-align: right; }
 
 .vert { color: green; }
 .rouge { color: red; }
