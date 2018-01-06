@@ -73,13 +73,12 @@ INSTALLED_APPS = [
     'ndh',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -173,10 +172,6 @@ LOGGING = {
 if (Path(BASE_DIR) / PROJECT / 'context_processors.py').is_file():
     TEMPLATES[0]['OPTIONS']['context_processors'].append('%s.context_processors.%s' % (PROJECT, PROJECT))
 
-if not DEBUG:
-    INSTALLED_APPS.append('raven.contrib.django.raven_compat')
-    RAVEN_CONFIG = {"dsn": (CONF_DIR / "raven").open().read().strip()}
-
 if 'bootstrap3' in INSTALLED_APPS:
     BOOTSTRAP3 = {
         "horizontal_label_class": "col-md-3",
@@ -187,9 +182,6 @@ if 'bootstrap3' in INSTALLED_APPS:
         BOOTSTRAP3["base_url"] = "/static/"
     else:
         BOOTSTRAP3["jquery_url"] = "//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
-
-if 'cine' in INSTALLED_APPS:
-    MIDDLEWARE_CLASSES.append('cine.middleware.CheckVoteMiddleware')
 
 if 'photologue' in INSTALLED_APPS:
     PHOTOLOGUE_GALLERY_SAMPLE_SIZE = 10

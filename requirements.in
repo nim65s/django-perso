@@ -1,6 +1,5 @@
 beautifulsoup4
 django
-django-autoslug
 django-bootstrap3
 django-braces
 django-photologue
@@ -17,3 +16,4 @@ python-memcached
 -e git://github.com/Nim65s/django-PGP-tables.git#egg=django-pgp-tables
 -e git://github.com/Nim65s/django-YummyEmailOrUsernameInsensitiveAuth.git#egg=django-yeouia
 -e git://github.com/Nim65s/ndh.git#egg=ndh
+-e git://github.com/nim65s/django-autoslug#egg=django-autoslug

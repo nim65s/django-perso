@@ -1,7 +1,6 @@
-from django.conf.urls import include, url
+from django.urls import include, path, reverse_lazy
 from django.contrib import admin
 from django.contrib.sitemaps.views import index, sitemap
-from django.core.urlresolvers import reverse_lazy
 from django.views.defaults import permission_denied
 from django.views.generic import RedirectView, TemplateView
 
@@ -18,25 +17,25 @@ sitemaps = {
 }
 
 urlpatterns = [
-    url(r'^accounts/profil', profil, name='profil'),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^a-propos$', TemplateView.as_view(template_name='about.html'), name='about'),
+    path('accounts/profil', profil, name='profil'),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('a-propos', TemplateView.as_view(template_name='about.html'), name='about'),
 
-    url(r'^cine/', include('cine.urls')),
-    url(r'^comptes/', include('comptes.urls')),
-    url(r'^gpg/(?P<url>.*)$', RedirectView.as_view(url='/PGP/%(url)s', permanent=True)),
-    url(r'^PGP/', include('pgp_tables.urls')),
-    url(r'^groupe/', include('groupe.urls')),
+    path('cine/', include('cine.urls')),
+    path('comptes/', include('comptes.urls')),
+    path('gpg/<str:url>', RedirectView.as_view(url='/PGP/%(url)s', permanent=True)),
+    path('PGP/', include('pgp_tables.urls')),
+    path('groupe/', include('groupe.urls')),
 
-    url(r'^admin/', admin.site.urls),
-    url(r'^photo/', include('perso.urls_photo')),
-    url(r'^cgi', permission_denied),
-    url(r'^home$', RedirectView.as_view(url=reverse_lazy('dmdb:blog'), permanent=True), name="home"),
-    url(r'^sitemap\.xml$', index, {'sitemaps': sitemaps}),
-    url(r'^sitemap-(?P<section>.+)\.xml$', sitemap, {'sitemaps': sitemaps}),
+    path('admin/', admin.site.urls),
+    path('photo/', include('perso.urls_photo')),
+    path('cgi', permission_denied),
+    path('home', RedirectView.as_view(url=reverse_lazy('dmdb:blog'), permanent=True), name="home"),
+    path('sitemap\.xml', index, {'sitemaps': sitemaps}),
+    path('sitemap-<str:section>\.xml', sitemap, {'sitemaps': sitemaps}),
 
-    url(r'^pebble/', include('pebble.urls')),
-    url(r'^fixics/', include('fixics.urls')),
-    url(r'^feed', Feed(), name='feed'),
-    url(r'', include('dmdb.urls')),
+    path('pebble/', include('pebble.urls')),
+    path('fixics/', include('fixics.urls')),
+    path('feed', Feed(), name='feed'),
+    path('', include('dmdb.urls')),
 ]

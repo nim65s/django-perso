@@ -4,6 +4,7 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+-e git+git://github.com/nim65s/django-autoslug#egg=django-autoslug
 -e git+git://github.com/Nim65s/django-cineclub.git#egg=django-cineclub
 -e git+git://github.com/Nim65s/django-comptes.git#egg=django-comptes
 -e git+git://github.com/Nim65s/django-PGP-tables.git#egg=django-pgp-tables
@@ -11,23 +12,23 @@
 -e git+git://github.com/Nim65s/MarkDownBlog.git#egg=markdownblog
 -e git+git://github.com/Nim65s/ndh.git#egg=ndh
 beautifulsoup4==4.6.0
-certifi==2017.7.27.1      # via requests
+certifi==2017.11.5        # via requests
 chardet==3.0.4            # via requests
-django-autoslug==1.9.3
-django-bootstrap3==9.0.0
-django-braces==1.11.0
-django-photologue==3.7
+django-bootstrap3==9.1.0
+django-braces==1.12.0
+django-photologue==3.8.1
 django-sortedm2m==1.5.0   # via django-photologue
-django==1.11.5
+django==2.0.1
 exifread==2.1.2           # via django-photologue
+icalendar==4.0.0
 idna==2.6                 # via requests
-markdown==2.6.9
-olefile==0.44             # via pillow
-pillow==4.2.1             # via django-photologue
-psycopg2==2.7.3.1
+markdown==2.6.11
+pillow==5.0.0
+psycopg2==2.7.3.2
 pygments==2.2.0
-python-memcached==1.58
-pytz==2017.2
+python-dateutil==2.6.1    # via icalendar
+python-memcached==1.59
+pytz==2017.3
 requests==2.18.4
-six==1.10.0               # via python-memcached
+six==1.11.0               # via python-dateutil, python-memcached
 urllib3==1.22             # via requests
