@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load bootstrap3 %}
+{% load bootstrap3 ndh %}
 
 {% block title %}À Propos{% endblock %}
 
@@ -7,11 +7,7 @@
 <h1>À Propos</h1>
 
 <h2>Contact</h2>
-<p>Pour me contacter, vous pouvez envoyer un mail au <code>webmaster</code> de ce nom de domaine.</p>
-
-<h2>Commentaires</h2>
-<p>Aucun espace de commentaire n’est disponible sur ce site. Mais vous pouvez toujours me contacter, et, si besoin, je
-peux tout à fait ajouter vos idées en vous créditant :)</p>
+<p>{% show_email 'guilhem@saurel.me' %}</p>
 
 <h2>Mentions légales</h2>
 <p class="text-center"><a href="http://creativecommons.org/licenses/by/4.0/">

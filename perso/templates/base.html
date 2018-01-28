@@ -1,137 +1,68 @@
-{% load i18n staticfiles perso_extra %}
-<!doctype html>
-<html lang="{{ LANGUAGE_CODE }}">
-  <head>
-    <meta charset="utf-8">
-    <title>Nim’s web.log - {% block title %}{% if title %}{{ title }}{% else %}\o/{% endif %}{% endblock %}</title>
-    <meta name="robots" content="follow, all" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="{% block meta-description %}Nim’s weblog{% endblock meta-description %}{% block meta-description-page %}{% endblock meta-description-page %}" />
-    <meta name="keywords" content="{% block meta-keywords %}django, blog, weblog{% endblock meta-keywords %}" />
-    <meta name="author" content="Nim65s" />
-    <meta property="og:title" content="{% block og_title %}{{ title }}{% endblock %}" />
-    <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
-    <meta property="og:image" content="{% block og_image %}{% static 'favicon.png' %}{% endblock %}" />
-    <meta property="og:url" content="{% block og_url %}{{ request.path }}{% endblock %}" />
-    {% block meta %}{% endblock meta %}
-    <link rel="home" href="{% url 'dmdb:blog' %}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" type='text/css'>
-    <link rel="stylesheet" href="{% static "css/ndh.css" %}" />
-    <link rel="stylesheet" href="{% static "css/nim.css" %}" />
-    <link rel="stylesheet" href="{% static "css/zenburn.css" %}" />
-    {% block style %}{% endblock style %}
-    {% comment %}
-    <!--[if lt IE 9]>
-      <script src="{% static "zinnia_bootstrap/assets/js/html5shiv.js" %}"></script>
-      <script src="{% static "zinnia_bootstrap/assets/js/respond.min.js" %}"></script>
-    <![endif]-->
-    {% endcomment %}
-    <link rel="shortcut icon" href="{% static "favicon.png" %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "apple-touch-icon-144-precomposed.png" %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "apple-touch-icon-114-precomposed.png" %}" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "apple-touch-icon-72-precomposed.png" %}" />
-    <link rel="apple-touch-icon-precomposed" href="{% static "apple-touch-icon-57-precomposed.png" %}" />
-    {% block link %}{% endblock link %}
-    {% block script %}{% endblock script %}
-  </head>
-  <body class="{% block body-class %}{% endblock body-class %}">
-    <div id="wrap">
-      <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">{% trans "Toggle navigation" %}</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="{% url 'dmdb:blog' %}" title="Nim’s web.log" class="navbar-brand" id="brand" rel="home">Nim’s web.log \o/</a>
-          </div>
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav navbar-left">
-              <li><a href="{% url 'dmdb:blog' %}">Blog</a></li>
-              <li class="{% if "photo" in request.path %}active{% endif %}"><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
-              <li class="{% if "cine" in request.path %}active {% endif %}dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CinéNim <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="{% url 'cine:home' %}">Soirées</a></li>
-                  <li><a href="{% url 'cine:films' %}">Films</a></li>
-                  <li><a href="{% url 'cine:ajout_film' %}">Ajouter un film</a></li>
-                  <li><a href="{% url 'cine:cinephiles' %}">Cinéphiles</a></li>
-                  <li><a href="{% url 'cine:adress' %}">Mon adresse</a></li>
-                </ul>
-              </li>
-              <li class="{% if "comptes" in request.path %}active{% endif %}"><a href="{% url "comptes:home" %}">Comptes</a></li>
-              <li class="{% if "PGP" in request.path %}active{% endif %}"><a href="{% url "pgp_tables:ksps" %}">PGP</a></li>
-              <li class="{% if "a-propos" in request.path %}active{% endif %}"><a href="{% url "about" %}">À Propos</a></li>
-            </ul>
-            {% block navbar-right %}
-            <ul class="nav navbar-nav navbar-right">
-              {% if request.user.is_authenticated %}
-              <li><a href="{% url 'profil' %}">Mon Profil</a></li>
-              <li><a href="{% url 'logout' %}">Log out</a></li>
-              {% else %}
-              <li><a href="{% url 'login' %}?next={{ request.path }}">Log in</a></li>
-              {% endif %}
-            </ul>
-            {% endblock %}
-          </div>
-        </div>
-      </nav>
-      {% block slider %}{% endblock %}
-      <div class="container{% block maincontainerclass %}{% endblock %}">
-        <div class="row">
-          {% for message in messages %}
-          <div class="alert alert-dismissable{% if message.tags %} alert-{% if message.tags == "error" %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            {{ message }}
-          </div>
-          {% endfor %}
-          {% block content %}
-          <div class="col-md-8">
-            {% block homecontent %}
-            {% endblock %}
-          </div>
-          <div class="col-md-4">
-            {% block sidebar %}
-            <aside id="widget-welcome" class="widget panel panel-default">
-              <div class="panel-heading">Welcome!</div>
-              <div class="panel-body">
-                <p>Bienvenue sur mon modeste site web.</p>
-                <p>Il sert principalement de point d’entrée à certaines applications utiles (ou pas) ; mais, il peut aussi me servir à blogger sur
-                des <a href="{% url 'dmdb:category' slug='voyages' %}">Voyages</a>,
-                de l’<a href="{% url 'dmdb:category' slug='informatique' %}">Informatique</a>,
-                ou encore de la <a href="{% url 'dmdb:category' slug='robotique' %}">Robotique</a>.</p>
-                <p>Ces billets sont également disponible par <a href="{% url 'feed' %}">flux RSS</a>.</p>
-                <hr>
-                <p>À part ici, vous pouvez également trouver mon profil <code>@nim65s</code> sur:
-                <ul>
-                  <li><a href="https://mastodon.tetaneutral.net/@nim">Mastodon</a></li>
-                  <li><a href="https://twitter.com/nim65s/">Twitter</a></li>
-                  <li><a href="https://github.com/nim65s/">Github</a></li>
-                  <li><a href="https://fr.linkedin.com/in/nim65s">LinkedIn</a></li>
-                  <li><a href="https://www.facebook.com/nim65s">Facebook</a></li>
-                  <li><a href="https://keybase.io/nim65s">keybase.io</a></li>
-                </ul>
-                <hr>
-                <p>PGP: <code><a href="{% url 'pgp_tables:ksps' %}">0x 7D2A CDAF 4653 CF28</a></code></p>
-                <p>experimental ed25519: <code>0x F0FE AEF0 093A A2CB</code></p>
-                </p>
-              </div>
-            </aside>
-            {% endblock sidebar %}
-          </div>
-          <main>
-            {% endblock content %}
-          </main>
-        </div>
-      </div>
+{% extends 'ndh.html' %}
+{% load static %}
+
+{% block pagetitle %}Nim’s web.log - {% block title %}{% if title %}{{ title }}{% else %}\o/{% endif %}{% endblock %}{% endblock %}
+{% block sidetitle %}Nim’s web.log \o/{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static "css/nim.css" %}" />
+<link rel="stylesheet" href="{% static "css/zenburn.css" %}" />
+<link rel="shortcut icon" href="{% static "favicon.png" %}" />
+{% endblock %}
+
+{% block navbarleft %}
+
+<li><a href="{% url 'dmdb:blog' %}">Blog</a></li>
+<li class="{% if "photo" in request.path %}active{% endif %}"><a href="{% url "photologue:gallery-list" %}">Photos</a></li>
+<li class="{% if "cine" in request.path %}active {% endif %}dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CinéNim <span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="{% url 'cine:home' %}">Soirées</a></li>
+    <li><a href="{% url 'cine:films' %}">Films</a></li>
+    <li><a href="{% url 'cine:ajout_film' %}">Ajouter un film</a></li>
+    <li><a href="{% url 'cine:cinephiles' %}">Cinéphiles</a></li>
+    <li><a href="{% url 'cine:adress' %}">Mon adresse</a></li>
+  </ul>
+</li>
+<li class="{% if "comptes" in request.path %}active{% endif %}"><a href="{% url "comptes:home" %}">Comptes</a></li>
+<li class="{% if "PGP" in request.path %}active{% endif %}"><a href="{% url "pgp_tables:ksps" %}">PGP</a></li>
+<li class="{% if "a-propos" in request.path %}active{% endif %}"><a href="{% url "about" %}">À Propos</a></li>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="col-md-8">
+  {% block homecontent %}
+  {% endblock %}
+</div>
+<div class="col-md-4">
+  {% block sidebar %}
+  <aside id="widget-welcome" class="widget panel panel-default">
+    <div class="panel-heading">Welcome!</div>
+    <div class="panel-body">
+      <p>Bienvenue sur mon modeste site web.</p>
+      <p>Il sert principalement de point d’entrée à certaines applications utiles (ou pas) ; mais, il peut aussi me servir à blogger sur
+      des <a href="{% url 'dmdb:category' slug='voyages' %}">Voyages</a>,
+      de l’<a href="{% url 'dmdb:category' slug='informatique' %}">Informatique</a>,
+      ou encore de la <a href="{% url 'dmdb:category' slug='robotique' %}">Robotique</a>.</p>
+      <p>Ces billets sont également disponible par <a href="{% url 'feed' %}">flux RSS</a>.</p>
+      <hr>
+      <p>À part ici, vous pouvez également trouver mon profil <code>@nim65s</code> sur:
+      <ul>
+        <li><a href="https://mastodon.tetaneutral.net/@nim">Mastodon</a></li>
+        <li><a href="https://twitter.com/nim65s/">Twitter</a></li>
+        <li><a href="https://github.com/nim65s/">Github</a></li>
+        <li><a href="https://fr.linkedin.com/in/nim65s">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/nim65s">Facebook</a></li>
+        <li><a href="https://keybase.io/nim65s">keybase.io</a></li>
+      </ul>
+      <hr>
+      <p>PGP: <code><a href="{% url 'pgp_tables:ksps' %}">0x 7D2A CDAF 4653 CF28</a></code></p>
+      <p>experimental ed25519: <code>0x F0FE AEF0 093A A2CB</code></p>
+      </p>
     </div>
-    <footer class="container" id="mainfooter">
-      <p class="text-muted credit">Nim’s web.log: Powered by <a href="http://www.djangoproject.com">the love of ponies</a> and <a href="http://getbootstrap.com">the design fellas from Twitter</a>.</p>
-    </footer>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js" integrity="sha384-R4/ztc4ZlRqWjqIuvf6RX5yb/v90qNGx6fS48N0tRxiGkqveZETq72KgDVJCp2TC" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {% block js %}{% endblock %}
-  </body>
-</html>
+  </aside>
+  {% endblock sidebar %}
+</div>
+{% endblock content %}
