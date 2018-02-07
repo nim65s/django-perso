@@ -52,6 +52,7 @@ MANAGERS = ADMINS
 
 INSTALLED_APPS = [
     PROJECT,
+    'ndh',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -70,7 +71,6 @@ INSTALLED_APPS = [
     'dmdb',
     'pebble',
     'fixics',
-    'ndh',
 ]
 
 MIDDLEWARE = [
